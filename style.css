@@ -15,3 +15,193 @@
 
 /* =Theme customization starts here
 -------------------------------------------------------------- */
+
+/* Removes those stupid woocommerce marks */
+li mark.count {
+	display: none;
+}
+
+/* Makes category name appear inside image */
+li.product-category.product a {
+	position: relative;
+	width: 100%;
+}
+
+li.product-category.product a h3 {
+	position: absolute;
+	Bottom: 0;
+	left: 0;
+	width: 100%;
+	box-sizing: border-box;
+	max-width: 100%;
+	max-height: 100%;
+	color: #d2ab67;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-family: Helvetica;
+	background: rgb(0,0,0);
+/* fallback color */
+	background: rgba(0,0,0,0.7);
+	margin-bottom: 0;
+	padding: 10px;
+/* trial */
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* product titles */
+li.product a h3 {
+	font-weight: normal;
+}
+
+/* Makes nav icons show up properly */
+@media only screen and (min-width: 768px) {
+	#navigation {
+		clear: none;
+	}
+	
+	#navigation .menus.nav-icons:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	
+	#navigation .menus.nav-icons .side-nav {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+	
+	#navigation .menus.nav-icons-1 #main-nav {
+		margin-right: 4em;
+	}
+	
+	#navigation .menus.nav-icons-1 .side-nav {
+		width: 4em;
+	}
+	
+	#navigation .menus.nav-icons-2 #main-nav {
+		margin-right: 7em;
+	}
+	
+	#navigation .menus.nav-icons-2 .side-nav {
+		width: 7em;
+	}
+	
+	#navigation .menus.nav-icons-3 #main-nav {
+		margin-right: 10em;
+	}
+	
+	#navigation .menus.nav-icons-3 .side-nav {
+		width: 10em;
+	}
+	
+	#navigation .menus.nav-icons-4 #main-nav {
+		margin-right: 13em;
+	}
+	
+	#navigation .menus.nav-icons-4 .side-nav {
+		width: 13em;
+	}
+}
+
+@media only screen and (min-width: 980px) {
+	#navigation .cart-extended ul.cart a.cart-contents {
+		display: inline-block;
+		width: auto;
+		text-indent: 0;
+		overflow: visible;
+	}
+	
+	#navigation .cart-extended ul.cart a.cart-contents:before {
+		display: inline-block;
+		margin-right: .5em;
+		height: auto;
+	}
+	
+	#navigation .menus.nav-icons-1.cart-extended #main-nav {
+		margin-right: 13.5em;
+	}
+	
+	#navigation .menus.nav-icons-1.cart-extended .side-nav {
+		width: 13.5em;
+	}
+	
+	#navigation .menus.nav-icons-2.cart-extended #main-nav {
+		margin-right: 16.5em;
+	}
+	
+	#navigation .menus.nav-icons-2.cart-extended .side-nav {
+		width: 16.5em;
+	}
+	
+	#navigation .menus.nav-icons-3.cart-extended #main-nav {
+		margin-right: 19.5em;
+	}
+	
+	#navigation .menus.nav-icons-3.cart-extended .side-nav {
+		width: 19.5em;
+	}
+	
+	#navigation .menus.nav-icons-4.cart-extended #main-nav {
+		margin-right: 22.5em;
+	}
+	
+	#navigation .menus.nav-icons-4.cart-extended .side-nav {
+		width: 22.5em;
+	}
+}
+
+/* position header logo correctly in mobile view */
+@media only screen and (max-width: 767px) {
+	header#header.col-full {
+		padding-left: 20px;
+	}
+}
+
+/* improve search box text visibility */
+/* form.searchform {
+	background: #e6e6e6 !important;
+} */
+
+/* improve search box text visibility */
+/* #navigation ul.nav-search #searchform, #navigation ul.nav-search form.searchform {
+	background: #e6e6e6 !important;
+} */
+
+/* Make main box background white */
+section#main {
+    background:white;
+    border-style:solid;
+    border-width: thick;
+    border-color: #d1aa67;
+    padding: 20px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;  
+}
+
+/* Scale down header image */
+header#header div#logo {
+    max-width:50%;
+}
+
+/* make <a> font visible on widgets */
+div.widget a {
+	color: #000000;
+}
+
+/* make header widgets apear without background */
+div.header-widget div.widget {
+	background-color: #000000;
+}
+div.header-widget div.widget p {
+	color:#d2ab67;
+	text-align:right;
+}
+div.header-widget div.widget a {
+	color:#d2ab67;
+	text-align:right;
+	font-weight:bold;
+}
+

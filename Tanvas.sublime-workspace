@@ -1,0 +1,908 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"unse",
+				"unset"
+			],
+			[
+				"Laser",
+				"Lasercommerce_Roles_Override"
+			],
+			[
+				"Lasc",
+				"Lasercommerce_Roles_Override"
+			],
+			[
+				"curr",
+				"currentUserRoles"
+			],
+			[
+				"Las",
+				"Lasercommerce_VisibleTiers_Override"
+			],
+			[
+				"regular",
+				"regular_price"
+			],
+			[
+				"curren",
+				"current_price"
+			],
+			[
+				"maybe",
+				"maybeGetSalePrice"
+			],
+			[
+				"reg",
+				"regular_price"
+			],
+			[
+				"maybeAdd",
+				"maybeAddExtraPricingColumns"
+			],
+			[
+				"sale",
+				"sale_price_dates_to"
+			],
+			[
+				"n",
+				"names"
+			],
+			[
+				"maybeGet",
+				"maybeGetPriceInclTax"
+			],
+			[
+				"maybeGetPrice",
+				"maybeGetPriceHtml"
+			],
+			[
+				"MaybeGet",
+				"maybeGetVisiblePricing"
+			],
+			[
+				"visi",
+				"visiblePricing"
+			],
+			[
+				"visib",
+				"visiblePrices"
+			],
+			[
+				"mayb",
+				"maybe_get_pricing"
+			],
+			[
+				"get_class",
+				"get_class_methods"
+			],
+			[
+				"pri",
+				"pricing"
+			],
+			[
+				"type",
+				"typeof"
+			],
+			[
+				"Lasercom",
+				"Lasercommerce_Pricing"
+			],
+			[
+				"validate",
+				"validate_pricing"
+			],
+			[
+				"is_val",
+				"is_valid_pricing"
+			],
+			[
+				"price",
+				"price_spec"
+			],
+			[
+				"Laserc",
+				"Lasercommercee_Pricing"
+			],
+			[
+				"dynami",
+				"dynamicID"
+			],
+			[
+				"null",
+				"null"
+			],
+			[
+				"vali",
+				"validate_tax_status"
+			],
+			[
+				"maybe_set_re",
+				"maybe_set_sale_price"
+			],
+			[
+				"flatt",
+				"flattenTierTreeRecursive"
+			],
+			[
+				"L",
+				"Lasercommerce_Tier_Tree"
+			],
+			[
+				"is_dy",
+				"is_dynamic_visible_to_role"
+			],
+			[
+				"maybe_get_dynamic_ex",
+				"maybe_get_dynamic_exclude_ancestors"
+			],
+			[
+				"exc",
+				"exclude_descendents"
+			],
+			[
+				"inc",
+				"include_ancestors"
+			],
+			[
+				"maybe_get_dy",
+				"maybe_get_dynamic_include"
+			],
+			[
+				"dyn",
+				"dynamicID"
+			],
+			[
+				"set_dyn",
+				"maybe_set_dynamic_condition"
+			],
+			[
+				"validate_role",
+				"validate_role_list"
+			],
+			[
+				"cond",
+				"condition"
+			],
+			[
+				"val",
+				"value"
+			],
+			[
+				"con",
+				"condition"
+			],
+			[
+				"may",
+				"maybe_get_dynamic_rules"
+			],
+			[
+				"Dyn",
+				"dynamicID"
+			],
+			[
+				"dyna",
+				"dynamics"
+			],
+			[
+				"is_va",
+				"is_valid_timestamp"
+			],
+			[
+				"stat",
+				"status"
+			],
+			[
+				"is_valid",
+				"is_valid_price"
+			],
+			[
+				"maybe_get_",
+				"maybe_get_pricing_params"
+			],
+			[
+				"collec",
+				"collector"
+			],
+			[
+				"dy",
+				"dynamicID"
+			],
+			[
+				"exclu",
+				"exclude_descendents"
+			],
+			[
+				"inclu",
+				"include_descendents"
+			],
+			[
+				"act",
+				"active_to"
+			],
+			[
+				"active",
+				"active_from"
+			],
+			[
+				"para",
+				"params"
+			],
+			[
+				"param",
+				"param"
+			],
+			[
+				"is_some",
+				"is_something_active_now"
+			],
+			[
+				"sal",
+				"sale_to"
+			],
+			[
+				"array_",
+				"array_push"
+			],
+			[
+				"special_",
+				"special_price"
+			],
+			[
+				"col",
+				"collector"
+			],
+			[
+				"coll",
+				"collector_params"
+			],
+			[
+				"spec",
+				"special_active_to"
+			],
+			[
+				"dynam",
+				"dynamic_active"
+			],
+			[
+				"dynamic_",
+				"dynamic_collector"
+			],
+			[
+				"specia",
+				"special_active_to"
+			],
+			[
+				"spe",
+				"special_active_from"
+			],
+			[
+				"special",
+				"special_active"
+			],
+			[
+				"special_ac",
+				"special_active"
+			],
+			[
+				"array_key",
+				"array_keys"
+			],
+			[
+				"tax",
+				"tax_status"
+			],
+			[
+				"speci",
+				"special_active"
+			],
+			[
+				"regul",
+				"regular_price"
+			],
+			[
+				"get_meta_",
+				"get_meta_name"
+			],
+			[
+				"array",
+				"array"
+			],
+			[
+				"date",
+				"date_from"
+			],
+			[
+				"date_",
+				"date_to_id"
+			],
+			[
+				"date_from",
+				"date_from_id"
+			],
+			[
+				"sales_date",
+				"sales_date_from"
+			],
+			[
+				"regu",
+				"regular_price"
+			],
+			[
+				"po",
+				"post_id"
+			],
+			[
+				"tier_",
+				"tier_slug"
+			],
+			[
+				"the",
+				"thepostid"
+			],
+			[
+				"saniti",
+				"sanitize_key"
+			],
+			[
+				"get_coll",
+				"get_collector_quantity"
+			],
+			[
+				"get_dyn",
+				"get_dynamic_collector"
+			],
+			[
+				"qty",
+				"qty_brk"
+			],
+			[
+				"isn",
+				"is_null"
+			],
+			[
+				"time",
+				"timestamp"
+			],
+			[
+				"W",
+				"WP_DEBUG"
+			],
+			[
+				"esc",
+				"esc_attr"
+			],
+			[
+				"tier",
+				"tierTree"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"output",
+				"output_nestable"
+			],
+			[
+				"get_",
+				"get_names"
+			],
+			[
+				"json_",
+				"json_string"
+			],
+			[
+				"nestable",
+				"nestable-css"
+			],
+			[
+				"jquery",
+				"jquery-nestable-js"
+			],
+			[
+				"laser",
+				"lasercommerce_init"
+			],
+			[
+				"s",
+				"script"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "style.css",
+			"settings":
+			{
+				"buffer_size": 3722,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "template-biz.php",
+			"settings":
+			{
+				"buffer_size": 1687,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "functions.php",
+			"settings":
+			{
+				"buffer_size": 246,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "{\n    \"woo_pagenav_border_top\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:7:\\\"#e6e6e6\\\";}\",\n    \"woo_full_header_bg_image\": \"\",\n    \"woo_magazine_b_align\": \"alignleft\",\n    \"woo_woo_biz_notice\": \"Below you can control settings for the Business page template. Please refer to <a href=\\\"http:\\/\\/www.woothemes.com\\/support\\/theme-documentation\\/canvas\\/\\\">documentation<\\/a> on how to setup the page template. You can add slider posts with the <strong><em>Slides<\\/em><\\/strong> custom post type.\",\n    \"woo_woo_slider_notice\": \"Below you can control the generic slider settings which will apply to both Business and Magazine templates.\",\n    \"woo_slider_biz_title\": \"true\",\n    \"woo_slider_biz_font_title\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"24\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:4:\\\"bold\\\";s:5:\\\"color\\\";s:7:\\\"#ffffff\\\";}\",\n    \"woo_nav_border_bot\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:0:\\\"\\\";}\",\n    \"woo_disable_post_author\": \"false\",\n    \"woo_nav_border_lr\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:0:\\\"\\\";}\",\n    \"woo_nav_border_radius\": \"0px\",\n    \"woo_nav_rss\": \"false\",\n    \"woo_nav_search\": \"true\",\n    \"woo_font_post_text\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"15\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:6:\\\"normal\\\";s:5:\\\"color\\\";s:7:\\\"#000000\\\";}\",\n    \"woo_font_post_more\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"13\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:3:\\\"300\\\";s:5:\\\"color\\\";s:0:\\\"\\\";}\",\n    \"woo_post_more_border_top\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:7:\\\"#e6e6e6\\\";}\",\n    \"woo_post_more_border_bottom\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:7:\\\"#e6e6e6\\\";}\",\n    \"woo_post_author_bg\": \"#ffffff\",\n    \"woo_post_author_border_top\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"1\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:7:\\\"#e6e6e6\\\";}\",\n    \"woo_post_author_border_bottom\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"1\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:7:\\\"#e6e6e6\\\";}\",\n    \"woo_post_author_border_lr\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"1\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:7:\\\"#e6e6e6\\\";}\",\n    \"woo_post_author_border_radius\": \"5px\",\n    \"woo_header_cart_total\": \"false\",\n    \"woo_custom_favicon\": \"http:\\/\\/staging.technotan.com.au\\/wp-content\\/uploads\\/favicon.gif\",\n    \"woo_subscribe_email\": \"info@technotan.com.au\",\n    \"woo_comments\": \"post\",\n    \"woo_post_content\": \"excerpt\",\n    \"woo_breadcrumbs_show\": \"true\",\n    \"woo_pagination_type\": \"simple\",\n    \"woo_link_color\": \"#d1aa67\",\n    \"woo_link_hover_color\": \"#d1aa67\",\n    \"woo_button_color\": \"#d1aa67\",\n    \"woo_font_post_title\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"20\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:4:\\\"bold\\\";s:5:\\\"color\\\";s:7:\\\"#d1aa67\\\";}\",\n    \"woo_font_post_meta\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"12\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:3:\\\"300\\\";s:5:\\\"color\\\";s:7:\\\"#000000\\\";}\",\n    \"woo_wpthumb_notice\": \"There are two alternative methods of dynamically resizing the thumbnails in the theme, <strong>WP Post Thumbnail<\\/strong> (default) or <strong>TimThumb<\\/strong>.\",\n    \"woo_footer_sidebars\": \"2\",\n    \"woo_footer_left\": \"false\",\n    \"woo_footer_left_text\": \"<p><\\/p>\",\n    \"woo_footer_right\": \"false\",\n    \"woo_footer_right_text\": \"<p><\\/p>\",\n    \"woo_connect\": \"true\",\n    \"woo_connect_title\": \"Subscribe\",\n    \"woo_connect_content\": \"Subscribe to the TechnoTan blog to hear about our latest products and offers!\",\n    \"woo_connect_related\": \"true\",\n    \"woo_connect_rss\": \"true\",\n    \"woo_connect_facebook\": \"https:\\/\\/www.facebook.com\\/officialtechnotan\",\n    \"woo_contact_panel\": \"true\",\n    \"woo_contact_title\": \"Head Office\",\n    \"woo_contact_address\": \"1\\/41 Biscayne Way, \\r\\nJandakot WA 6164\",\n    \"woo_contact_number\": \"(08) 9412 3000\",\n    \"woo_contact_fax\": \"(08) 9412 3001\",\n    \"woo_contactform_email\": \"neil@technotan.com.au\",\n    \"woo_contact_subscribe_and_connect\": \"false\",\n    \"woo_contactform_map_coords\": \"-32.122987, 115.873141\",\n    \"woo_maps_scroll\": \"false\",\n    \"woo_maps_single_height\": \"250\",\n    \"woo_maps_default_mapzoom\": \"9\",\n    \"woo_maps_default_maptype\": \"G_NORMAL_MAP\",\n    \"woo_maps_callout_text\": \"TechnoTan Head Office\",\n    \"woo_style_disable\": \"false\",\n    \"woo_background_notice\": \"Background options can also be set in <a href=\\\"http:\\/\\/staging.technotan.com.au\\/wp-admin\\/customize.php\\\">Appearance > Customize<\\/a>. The options on that page <strong>override<\\/strong> the background options bellow.\",\n    \"woo_style_bg\": \"#000000\",\n    \"woo_style_bg_image_repeat\": \"no-repeat\",\n    \"woo_style_bg_image_pos\": \"top center\",\n    \"woo_style_bg_image_attach\": \"fixed\",\n    \"woo_border_top\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:7:\\\"#020202\\\";}\",\n    \"woo_button_hover_color\": \"#d1aa67\",\n    \"woo_style_border\": \"#d1aa67\",\n    \"woo_general_font_notice\": \"The misc typography options below only control typography not covered by other typography options. You can control specific typography on post title, post content, widget titles etc. in the other sections in the options panel.\",\n    \"woo_font_text\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"16\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:6:\\\"normal\\\";s:5:\\\"color\\\";s:7:\\\"#000000\\\";}\",\n    \"woo_font_h1\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"22\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:4:\\\"bold\\\";s:5:\\\"color\\\";s:7:\\\"#d1aa67\\\";}\",\n    \"woo_font_h2\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"21\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:4:\\\"bold\\\";s:5:\\\"color\\\";s:7:\\\"#d1aa67\\\";}\",\n    \"woo_font_h3\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"20\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:4:\\\"bold\\\";s:5:\\\"color\\\";s:7:\\\"#d1aa67\\\";}\",\n    \"woo_full_width_notice\": \"Below you can enable full width header and footer areas and set the background. You can set the styling options for the full width navigation under the Primary Navigation options. Please note that Boxed Layout must be disabled.\",\n    \"woo_header_full_width\": \"false\",\n    \"woo_full_header_bg_image_repeat\": \"no-repeat\",\n    \"woo_footer_full_width\": \"false\",\n    \"woo_foot_full_width_widget_bg\": \"#f0f0f0\",\n    \"woo_footer_full_width_bg\": \"#222222\",\n    \"woo_header_bg\": \"\",\n    \"woo_header_bg_image\": \"\",\n    \"woo_top_nav_hover_bg\": \"\",\n    \"woo_nav_margin_bottom\": \"\",\n    \"woo_header_bg_image_repeat\": \"no-repeat\",\n    \"woo_header_border\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:0:\\\"\\\";}\",\n    \"woo_header_padding_top\": \"20\",\n    \"woo_header_padding_bottom\": \"20\",\n    \"woo_header_padding_left\": \"0\",\n    \"woo_header_padding_right\": \"0\",\n    \"woo_font_logo\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"40\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:39:\\\"\\\"Helvetica Neue\\\", Helvetica, sans-serif\\\";s:5:\\\"style\\\";s:4:\\\"bold\\\";s:5:\\\"color\\\";s:7:\\\"#222222\\\";}\",\n    \"woo_font_desc\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"13\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:39:\\\"\\\"Helvetica Neue\\\", Helvetica, sans-serif\\\";s:5:\\\"style\\\";s:3:\\\"300\\\";s:5:\\\"color\\\";s:7:\\\"#999999\\\";}\",\n    \"woo_footer_font\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"13\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:3:\\\"300\\\";s:5:\\\"color\\\";s:7:\\\"#000000\\\";}\",\n    \"woo_hooks_stored_hooks\": \"a:37:{s:7:\\\"woo_top\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:17:\\\"woo_header_before\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:17:\\\"woo_header_inside\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:16:\\\"woo_header_after\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:14:\\\"woo_nav_before\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:14:\\\"woo_nav_inside\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:13:\\\"woo_nav_after\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:18:\\\"woo_content_before\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:15:\\\"woo_main_before\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:15:\\\"woo_loop_before\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:10:\\\"loop_start\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:8:\\\"loop_end\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:14:\\\"woo_loop_after\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:14:\\\"woo_main_after\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:17:\\\"woo_content_after\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:15:\\\"woo_post_before\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:22:\\\"woo_post_inside_before\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:21:\\\"woo_post_inside_after\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:14:\\\"woo_post_after\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:29:\\\"woo_post_before_singular-page\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:36:\\\"woo_post_inside_before_singular-page\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:35:\\\"woo_post_inside_after_singular-page\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:28:\\\"woo_post_after_singular-page\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:18:\\\"woo_sidebar_before\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:25:\\\"woo_sidebar_inside_before\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:24:\\\"woo_sidebar_inside_after\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:17:\\\"woo_sidebar_after\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:14:\\\"woo_footer_top\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:17:\\\"woo_footer_before\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:17:\\\"woo_footer_inside\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:22:\\\"woo_footer_left_before\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:21:\\\"woo_footer_left_after\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:23:\\\"woo_footer_right_before\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:22:\\\"woo_footer_right_after\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:16:\\\"woo_footer_after\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:7:\\\"wp_head\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}s:9:\\\"wp_footer\\\";a:3:{s:7:\\\"content\\\";s:0:\\\"\\\";s:10:\\\"shortcodes\\\";i:0;s:3:\\\"php\\\";i:0;}}\",\n    \"woo_layout_stored_layouts\": \"a:3:{s:25:\\\"woo_layout_manager_enable\\\";s:4:\\\"true\\\";s:7:\\\"layouts\\\";a:6:{s:7:\\\"one-col\\\";a:1:{s:7:\\\"content\\\";s:3:\\\"100\\\";}s:12:\\\"two-col-left\\\";a:2:{s:7:\\\"content\\\";s:2:\\\"75\\\";s:7:\\\"primary\\\";s:2:\\\"25\\\";}s:13:\\\"two-col-right\\\";a:2:{s:7:\\\"primary\\\";s:2:\\\"30\\\";s:7:\\\"content\\\";s:2:\\\"70\\\";}s:14:\\\"three-col-left\\\";a:3:{s:7:\\\"content\\\";s:2:\\\"55\\\";s:7:\\\"primary\\\";s:2:\\\"30\\\";s:9:\\\"secondary\\\";s:2:\\\"15\\\";}s:16:\\\"three-col-middle\\\";a:3:{s:9:\\\"secondary\\\";s:2:\\\"15\\\";s:7:\\\"content\\\";s:2:\\\"55\\\";s:7:\\\"primary\\\";s:2:\\\"30\\\";}s:15:\\\"three-col-right\\\";a:3:{s:9:\\\"secondary\\\";s:2:\\\"15\\\";s:7:\\\"primary\\\";s:2:\\\"30\\\";s:7:\\\"content\\\";s:2:\\\"55\\\";}}s:6:\\\"submit\\\";s:12:\\\"Save Changes\\\";}\",\n    \"woo_pagenav_border_bottom\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:7:\\\"#e6e6e6\\\";}\",\n    \"woo_archive_header_font\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"18\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:4:\\\"bold\\\";s:5:\\\"color\\\";s:7:\\\"#222222\\\";}\",\n    \"woo_archive_header_border_bottom\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"1\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:7:\\\"#e6e6e6\\\";}\",\n    \"woo_archive_header_disable_rss\": \"false\",\n    \"woo_widget_bg\": \"#d1aa67\",\n    \"woo_widget_border\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:7:\\\"#dbdbdb\\\";}\",\n    \"woo_widget_padding_tb\": \"20\",\n    \"woo_widget_padding_lr\": \"20\",\n    \"woo_widget_font_title\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"18\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:4:\\\"bold\\\";s:5:\\\"color\\\";s:7:\\\"#000000\\\";}\",\n    \"woo_widget_title_border\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:7:\\\"#e6e6e6\\\";}\",\n    \"woo_widget_font_text\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"16\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:6:\\\"normal\\\";s:5:\\\"color\\\";s:7:\\\"#000000\\\";}\",\n    \"woo_widget_border_radius\": \"0px\",\n    \"woo_widget_tabs_font\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"12\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:39:\\\"\\\"Helvetica Neue\\\", Helvetica, sans-serif\\\";s:5:\\\"style\\\";s:4:\\\"bold\\\";s:5:\\\"color\\\";s:7:\\\"#d1aa67\\\";}\",\n    \"woo_post_image_support\": \"true\",\n    \"woo_wc_layout\": \"two-col-left\",\n    \"woo_header_search_scope\": \"products\",\n    \"woo_font_h4\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"19\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:4:\\\"bold\\\";s:5:\\\"color\\\";s:7:\\\"#d1aa67\\\";}\",\n    \"woo_slider_magazine_excerpt_length\": \"15\",\n    \"woo_magazine_feat_posts\": \"Select a number:\",\n    \"woo_slider_biz_overlay\": \"bottom\",\n    \"woo_biz_disable_footer_widgets\": \"false\",\n    \"woo_slider_biz\": \"true\",\n    \"woo_widget_tabs_font_meta\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"11\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:39:\\\"\\\"Helvetica Neue\\\", Helvetica, sans-serif\\\";s:5:\\\"style\\\";s:3:\\\"300\\\";s:5:\\\"color\\\";s:7:\\\"#d1aa67\\\";}\",\n    \"woo_woo_magazine_notice\": \"Below you can control settings for the Magazine page template. Please refer to <a href=\\\"http:\\/\\/www.woothemes.com\\/support\\/theme-documentation\\/canvas\\/\\\">documentation<\\/a> on how to setup the page template.\",\n    \"woo_slider_magazine\": \"true\",\n    \"woo_slider_magazine_entries\": \"3\",\n    \"woo_slider_magazine_exclude\": \"true\",\n    \"woo_slider_magazine_title\": \"true\",\n    \"woo_slider_magazine_font_title\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"24\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:4:\\\"bold\\\";s:5:\\\"color\\\";s:7:\\\"#ffffff\\\";}\",\n    \"woo_slider_magazine_excerpt\": \"true\",\n    \"woo_slider_magazine_font_excerpt\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"13\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:3:\\\"300\\\";s:5:\\\"color\\\";s:7:\\\"#cccccc\\\";}\",\n    \"woo_slider_pagination\": \"true\",\n    \"woo_biz_slides_disable\": \"false\",\n    \"woo_slider_biz_full\": \"false\",\n    \"woo_slider_auto\": \"true\",\n    \"woo_slider_hover\": \"true\",\n    \"woo_slider_speed\": \"0.6\",\n    \"woo_slider_interval\": \"4\",\n    \"woo_slider_effect\": \"slide\",\n    \"woo_slider_biz_font_excerpt\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"13\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:3:\\\"300\\\";s:5:\\\"color\\\";s:7:\\\"#cccccc\\\";}\",\n    \"woo_nav_font\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"16\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:6:\\\"normal\\\";s:5:\\\"color\\\";s:7:\\\"#000000\\\";}\",\n    \"woo_nav_margin_top\": \"\",\n    \"woo_nav_hover\": \"#000000\",\n    \"woo_nav_hover_bg\": \"#ffffff\",\n    \"woo_nav_divider_border\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:0:\\\"\\\";}\",\n    \"woo_nav_dropdown_border\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:0:\\\"\\\";}\",\n    \"woo_nav_border_top\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:0:\\\"\\\";}\",\n    \"woo_slider_biz_number\": \"4\",\n    \"woo_slider_biz_slide_group\": \"19\",\n    \"woo_slider_biz_order\": \"DESC\",\n    \"woo_magazine_featured_post_content\": \"excerpt\",\n    \"woo_magazine_f_w\": \"100\",\n    \"woo_magazine_f_h\": \"100\",\n    \"woo_magazine_f_align\": \"alignleft\",\n    \"woo_magazine_grid_post_content\": \"excerpt\",\n    \"woo_magazine_grid_font_post_title\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"18\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:39:\\\"\\\"Helvetica Neue\\\", Helvetica, sans-serif\\\";s:5:\\\"style\\\";s:4:\\\"bold\\\";s:5:\\\"color\\\";s:7:\\\"#222222\\\";}\",\n    \"woo_logo\": \"http:\\/\\/127.0.0.1\\/wp\\/wp-content\\/uploads\\/TechnoTan-Logo-Colour-Counts.png\",\n    \"woo_font_h5\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"18\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:4:\\\"bold\\\";s:5:\\\"color\\\";s:7:\\\"#d1aa67\\\";}\",\n    \"woo_font_h6\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"17\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:17:\\\"Arial, sans-serif\\\";s:5:\\\"style\\\";s:4:\\\"bold\\\";s:5:\\\"color\\\";s:7:\\\"#d1aa67\\\";}\",\n    \"woo_layout_manager_notice\": \"Below you can set the general site width and layout. To control the width of the columns in your themes layout, please visit the <a href=\\\"http:\\/\\/staging.technotan.com.au\\/wp-admin\\/admin.php?page=woo-layout-manager\\\">Layout Manager<\\/a>.\",\n    \"woo_layout_width\": \"960\",\n    \"woo_layout\": \"two-col-left\",\n    \"woo_remove_responsive\": \"false\",\n    \"woo_layout_boxed\": \"false\",\n    \"woo_style_box_bg\": \"#ffffff\",\n    \"woo_box_margin_top\": \"20\",\n    \"woo_box_margin_bottom\": \"20\",\n    \"woo_box_border_tb\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:7:\\\"#dbdbdb\\\";}\",\n    \"woo_box_border_lr\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:7:\\\"#dbdbdb\\\";}\",\n    \"woo_box_border_radius\": \"0px\",\n    \"woo_pagenav_font\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"13\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:39:\\\"\\\"Helvetica Neue\\\", Helvetica, sans-serif\\\";s:5:\\\"style\\\";s:3:\\\"300\\\";s:5:\\\"color\\\";s:4:\\\"#888\\\";}\",\n    \"woo_magazine_b_w\": \"100\",\n    \"woo_magazine_b_h\": \"100\",\n    \"woo_pis_resize\": \"true\",\n    \"woo_pis_hard_crop\": \"true\",\n    \"woo_thumb_w\": \"787\",\n    \"woo_thumb_h\": \"300\",\n    \"woo_thumb_align\": \"alignleft\",\n    \"woo_thumb_single\": \"true\",\n    \"woo_single_w\": \"787\",\n    \"woo_single_h\": \"300\",\n    \"woo_thumb_align_single\": \"alignright\",\n    \"woo_resize\": \"true\",\n    \"woo_auto_img\": \"false\",\n    \"woo_rss_thumb\": \"false\",\n    \"woo_enable_lightbox\": \"false\",\n    \"woo_placeholder_url\": \"http:\\/\\/staging.technotan.com.au\\/wp-content\\/uploads\\/logo-transparent-zoomed-out.png\",\n    \"woo_header_cart_link\": \"true\",\n    \"woo_widget_tabs_bg\": \"\",\n    \"woo_widget_tabs_bg_inside\": \"\",\n    \"woo_post_comments_bg\": \"\",\n    \"woo_pagenav_bg\": \"\",\n    \"woo_full_header_full_width_bg\": \"\",\n    \"woo_box_shadow\": \"false\",\n    \"woo_style_bg_image\": \"\",\n    \"woo_top_nav_hover\": \"\",\n    \"woo_header_margin_top\": \"0\",\n    \"woo_header_margin_bottom\": \"0\",\n    \"woo_footer_bg\": \"#d1aa67\",\n    \"woo_top_nav_bg\": \"\",\n    \"woo_google_analytics\": \"\",\n    \"woo_feed_url\": \"\",\n    \"woo_custom_css\": \"\",\n    \"woo_nav_bg\": \"#d1aa67\",\n    \"woo_footer_border_top\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:7:\\\"#dbdbdb\\\";}\",\n    \"woo_footer_border_bottom\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:0:\\\"\\\";}\",\n    \"woo_footer_border_lr\": \"a:3:{s:5:\\\"width\\\";s:1:\\\"0\\\";s:5:\\\"style\\\";s:5:\\\"solid\\\";s:5:\\\"color\\\";s:0:\\\"\\\";}\",\n    \"woo_footer_border_radius\": \"0px\",\n    \"woo_top_nav_font\": \"a:5:{s:4:\\\"size\\\";s:2:\\\"12\\\";s:4:\\\"unit\\\";s:2:\\\"px\\\";s:4:\\\"face\\\";s:39:\\\"\\\"Helvetica Neue\\\", Helvetica, sans-serif\\\";s:5:\\\"style\\\";s:3:\\\"300\\\";s:5:\\\"color\\\";s:4:\\\"#ddd\\\";}\",\n    \"woothemes-backup-validator\": \"2015-02-03 07:22:52\"\n}",
+			"file": "woothemes-backup-20150203-072252.json",
+			"file_size": 18457,
+			"file_write_time": 130674217720000000,
+			"settings":
+			{
+				"buffer_size": 19682,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "template-home.php",
+			"settings":
+			{
+				"buffer_size": 1719,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/tanvas.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"",
+				"CodeFormatter: Format as Javascript Syntax"
+			],
+			[
+				"Colo",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"Colorsublime: Install Theme",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"theme",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"colo",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"color",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 90.0,
+		"history":
+		[
+			"os.system( 'rsync -u -r ~/GitHub/laserCommerce/lasercommerce/* /Applications/AMPPS/www/wp/wp-content/plugins/lasercommerce/' )",
+			"import os",
+			"os.system( 'rsync -u -r ~/GitHub/laserCommerce/lasercommerce/* /Applications/AMPPS/www/wp/wp-content/plugins/lasercommerce/' )",
+			"import os",
+			"os.system( 'rsync -u -r ~/GitHub/laserCommerce/lasercommerce/* /Applications/AMPPS/www/wp/wp-content/plugins/lasercommerce/' )",
+			"import os",
+			"os.system( 'rsync -u -r ~/GitHub/laserCommerce/lasercommerce/* /Applications/AMPPS/www/wp/wp-content/plugins/lasercommerce/' )",
+			"import os",
+			"os.system( 'rsync -ur ~/GitHub/laserCommerce/lasercommerce/* /Applications/AMPPS/www/wp/wp-content/plugins/lasercommerce/' )",
+			"os.system( 'rsync -u ~/GitHub/laserCommerce/lasercommerce/* /Applications/AMPPS/www/wp/wp-content/plugins/lasercommerce/' )",
+			"os.system( 'ls' )",
+			"import os",
+			"os.system( 'ls' )"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/Derwent/GitHub/Tanvas",
+		"/Users/Derwent/GitHub/Tanvas/functions",
+		"/Users/Derwent/GitHub/Tanvas/functions/classes"
+	],
+	"file_history":
+	[
+		"/Applications/AMPPS/www/wp/wp-content/themes/canvas/functions/classes/class-wf-meta.php",
+		"/Users/Derwent/Library/Application Support/Sublime Text 3/Packages/User/tanvas.sublime-build",
+		"/Users/Derwent/GitHub/Tanvas/functions.php",
+		"/Users/Derwent/GitHub/Tanvas/template-biz.php",
+		"/Users/Derwent/GitHub/laserCommerce/lasercommerce/Lasercommerce_OptionsManager.php",
+		"/Users/Derwent/GitHub/laserCommerce/lasercommerce/js/jquery.nestable.js",
+		"/Users/Derwent/GitHub/laserCommerce/lasercommerce/js/jquery.date-picker-field-extra.js",
+		"/Users/Derwent/GitHub/laserCommerce/lasercommerce/lasercommerce.php",
+		"/Users/Derwent/Library/Application Support/Sublime Text 3/Packages/User/wp_debug",
+		"/Users/Derwent/GitHub/laserCommerce/lasercommerce/lasercommerce_init.php",
+		"/Users/Derwent/GitHub/laserCommerce/lasercommerce/Lasercommerce_LifeCycle.php",
+		"/Users/Derwent/GitHub/laserCommerce/lasercommerce/Lasercommerce_Admin.php",
+		"/Users/Derwent/Documents/Design/Logos/laserphile business card.svg",
+		"/Users/Derwent/Desktop/derwent.xml",
+		"/Users/Derwent/GitHub/laserCommerce/lasercommerce/Lasercommerce_ShortCodeLoader.php",
+		"/Users/Derwent/Library/Caches/Cleanup At Startup/Transmit/A138C648-897D-4890-84DA-77FB802547F3/product_pricing_rules_admin.class.php",
+		"/Users/Derwent/Library/Caches/Cleanup At Startup/Transmit/16F87C66-DC5B-472B-98AD-9779B1855E12/randhtml.cgi",
+		"/Users/Derwent/Library/Application Support/Sublime Text 3/Packages/User/lasercommerce.sublime-build",
+		"/Users/Derwent/GitHub/laserCommerce/lasercommerce/css/nestable.css",
+		"/Users/Derwent/GitHub/laserCommerce/lasercommerce/css/pricing_table.css",
+		"/Users/Derwent/GitHub/laserCommerce/lasercommerce/Lasercommerce_InstallIndicator.php",
+		"/Users/Derwent/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/Derwent/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/Derwent/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/Derwent/Dropbox/Technotan/python/generator.py"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"",
+			"Lasercommerce_Plugin.php",
+			"",
+			"Lasercommerce_Price_Spec.php",
+			"",
+			"name",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"WP_DEBUG",
+			"Lasercommerce_VisibleTiers_Override",
+			"});\n",
+			"lasercommerce_",
+			"toString",
+			"style",
+			"TODO",
+			"calculate_price",
+			"TODO",
+			"TOSO",
+			"postID",
+			"html",
+			"deserialize",
+			"$special_active",
+			"$role, ",
+			"MD299",
+			"$date_to",
+			"$date_from",
+			"$ids",
+			"collector",
+			"'wc_dynamic_pricing_",
+			"this->",
+			"this->get",
+			"prefix",
+			"                $",
+			"None;",
+			"None ",
+			"none",
+			"init",
+			"addVariablePriceFields",
+			"getPrice",
+			"products",
+			"woocommerce_dynamic_pricing_metabox_js",
+			"set_index",
+			"create_empty_ruleset",
+			"maybeGetPrice",
+			"$tiername",
+			"tiernames",
+			"names",
+			"$_product",
+			"getNam",
+			"getTier",
+			"get_names",
+			"getTierNames",
+			"$names",
+			"'role'",
+			"If",
+			"right"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"Lasercommerce_Roles_Override",
+			"$sale",
+			"",
+			"$sale_to",
+			"$sale_from",
+			"$roles",
+			"null;",
+			"null",
+			"$name",
+			"$product",
+			"'id'"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "/Users/Derwent/GitHub/Tanvas"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/Applications/AMPPS/www/wp/wp-content/themes/canvas"
+		}
+	],
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3722,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								476,
+								479
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "template-biz.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1687,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								1687
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "functions.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 246,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								246,
+								246
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "woothemes-backup-20150203-072252.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19682,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2078,
+								2078
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "template-home.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1719,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								175,
+								175
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 53.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 208.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
