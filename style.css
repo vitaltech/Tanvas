@@ -275,8 +275,8 @@ form.searchform {
 div#inner-wrapper nav#navigation.col-full {
 	margin:0;
 }
+
 div#inner-wrapper div#top{
-	margin:0;
-	margin-bottom:43px;
-	float: right;
+	margin: 0;
+	/*float: right;*/
 }
