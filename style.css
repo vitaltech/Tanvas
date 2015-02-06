@@ -193,7 +193,7 @@ div.widget a {
 
 /* make header widgets apear without background */
 div.header-widget div.widget {
-	background-color: #000000;
+	background: none;
 }
 div.header-widget div.widget p {
 	color:#d2ab67;
@@ -205,3 +205,78 @@ div.header-widget div.widget a {
 	font-weight:bold;
 }
 
+/* make home page look nicer */
+body.home section#main {
+	border:none;
+	background: none;
+	padding:0;
+	margin:0;
+}
+body.home section#main div.breadcrumb {
+	display:none;
+}
+body.home section#main li.product-category.product {
+    border-style:solid;
+    border-width: thick;
+    border-color: #d1aa67;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    margin-bottom:36px;  
+}
+body.home section#main li.product-category.product a img {
+	padding: 0;
+	margin: 0;
+}
+
+
+/* make product cat font smaller */
+ul.products a h3{
+	font-size: 18;
+}
+
+/* make the slider title color brown isntead of white */
+#loopedSlider.business-slider div.content div.title h2.title {
+	color:#d2ab67;
+}
+#loopedSlider.business-slider div.content div.title h2.title a {
+	color:#d2ab67;
+}
+
+/* fixing the footer */
+footer#footer.col-full {
+	padding:10px 10px 10px 10px;
+	margin-top:10px;
+}
+footer#footer.col-full div {
+	margin-bottom:0;
+}
+
+/* joining the footer widgets together */
+section#footer-widgets {
+	background-color:#d2ab67;
+}
+section#footer-widgets div.block {
+	padding: 0px;
+	margin: 0px;
+}
+
+/* improve search box text visibility */
+form.searchform {
+	background: #e6e6e6 !important;
+}
+
+/* improve search box text visibility */
+#navigation ul.nav-search #searchform, #navigation ul.nav-search form.searchform {
+	background: #e6e6e6 !important;
+}
+
+/* Header Hacks */
+div#inner-wrapper nav#navigation.col-full {
+	margin:0;
+}
+div#inner-wrapper div#top{
+	margin:0;
+	margin-bottom:43px;
+	float: right;
+}
