@@ -278,5 +278,21 @@ div#inner-wrapper nav#navigation.col-full {
 
 div#inner-wrapper div#top{
 	margin: 0;
-	/*float: right;*/
+	display: block;
+	/*overflow: hidden;*/
 }
+
+div#inner-wrapper div#top div.col-full{
+	float: right;
+	display: block;
+}
+
+div#inner-wrapper div#top:after{
+	clear:both;
+	content: "";
+	display:block;
+}
+
+/*div#inner-wrapper div#content {
+	clear:both;
+}*/
