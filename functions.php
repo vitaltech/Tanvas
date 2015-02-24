@@ -1,13 +1,146 @@
 <?php
 // TODO: Allow discounts to be specified based on how many liters of solution
-	
-/**
- * TODO: Registers home page template widget areas
- */
-function tanvas_widgets_init() {
-	// register_sidebar( array(
-	// 	'name' 	=> 'Home Doorway Buttons'))
+
+/* pretends to be canvas then quits if woocommerce not installed */
+function theme_enqueue_styles(){
+	wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css' );
+	// wp_enqueue_style('this-style', get_stylesheet_uri() );
 }
+add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
+	
+function Tanvas_noticeWoocommerceNotInstalled() {
+    echo 
+        '<div class="updated fade">' .
+        __('Error: Theme "Tanvas" requires WooCommerce to be installed',  'LaserCommerce') .
+        '</div>';
+}
+
+function Tanvas_WoocommerceCheck() {
+    if( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+        add_action('admin_notices', 'Tanvas_noticeWoocommerceNotInstalled');
+        return false;
+    }
+    return true;
+}
+
+function Tanvas_noticeLasercommerceNotInstalled() {
+    echo 
+        '<div class="updated fade">' .
+        __('Error: Theme "Tanvas" requires LaserCommerce to be installed',  'LaserCommerce') .
+        '</div>';
+}
+
+function Tanvas_LasercommerceCheck() {
+    if( !in_array( 'lasercommerce/lasercommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+        add_action('admin_notices', 'Tanvas_noticeLasercommerceNotInstalled');
+        return false;
+    }
+    return true;
+}
+
+if(!Tanvas_WoocommerceCheck() or !Tanvas_WoocommerceCheck()) {
+	return;
+}
+
+/**
+ *  Registers home page template widget areas
+ */
+
+/**
+* 
+*/
+class lc_doorway_button extends WP_Widget
+{
+	
+	function __construct()
+	{
+		parent::__construct(
+			'lc_doorway_button',
+			__('Doorway Button', 'lasercommerce'),
+			array(
+				'description' => __('Widget for adding doorway buttons to home page', 'lasercommerce'),
+			)
+		);
+	}
+
+	public function widget( $args, $instance ){
+		$title = apply_filters( 'widget_title', $instance['title']);
+		echo $args['before_widget'];
+		echo "<a>";
+		echo "<img src='/wordpress/wp-content/themes/tanvas/img/logo-transparent-zoomed-out.png'>";
+		if( !empty($title) ){
+			echo $args['before_title'] . $title . $args['after_title'];
+		}
+		echo "</a>";
+		echo $args['after_widget'];
+	}
+
+	public function form ( $instance ) {
+		if( isset($instance['title'])) {
+			$title = $instance['title'];
+		} else {
+			$title = __('New Title', 'lasercommerce');
+		}
+
+		?>
+		<p>
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:' ); ?></label>
+			<input 
+				class="widefat" 
+				id="<?php echo $this->get_field_id('title'); ?>" 
+				name="<?php echo $this->get_field_name('title'); ?>" 
+				type="text" 
+				value="<?php echo esc_attr($title); ?>" 
+			/>
+		</p>
+		<?php
+	}
+
+	public function update($new_instance, $old_instance)
+	{
+		$instance = array();
+		$instance['title'] = ( ! empty($new_instance['title'])) ? strip_tags( $new_instance['title']) : '';
+		return $instance;
+	}
+}
+
+function tanvas_widgets_init() {
+	register_sidebar( array(
+		'name' 			=> 'Home Doorway Buttons',
+		'id' 			=> 'tanvas_home_doorway',
+		'before_widget'	=> '<div class="widget doorway-button flex-item">',
+		'after_widget'	=> '</div>',
+		'before_title'	=> '<h2>',
+		'after_title'	=> '</h2>'
+	));
+	register_sidebar( array (
+		'name' 			=> 'Home Doorway Sidebar',
+		'id'			=> 'tanvas_home_doorway_sidebar',
+		'before_widget' => '<div class="widget">',
+		'after_widget'	=> '</div>',
+		'before_title'	=> '<h2>',
+		'after_title'	=> '</h2>'
+	));
+	register_sidebar( array (
+		'name' 			=> 'Home Below Doorway Left',
+		'id'			=> 'tanvas_home_left',
+		'before_widget' => '<div class="widget">',
+		'after_widget'	=> '</div>',
+		'before_title'	=> '<h2>',
+		'after_title'	=> '</h2>'
+	));	
+	register_sidebar( array (
+		'name' 			=> 'Home Below Doorway Right',
+		'id'			=> 'tanvas_home_right',
+		'before_widget' => '<div class="widget">',
+		'after_widget'	=> '</div>',
+		'before_title'	=> '<h2>',
+		'after_title'	=> '</h2>'
+	));		
+
+	register_widget( 'lc_doorway_button');
+}
+add_action('widgets_init', 'tanvas_widgets_init');
 
 /**
  * Adds social media and newsletter icons to nav menu
