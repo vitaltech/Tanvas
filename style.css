@@ -215,7 +215,7 @@ body.home section#main {
 	padding:0;
 	margin:0;
 }
-div#content div#main-sidebar-container section#main div.breadcrumb-trail {
+body.home div#content div#main-sidebar-container section#main div.breadcrumb-trail {
 	display:none;
 }
 body.home section#main div.breadcrumb {
@@ -399,6 +399,9 @@ div.widget-area-container div.widget.doorway-button a img {
 	width: 100%;
 }
 
+
+
+
 /* Header Social Media icons */
 div.header-widget div.social-icons {
 	float: right;
@@ -412,11 +415,6 @@ div.header-widget div.social-icons img {
 }
 
 
-/* hide search bar in mobile view */
-
-/*div#inner-wrapper div#content {
-	clear:both;
-}*/
 
 /* wordpress compatibilitiy */
 .sticky{

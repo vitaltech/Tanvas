@@ -28,49 +28,51 @@ $page_template = woo_get_page_template();
 
 			<!-- doorway button & sidebar widgets -->
 			<?php 
-			$left_active = is_active_sidebar('tanvas_home_doorway');
-			$right_active = is_active_sidebar('tanvas_home_doorway_sidebar');
-			if( $left_active|| $right_active){
-				echo '<div class="widget-area-container home col-full">';
-				if($left_active) {
-					$class = 'widget-area flex-container';
-					$class .= $right_active ? ' left' : ' col-full';
-					echo "<div class='$class' id='doorway-buttons'  role='complementary'>";
-					dynamic_sidebar('tanvas_home_doorway');
+				$left_active = is_active_sidebar('tanvas_home_doorway');
+				$right_active = is_active_sidebar('tanvas_home_doorway_sidebar');
+				if( $left_active|| $right_active){
+					echo '<div class="widget-area-container home col-full">';
+					if($left_active) {
+						$class = 'widget-area flex-container';
+						$class .= $right_active ? ' left' : ' col-full';
+						echo "<div class='$class' id='doorway-buttons'  role='complementary'>";
+						dynamic_sidebar('tanvas_home_doorway');
+						echo '</div>';
+					}
+					if($right_active){
+						$class = 'widget-area sidebar';
+						$class .= $left_active ? ' right' : ' col-full';
+						echo "<div class='$class' id='tanvas_home_doorway_sidebar'>";
+						dynamic_sidebar('tanvas_home_doorway_sidebar');
+						echo '</div>';
+					}
 					echo '</div>';
-				}
-				if($right_active){
-					$class = 'widget-area sidebar';
-					$class .= $left_active ? ' right' : ' col-full';
-					echo "<div class='$class' id='tanvas_home_doorway_sidebar'>";
-					dynamic_sidebar('tanvas_home_doorway_sidebar');
-					echo '</div>';
-				}
-				echo '</div>';
-			} ?>
+				} 
+			?>
 
 			<!-- middle widget areas -->
 			<?php 
 				$left_active = is_active_sidebar('tanvas_home_left');
 				$right_active = is_active_sidebar('tanvas_home_right');
 				if( $left_active|| $right_active){
-				echo "<div class='widget-area-container home col-full'>";
-				if($left_active){
-					$class = 'widget-area';
-					$class .= $right_active ? ' left' : ' col-full';
-					echo "<div class='$class'  id='tanvas_home_left'>";
-					dynamic_sidebar('tanvas_home_left');
-					echo '</div>';
-				}
-				if($right_active){
-					$class = 'widget-area sidebar';
-					$class .= $left_active ? ' right' : ' col-full';
-					echo "<div class='class' id='tanvas_home_right'>";
-					dynamic_sidebar('tanvas_home_right');
-					echo '</div>';
-				}
-				echo "</div>";
-			} ?>
+					echo "<div class='widget-area-container home col-full'>";
+					if($left_active){
+						$class = 'widget-area';
+						$class .= $right_active ? ' left' : ' col-full';
+						echo "<div class='$class'  id='tanvas_home_left'>";
+						dynamic_sidebar('tanvas_home_left');
+						echo '</div>';
+					}
+					if($right_active){
+						$class = 'widget-area sidebar';
+						$class .= $left_active ? ' right' : ' col-full';
+						echo "<div class='class' id='tanvas_home_right'>";
+						dynamic_sidebar('tanvas_home_right');
+						echo '</div>';
+					}
+					echo "</div>";
+				} 
+			?>
 
             <section id="main">
 <?php
