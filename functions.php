@@ -42,6 +42,17 @@ if(!Tanvas_WoocommerceCheck() or !Tanvas_WoocommerceCheck()) {
 	return;
 }
 
+/* Loads script to move site notice to within wrapper */
+add_action('wp_enqueue_scripts', function(){
+		wp_enqueue_script( 
+			'reposition-site-message', 
+			get_stylesheet_directory_uri().'/js/reposition-site-message.js',
+			array('jquery'),
+			0.1
+		);
+	}
+);
+
 /* Ensure slider js is loaded */
 add_filter('woo_load_slider_js', function($load_slider_js){
 	if(WP_DEBUG) error_log("woo_load_slider_js filter called wit h" . ($load_slider_js?"T":"F"));
