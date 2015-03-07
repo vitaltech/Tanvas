@@ -19,6 +19,7 @@
 /* make demo store block instead of absolute */
 div#wrapper p.demo_store {
 	position: relative;
+	z-index: inherit;
 }
 
 /* Removes those stupid woocommerce marks */
