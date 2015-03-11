@@ -42,6 +42,10 @@ if(!Tanvas_WoocommerceCheck() or !Tanvas_WoocommerceCheck()) {
 	return;
 }
 
+/**
+ * Demo Store Notice Mods
+ */
+
 /* Loads script to move site notice to within wrapper */
 add_action('wp_enqueue_scripts', function(){
 		wp_enqueue_script( 
@@ -66,7 +70,7 @@ add_filter('woo_load_slider_js', function($load_slider_js){
 
 
 /**
- *  Registers home page template widget areas
+ *  Home Page and Doorway Button Widget / Widget Areas
  */
 
 class lc_doorway_button extends WP_Widget
@@ -85,9 +89,20 @@ class lc_doorway_button extends WP_Widget
 
 	public function widget( $args, $instance ){
 		$title = apply_filters( 'widget_title', $instance['title']);
+		if(isset($instance['url'])){
+			$url = esc_attr($instance['url']);
+		} else {
+			$url = '';
+		}
+		if(isset($instance['img'])){
+			$img = esc_attr($instance['img']);
+		} else {
+			$img = '';
+		}
+
 		echo $args['before_widget'];
-		echo "<a>";
-		echo "<img src='/wordpress/wp-content/themes/tanvas/img/logo-transparent-zoomed-out.png'>";
+		echo "<a href='$url' >";
+		echo "<img src='$img'>";
 		if( !empty($title) ){
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
@@ -106,6 +121,12 @@ class lc_doorway_button extends WP_Widget
 			$url = $instance['url'];
 		} else {
 			$url = '';
+		}
+
+		if(isset($instance['img'])){
+			$img = $instance['img'];
+		} else {
+			$img = '';
 		}
 
 		?>
@@ -129,6 +150,16 @@ class lc_doorway_button extends WP_Widget
 				value="<? echo esc_attr($url); ?>"
 			/>
 		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id('img'); ?>"><?php _e('Image:'); ?></label>
+			<input
+				class="widefat"
+				id="<?php echo $this->get_field_id('img');?>"
+				name="<?php echo $this->get_field_name('img') ; ?>"
+				type="text"
+				value="<?php echo esc_attr($img); ?>"
+			/>
+		</p>
 		<?php
 	}
 
@@ -137,6 +168,7 @@ class lc_doorway_button extends WP_Widget
 		$instance = array();
 		$instance['title'] = ( ! empty($new_instance['title'])) ? strip_tags( $new_instance['title']) : '';
 		$instance['url'] = ( ! empty($new_instance['url'])) ? strip_tags( $new_instance['url']) : '' ;
+		$instance['img'] = ( ! empty($new_instance['img'])) ? strip_tags( $new_instance['img']) : '' ;
 		return $instance;
 	}
 }
@@ -211,9 +243,12 @@ function tanvas_widgets_init() {
 }
 add_action('widgets_init', 'tanvas_widgets_init');
 
+
+
 /**
  * Adds social media and newsletter icons to nav menu
  */
+
 function tanvas_add_social_icons () {
 	echo "<ul><li class='fr fa-facebook'><i class='facebook-official'></i></lu></ul>";
 }
@@ -223,6 +258,12 @@ function woo_options_add($options){
 	//if(WP_DEBUG) error_log("woo_options_add called with :".serialize($options));
 	return $options;
 }
+
+
+
+/**
+ * Product Category / Taxonomy Display Mods
+ */
 
 /** Add category image to category archive page */
 
@@ -248,6 +289,43 @@ foreach ( array( 'pre_term_description' ) as $filter ) {
 foreach ( array( 'term_description' ) as $filter ) {
     remove_filter( $filter, 'wp_kses_data' );
 }
+
+/* add category description after subcategory title */
+
+add_action('woocommerce_before_subcategory', function($category){
+	if(is_product_category() && !woocommerce_products_will_display()){
+		echo "<style>body.archive.tax-product_cat ul.products { display: table; } </style>";
+	}
+});
+
+add_action('woocommerce_before_subcategory_title', function($category){
+
+	if(is_product_category() && !woocommerce_products_will_display()){
+		echo '<div class="product-category-description">';
+	}
+});
+
+add_action('woocommerce_after_subcategory_title', function($category){
+
+	if(is_product_category() && !woocommerce_products_will_display()){
+		$desc = esc_attr($category->description);
+		echo "<p>$desc</p>";
+		echo '</div> <!-- end product-category-description-->';
+	}
+});
+
+add_filter(
+	'loop_shop_columns', 
+	function($cols){
+		if(is_product_category() && !woocommerce_products_will_display()){
+			return 1;
+		} else {
+			return $cols;
+		}
+	},
+	999, 
+	1
+)
 
 
 ?>

@@ -16,11 +16,56 @@
 /* =Theme customization starts here
 -------------------------------------------------------------- */
 
-/* make demo store block instead of absolute */
+/**
+ * DEMO STORE NOTICE MODS
+ */
 div#wrapper p.demo_store {
 	position: relative;
 	z-index: inherit;
 }
+
+/**
+ * PRODUCT CATEGORY DISPLAY MODS
+ */
+
+/*body.archive.tax-product_cat ul.products {
+	display: table;
+}*/
+
+body.archive.tax-product_cat ul.products li.product-category.product {
+	display: table-row;
+	width: 100%;
+}
+
+body.archive.tax-product_cat ul.products li.product-category.product img {
+	display: table-cell;
+	float: left;
+	margin: 10px;
+}
+
+body.archive.tax-product_cat ul.products li.product-category.product div.product-category-description {
+	display: table-cell;
+	float: left;
+	margin: 10px;
+	/*max-width: 71%;*/
+	text-align: left;
+}
+
+@media only screen and (min-width: 768px){
+	body.archive.tax-product_cat ul.products li.product-category.product img{
+		max-width: 22%;
+	}
+	body.archive.tax-product_cat ul.products li.product-category.product div.product-category-description {
+		max-width: 71%;
+	}
+} 
+@media only screen and (max-width: 767px){
+	body.archive.tax-product_cat ul.products li.product-category.product img{
+		max-width: 150px;
+	}
+} 
+
+
 
 /* Removes those stupid woocommerce marks */
 li mark.count {
@@ -28,12 +73,12 @@ li mark.count {
 }
 
 /* Makes category name appear inside image */
-li.product-category.product a {
+body.home li.product-category.product a {
 	position: relative;
 	width: 100%;
 }
 
-li.product-category.product a h3 {
+body.home li.product-category.product a h3 {
 	position: absolute;
 	Bottom: 0;
 	left: 0;
@@ -59,6 +104,11 @@ li.product-category.product a h3 {
 li.product a h3 {
 	font-weight: normal;
 }
+
+/**
+ * NAV ICON DISPLAY MODS
+ */
+
 
 /* Makes nav icons show up properly */
 @media only screen and (min-width: 768px) {
@@ -277,6 +327,10 @@ section#footer-widgets div.block {
 /* improve search box text visibility */
 form.searchform {
 	background: #e6e6e6 !important;
+}
+div.woocommerce.widget_product_search form#searchform input#s{
+	background: inherit;
+	background-color: white;
 }
 
 /* improve search box text visibility */
