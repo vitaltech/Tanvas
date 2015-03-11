@@ -72,7 +72,8 @@ li mark.count {
 	display: none;
 }
 
-/* Makes category name appear inside image */
+
+/* Makes category name appear inside image - woocommerce products*/
 body.home li.product-category.product a {
 	position: relative;
 	width: 100%;
@@ -105,10 +106,211 @@ li.product a h3 {
 	font-weight: normal;
 }
 
+/* position header logo correctly in mobile view */
+@media only screen and (max-width: 767px) {
+	header#header.col-full {
+		padding-left: 20px;
+	}
+}
+
+/* improve search box text visibility */
+/* form.searchform {
+	background: #e6e6e6 !important;
+} */
+
+/* improve search box text visibility */
+/* #navigation ul.nav-search #searchform, #navigation ul.nav-search form.searchform {
+	background: #e6e6e6 !important;
+} */
+
+/* Make main box background white */
+section#main {
+    background:white;
+    border-style:solid;
+    border-width: thick;
+    border-color: #d1aa67;
+    padding: 20px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;  
+}
+
+/* Scale down header image */
+@media only screen and (min-width: 768px) {
+	header#header div#logo {
+	    max-width:40%;
+	}
+}
+
 /**
- * NAV ICON DISPLAY MODS
+ * Tanvas Widget Mods
  */
 
+/* make <a> font visible on widgets */
+div.widget a {
+	color: #000000;
+}
+
+/* make header widgets apear without background and align right */
+div.header-widget div.widget {
+	background: none;
+}
+div.header-widget div.widget p {
+	color:#d2ab67;
+	text-align:right;
+}
+div.header-widget div.widget a {
+	color:#d2ab67;
+	text-align:right;
+	font-weight:bold;
+}
+
+/* custom homepage widgets */
+div.widget-area-container.home{
+	display: block;
+	background-color: transparent;
+	max-width: 100%;
+}
+div.widget-area-container.home.col-full{
+	width:100%;
+}
+div.widget-area-container.home div.widget-area#doorway-buttons{
+	background-color: transparent;
+}
+
+div.widget-area-container.home div.widget-area.home {
+	list-style: none;
+	display: block;
+}
+div.widget-area-container.home div.widget-area.home.col-full {
+	width: 100%;
+}
+
+div.widget-area.flex-container{
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+/*	-webkit-justify-content: center;
+	justify-content: center;*/
+	/* You can set flex-wrap and flex-direction individually */
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	/* Or do it all in one line with flex flow */
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+	/* tweak the where items line up on the row */
+	/* valid values are: flex-start, flex-end, space-between, space-around, stretch */
+	-webkit-align-content: flex-end;
+	align-content: flex-end;
+
+/*	display: -webkit-flex-flow;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	-webkit-flex-wrap: wrap;*/
+/*  -webkit-flex-flow: row wrap;
+  -moz-flex-flow: row wrap;
+  -ms-flex-flow: wrap;
+  flex-flow: row wrap;*/
+}
+@media all and (max-width: : 767px){
+	div.widget-area.flex-container {
+		flex-direction: column;
+	}
+}
+@media all and (min-width: : 768px){
+	div.widget-area.flex-container {
+		flex-wrap: wrap;
+	}
+}
+
+/*div.widget-area-container div.widget {
+	width: 25%;
+}*/
+div.widget-area-container div.widget.flex-item {
+	-webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 1;         /* OLD - Firefox 19- */
+	width: 23%;
+	-webkit-flex: 1;          /* Chrome */
+	-ms-flex: 1;              /* IE 10 */
+	flex: 1;    
+} 
+div.widget-area-container div.widget.doorway-button {
+    border-style:solid;
+    border-width: thick;
+    border-color: #d1aa67;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    background-color: transparent;
+    /*margin: 10px;*/
+    padding: 10px;
+}
+div.widget-area-container div.widget.doorway-button a {
+	background-color: transparent;
+	display: block;
+}
+div.widget-area-container div.widget.doorway-button a img {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+
+/**
+ * Tanvas Homepage Mods
+ */
+
+/* remove main background */
+body.home section#main {
+	border:none;
+	background: none;
+	padding:0;
+	margin:0;
+}
+
+/* remove breadcrumbs */
+body.home div#content div#main-sidebar-container section#main div.breadcrumb-trail {
+	display:none;
+}
+body.home section#main div.breadcrumb {
+	display:none;
+}
+
+/* product category / doorway button display */
+body.home section#main li.product-category.product {
+    border-style:solid;
+    border-width: thick;
+    border-color: #d1aa67;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    margin-bottom:36px;  
+}
+body.home section#main li.product-category.product a img {
+	padding: 0;
+	margin: 0;
+}
+
+
+/**
+ * HEADER NAV ICON DISPLAY MODS
+ */
+
+/* Header Social Media icons */
+div.header-widget div.social-icons {
+	float: right;
+	display: block;
+}
+div.header-widget div.social-icons img {
+	max-width: 40px;
+	max-height: 40px;
+	height: auto;
+	width: auto;
+}
 
 /* Makes nav icons show up properly */
 @media only screen and (min-width: 768px) {
@@ -208,90 +410,35 @@ li.product a h3 {
 	}
 }
 
-/* position header logo correctly in mobile view */
-@media only screen and (max-width: 767px) {
-	header#header.col-full {
-		padding-left: 20px;
-	}
-}
-
-/* improve search box text visibility */
-/* form.searchform {
-	background: #e6e6e6 !important;
-} */
-
-/* improve search box text visibility */
-/* #navigation ul.nav-search #searchform, #navigation ul.nav-search form.searchform {
-	background: #e6e6e6 !important;
-} */
-
-/* Make main box background white */
-section#main {
-    background:white;
-    border-style:solid;
-    border-width: thick;
-    border-color: #d1aa67;
-    padding: 20px;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;  
-}
-
-/* Scale down header image */
+/* top nav menu */
 @media only screen and (min-width: 768px) {
-	header#header div#logo {
-	    max-width:40%;
+	div#inner-wrapper div#top{
+		margin: 0;
+		display: block;
+		/*overflow: hidden;*/
+	}
+
+	div#inner-wrapper div#top div.col-full{
+		float: right;
+		display: block;
+	}
+
+	div#inner-wrapper div#top:after{
+		clear:both;
+		content: "";
+		display:block;
 	}
 }
 
-/* make <a> font visible on widgets */
-div.widget a {
-	color: #000000;
-}
+/**
+ * Other Hacks
+ */
 
-/* make header widgets apear without background */
-div.header-widget div.widget {
-	background: none;
+/* wordpress compatibilitiy */
+.sticky{
 }
-div.header-widget div.widget p {
-	color:#d2ab67;
-	text-align:right;
+.gallery-caption{
 }
-div.header-widget div.widget a {
-	color:#d2ab67;
-	text-align:right;
-	font-weight:bold;
-}
-
-/* make home page look nicer */
-body.home section#main {
-	border:none;
-	background: none;
-	padding:0;
-	margin:0;
-}
-body.home div#content div#main-sidebar-container section#main div.breadcrumb-trail {
-	display:none;
-}
-body.home section#main div.breadcrumb {
-	display:none;
-}
-
-/* product category / doorway button display */
-body.home section#main li.product-category.product {
-    border-style:solid;
-    border-width: thick;
-    border-color: #d1aa67;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;
-    margin-bottom:36px;  
-}
-body.home section#main li.product-category.product a img {
-	padding: 0;
-	margin: 0;
-}
-
 
 /* make product cat font smaller */
 ul.products a h3{
@@ -343,141 +490,4 @@ div#inner-wrapper nav#navigation.col-full {
 	margin:0;
 }
 
-/* top nav menu */
-@media only screen and (min-width: 768px) {
-	div#inner-wrapper div#top{
-		margin: 0;
-		display: block;
-		/*overflow: hidden;*/
-	}
-
-	div#inner-wrapper div#top div.col-full{
-		float: right;
-		display: block;
-	}
-
-	div#inner-wrapper div#top:after{
-		clear:both;
-		content: "";
-		display:block;
-	}
-}
-
-/* custom homepage widgets */
-div.widget-area-container.home{
-	display: block;
-	background-color: transparent;
-	max-width: 100%;
-}
-div.widget-area-container.home.col-full{
-	width:100%;
-}
-div.widget-area-container.home div.widget-area#doorway-buttons{
-	background-color: transparent;
-}
-
-div.widget-area-container.home div.widget-area.home {
-	list-style: none;
-	display: block;
-}
-div.widget-area-container.home div.widget-area.home.col-full {
-	width: 100%;
-}
-
-div.widget-area.flex-container{
-	display: -webkit-flex;
-	display: flex;
-	-webkit-align-items: center;
-	align-items: center;
-/*	-webkit-justify-content: center;
-	justify-content: center;*/
-	/* You can set flex-wrap and flex-direction individually */
-	-webkit-flex-direction: row;
-	flex-direction: row;
-	-webkit-flex-wrap: wrap;
-	flex-wrap: wrap;
-	/* Or do it all in one line with flex flow */
-	-webkit-flex-flow: row wrap;
-	flex-flow: row wrap;
-	/* tweak the where items line up on the row */
-	/* valid values are: flex-start, flex-end, space-between, space-around, stretch */
-	-webkit-align-content: flex-end;
-	align-content: flex-end;
-
-/*	display: -webkit-flex-flow;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-flex-direction: row;
-	-webkit-flex-wrap: wrap;*/
-/*  -webkit-flex-flow: row wrap;
-  -moz-flex-flow: row wrap;
-  -ms-flex-flow: wrap;
-  flex-flow: row wrap;*/
-}
-@media all and (max-width: : 767px){
-	div.widget-area.flex-container {
-		flex-direction: column;
-	}
-}
-@media all and (min-width: : 768px){
-	div.widget-area.flex-container {
-		flex-wrap: wrap;
-	}
-}
-
-/*div.widget-area-container div.widget {
-	width: 25%;
-}*/
-div.widget-area-container div.widget.flex-item {
-	-webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
-	-moz-box-flex: 1;         /* OLD - Firefox 19- */
-	width: 23%;
-	-webkit-flex: 1;          /* Chrome */
-	-ms-flex: 1;              /* IE 10 */
-	flex: 1;    
-} 
-div.widget-area-container div.widget.doorway-button {
-    border-style:solid;
-    border-width: thick;
-    border-color: #d1aa67;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;
-    background-color: transparent;
-    /*margin: 10px;*/
-    padding: 10px;
-}
-div.widget-area-container div.widget.doorway-button a {
-	background-color: transparent;
-	display: block;
-}
-div.widget-area-container div.widget.doorway-button a img {
-	padding: 0;
-	margin: 0;
-	width: 100%;
-}
-
-
-
-
-/* Header Social Media icons */
-div.header-widget div.social-icons {
-	float: right;
-	display: block;
-}
-div.header-widget div.social-icons img {
-	max-width: 40px;
-	max-height: 40px;
-	height: auto;
-	width: auto;
-}
-
-
-
-/* wordpress compatibilitiy */
-.sticky{
-}
-.gallery-caption{
-}
 
