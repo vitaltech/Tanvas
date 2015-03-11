@@ -31,18 +31,18 @@ $page_template = woo_get_page_template();
 				$left_active = is_active_sidebar('tanvas_home_doorway');
 				$right_active = is_active_sidebar('tanvas_home_doorway_sidebar');
 				if( $left_active|| $right_active){
-					echo '<div class="widget-area-container home col-full">';
+					echo '<div class="widget-area-container home col-full" id="doorway-button-sidebar-container">';
 					if($left_active) {
-						$class = 'widget-area flex-container';
-						$class .= $right_active ? ' left' : ' col-full';
-						echo "<div class='$class' id='doorway-buttons'  role='complementary'>";
+						$class = 'widget-area flex-container doorway-buttons';
+						$class .= $right_active ? ' left col-3' : ' col-4';
+						echo "<div class='$class' id='tanvas-home-doorway-buttons'  role='complementary'>";
 						dynamic_sidebar('tanvas_home_doorway');
 						echo '</div>';
 					}
 					if($right_active){
 						$class = 'widget-area sidebar';
-						$class .= $left_active ? ' right' : ' col-full';
-						echo "<div class='$class' id='tanvas_home_doorway_sidebar'>";
+						$class .= $left_active ? ' right' : '';
+						echo "<div class='$class' id='tanvas-home-doorway-sidebar'>";
 						dynamic_sidebar('tanvas_home_doorway_sidebar');
 						echo '</div>';
 					}
