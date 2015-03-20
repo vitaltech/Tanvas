@@ -66,7 +66,7 @@ $page_template = woo_get_page_template();
 					if($right_active){
 						$class = 'widget-area sidebar';
 						$class .= $left_active ? ' right' : ' col-full';
-						echo "<div class='class' id='tanvas_home_right'>";
+						echo "<div class='$class' id='tanvas_home_right'>";
 						dynamic_sidebar('tanvas_home_right');
 						echo '</div>';
 					}
@@ -80,16 +80,16 @@ $page_template = woo_get_page_template();
 
 	if ( have_posts() ) { $count = 0;
 		while ( have_posts() ) { the_post(); $count++;
-			woo_get_template_part( 'content', 'page-template-business' ); // Get the page content template file, contextually.
+			//woo_get_template_part( 'content', 'page-template-business' ); // Get the page content template file, contextually.
 		}
 	}
 
 	woo_loop_after();
 ?>
             </section><!-- /#main -->
-            <?php woo_main_after(); ?>
+            <?php //woo_main_after(); ?>
 
-			<?php get_sidebar(); ?>
+			<?php // get_sidebar(); ?>
 
 		</div><!-- /#main-sidebar-container -->
 

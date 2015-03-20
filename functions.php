@@ -99,10 +99,22 @@ class lc_doorway_button extends WP_Widget
 		} else {
 			$img = '';
 		}
+		if( !$img ){
+			$img = 'http://staging.technotan.com.au/wp-content/themes/tanvas/img/logo-transparent-zoomed-out.png';
+		}
+		if(isset($instance['alt'])){
+			$alt = esc_attr($instance['alt']);
+		} else {
+			$alt = '';
+		}		
+
+		if( !$alt ){
+			$alt=$title;
+		} 
 
 		echo $args['before_widget'];
 		echo "<a href='$url' >";
-		echo "<img src='$img'>";
+		echo "<img src='$img' alt='$alt' max-width=300, max-height=300>";
 		if( !empty($title) ){
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
@@ -127,6 +139,12 @@ class lc_doorway_button extends WP_Widget
 			$img = $instance['img'];
 		} else {
 			$img = '';
+		}
+
+		if(isset($instance['alt'])){
+			$alt = $instance['alt'];
+		} else {
+			$alt = '';
 		}
 
 		?>
@@ -160,6 +178,16 @@ class lc_doorway_button extends WP_Widget
 				value="<?php echo esc_attr($img); ?>"
 			/>
 		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id('alt'); ?>"><?php _e('Alt Text:'); ?></label>
+			<input
+				class="widefat"
+				id="<?php echo $this->get_field_id('alt');?>"
+				name="<?php echo $this->get_field_name('alt') ; ?>"
+				type="text"
+				value="<?php echo esc_attr($alt); ?>"
+			/>
+		</p>
 		<?php
 	}
 
@@ -169,6 +197,7 @@ class lc_doorway_button extends WP_Widget
 		$instance['title'] = ( ! empty($new_instance['title'])) ? strip_tags( $new_instance['title']) : '';
 		$instance['url'] = ( ! empty($new_instance['url'])) ? strip_tags( $new_instance['url']) : '' ;
 		$instance['img'] = ( ! empty($new_instance['img'])) ? strip_tags( $new_instance['img']) : '' ;
+		$instance['alt'] = ( ! empty($new_instance['alt'])) ? strip_tags( $new_instance['alt']) : '' ;
 		return $instance;
 	}
 }
@@ -259,8 +288,6 @@ function woo_options_add($options){
 	return $options;
 }
 
-
-
 /**
  * Product Category / Taxonomy Display Mods
  */
@@ -273,10 +300,17 @@ function woocommerce_category_image() {
 	    global $wp_query;
 	    $cat = $wp_query->get_queried_object();
 	    $thumbnail_id = get_woocommerce_term_meta( $cat->term_id, 'thumbnail_id', true );
-	    $image = wp_get_attachment_url( $thumbnail_id );
+	    
+	    if( $thumbnail_id ){
+	    	echo wp_get_attachment_image( $thumbnail_id, 'full' );
+	    }
+
+	    // echo "<h2>" . __("subcategories") . "</h2>";
+
+	    /*$image = wp_get_attachment_url( $thumbnail_id );
 	    if ( $image ) {
 		    echo '<img src="' . $image . '" alt="" />';
-		}
+		}*/
 	}
 }
 

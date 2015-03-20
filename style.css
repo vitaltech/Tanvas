@@ -151,6 +151,29 @@ div.widget a {
 	color: #000000;
 }
 
+div.widget h2 {
+	color: #000000;
+}
+
+/* widget area container mods */
+
+div.widget-area-container {
+	background-color: #d2ab67;
+	margin-bottom: 20px;
+}
+
+div.widget-area-container div.widget-area.left{
+	width: 50%;
+	float:left;
+	clear:left;
+}
+
+div.widget-area-container div.widget-area.right{
+	width: 50%;
+	float:right;
+	clear:right;
+}
+
 /* make header widgets apear without background and align right */
 div.header-widget div.widget {
 	background: none;
@@ -186,7 +209,7 @@ div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanva
 	background-color: transparent;
 	background-image: none;
 	color: transparent;	
-	margin: -10px -20px 30px -10px;
+	margin: -20px -20px 30px -10px;
 
 
 	display: -webkit-box;
@@ -221,16 +244,17 @@ div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanva
 		clear:all;
 	}		
 	div.widget-area-container#doorway-button-sidebar-container div#tanvas-home-doorway-buttons.widget-area.left {
-		width: 74%;
+		width: 66%;
 		float:left;
 		clear:none;
 	}
 	div.widget-area-container#doorway-button-sidebar-container div#tanvas-home-doorway-sidebar.widget-area.right {
-		width: 25%;
+		width: 32%;
 		float:right;
 		clear:none;
 	}	
 }
+
 
 div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget.doorway {
 	background: transparent;
@@ -319,10 +343,10 @@ div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanva
 	display:block;
 }
 
+div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a h2{
+	color: black;
+}
 /* custom homepage widgets */
-
-
-
 
 /**
  * Tanvas Homepage Mods
@@ -349,8 +373,8 @@ body.home section#main li.product-category.product {
     border-style:solid;
     border-width: thick;
     border-color: #d1aa67;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box;    
     box-sizing: border-box;
     margin-bottom:36px;  
 }
@@ -359,6 +383,52 @@ body.home section#main li.product-category.product a img {
 	margin: 0;
 }
 
+/** 
+ * Archive attachment formatting
+ */
+
+body.archive.tax-product_cat img.attachment-full {
+	max-width: 100%;
+	max-height: 940px;
+	height: auto;
+	width: auto;
+}
+/* @media only screen and (min-width: 768px) {
+	body.archive.tax-product_cat img.attachment-full {
+		width: 50%;
+		display: block;
+		float: left;
+		clear: left;
+		margin-bottom: 20px;
+	}
+
+	body.archive.tax-product_cat div.term-description {
+		width: 50%;
+		display: block;
+		float: left;
+		clear: right;
+		padding: 10px;
+	    -webkit-box-sizing: border-box; 
+	    -moz-box-sizing: border-box;    
+	    box-sizing: border-box;
+	}
+
+	body.archive.tax-product_cat ul.products {
+		clear:both;
+	}
+} */
+/**
+ *  Hey Eva!
+ *   /\_/\
+ * =( °w° )=
+ *   )   (  //
+ *  (__ __)//
+ */
+
+
+/**
+ * Recent Posts Mods
+ */
 
 /**
  * HEADER NAV ICON DISPLAY MODS
@@ -554,4 +624,13 @@ div#inner-wrapper nav#navigation.col-full {
 	margin:0;
 }
 
+/* Woocommerce Cart widget width */
+@media only screen and (min-width: 768px) {
+	#navigation ul.cart a.cart-contents + ul, 
+	#navigation ul.cart a.search-contents + ul, 
+	#navigation ul.nav-search a.cart-contents + ul, 
+	#navigation ul.nav-search a.search-contents + ul{
+		width: 24em;
+	}
+}
 
