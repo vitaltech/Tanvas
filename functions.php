@@ -314,6 +314,11 @@ function woocommerce_category_image() {
 	}
 }
 
+/** Removes sort by dropdown **/
+
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+
+
 /** allow html in category / tax descriptions */
 
 foreach ( array( 'pre_term_description' ) as $filter ) {

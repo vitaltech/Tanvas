@@ -579,6 +579,24 @@ ul.products a h3{
 	font-size: 18;
 }
 
+
+/* Product Price Display mods */
+
+span.price span.amount {
+	margin: 10px;
+	font-weight: bold;
+}
+
+span.price small.woocommerce-price-suffix {
+	font-size: 66%;
+}
+
+p.out-of-stock {
+	color: red;
+}
+
+
+
 /* make the slider title color brown isntead of white */
 #loopedSlider.business-slider div.content div.title h2.title {
 	color:#d2ab67;
