@@ -364,7 +364,29 @@ add_filter(
 	},
 	999, 
 	1
-)
+);
 
+
+/**
+ * Login Customizations
+ */
+
+function my_login_logo() { ?>
+    <style type="text/css">
+        .login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/img/TechnoTan-Logo.png);
+            padding-bottom: 30px;
+            background-size: 240px;
+            width: 240px;
+            padding-bottom: 0px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+function my_login_stylesheet() {
+    wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/style-login.css' );
+}
+add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 
 ?>

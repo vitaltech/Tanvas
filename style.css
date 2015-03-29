@@ -215,7 +215,11 @@ div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanva
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
+	/*display: flex;*/
+	
 	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
 	display: flex;	
 
 	-webkit-flex-flow: row wrap;
@@ -583,7 +587,8 @@ ul.products a h3{
 /* Product Price Display mods */
 
 span.price span.amount {
-	margin: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
 	font-weight: bold;
 }
 
