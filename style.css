@@ -212,9 +212,9 @@ div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanva
 	margin: -20px -20px 30px -10px;
 
 
-	display: -webkit-box;
+	/*display: -webkit-box;
 	display: -moz-box;
-	display: -ms-flexbox;
+	display: -ms-flexbox;*/
 	/*display: flex;*/
 	
 	display: -webkit-flex;
@@ -229,6 +229,7 @@ div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanva
 
 	-webkit-justify-content: flex-start;
 	justify-content: flex-start;
+	
 	-webkit-align-content: flex-start;
 	align-content: flex-start;
 

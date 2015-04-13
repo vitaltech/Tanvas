@@ -114,7 +114,7 @@ class lc_doorway_button extends WP_Widget
 
 		echo $args['before_widget'];
 		echo "<a href='$url' >";
-		echo "<img src='$img' alt='$alt' max-width=300, max-height=300>";
+		echo "<img src='$img' alt='$alt' width=180 max-width=300, max-height=300>";
 		if( !empty($title) ){
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
