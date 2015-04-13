@@ -127,7 +127,7 @@ li.product a h3 {
 section#main {
     background:white;
     border-style:solid;
-    border-width: thick;
+    border-width: medium;
     border-color: #d1aa67;
     padding: 20px;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -352,6 +352,24 @@ div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanva
 	color: black;
 }
 /* custom homepage widgets */
+
+/* custom widget styles */
+
+div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget,
+aside#sidebar div.widget,
+div.widget-area#tanvas_home_right div.widget {
+	background-color: white;
+	border-color: #d1aa67;
+	border-style: solid;
+	border-width: medium;
+} 
+
+div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget h2,
+div.widget-area#tanvas_home_right div.widget h2,
+aside#sidebar div.widget h3  {
+	color: #d1aa67;
+}
+
 
 /**
  * Tanvas Homepage Mods
