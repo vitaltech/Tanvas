@@ -32,7 +32,7 @@ div#wrapper p.demo_store {
 	display: table;
 }*/
 
-body.archive.tax-product_cat ul.products li.product-category.product {
+/*body.archive.tax-product_cat ul.products li.product-category.product {
 	display: table-row;
 	width: 100%;
 }
@@ -47,7 +47,6 @@ body.archive.tax-product_cat ul.products li.product-category.product div.product
 	display: table-cell;
 	float: left;
 	margin: 10px;
-	/*max-width: 71%;*/
 	text-align: left;
 }
 
@@ -64,7 +63,7 @@ body.archive.tax-product_cat ul.products li.product-category.product div.product
 		max-width: 150px;
 	}
 } 
-
+*/
 
 
 /* Removes those stupid woocommerce marks */

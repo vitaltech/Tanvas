@@ -331,40 +331,40 @@ foreach ( array( 'term_description' ) as $filter ) {
 
 /* add category description after subcategory title */
 
-add_action('woocommerce_before_subcategory', function($category){
-	if(is_product_category() && !woocommerce_products_will_display()){
-		echo "<style>body.archive.tax-product_cat ul.products { display: table; } </style>";
-	}
-});
+// add_action('woocommerce_before_subcategory', function($category){
+// 	if(is_product_category() && !woocommerce_products_will_display()){
+// 		echo "<style>body.archive.tax-product_cat ul.products { display: table; } </style>";
+// 	}
+// });
 
-add_action('woocommerce_before_subcategory_title', function($category){
+// add_action('woocommerce_before_subcategory_title', function($category){
 
-	if(is_product_category() && !woocommerce_products_will_display()){
-		echo '<div class="product-category-description">';
-	}
-});
+// 	if(is_product_category() && !woocommerce_products_will_display()){
+// 		echo '<div class="product-category-description">';
+// 	}
+// });
 
-add_action('woocommerce_after_subcategory_title', function($category){
+// add_action('woocommerce_after_subcategory_title', function($category){
 
-	if(is_product_category() && !woocommerce_products_will_display()){
-		$desc = esc_attr($category->description);
-		echo "<p>$desc</p>";
-		echo '</div> <!-- end product-category-description-->';
-	}
-});
+// 	if(is_product_category() && !woocommerce_products_will_display()){
+// 		$desc = esc_attr($category->description);
+// 		echo "<p>$desc</p>";
+// 		echo '</div> <!-- end product-category-description-->';
+// 	}
+// });
 
-add_filter(
-	'loop_shop_columns', 
-	function($cols){
-		if(is_product_category() && !woocommerce_products_will_display()){
-			return 1;
-		} else {
-			return $cols;
-		}
-	},
-	999, 
-	1
-);
+// add_filter(
+// 	'loop_shop_columns', 
+// 	function($cols){
+// 		if(is_product_category() && !woocommerce_products_will_display()){
+// 			return 1;
+// 		} else {
+// 			return $cols;
+// 		}
+// 	},
+// 	999, 
+// 	1
+// );
 
 
 /**
