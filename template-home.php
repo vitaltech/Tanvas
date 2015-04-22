@@ -30,24 +30,54 @@ $page_template = woo_get_page_template();
 			<?php 
 				$left_active = is_active_sidebar('tanvas_home_doorway');
 				$right_active = is_active_sidebar('tanvas_home_doorway_sidebar');
-				if( $left_active|| $right_active){
-					echo '<div class="widget-area-container home col-full" id="doorway-button-sidebar-container">';
-					if($left_active) {
-						$class = 'widget-area flex-container doorway-buttons';
-						$class .= $right_active ? ' left col-3' : ' col-4';
-						echo "<div class='$class' id='tanvas-home-doorway-buttons'  role='complementary'>";
-						dynamic_sidebar('tanvas_home_doorway');
-						echo '</div>';
+
+				if( $left_active or $right_active ){
+					echo '<div class="widget-area-container home row" id="doorway-button-sidebar-container">';
+
+					$left_class = 'widget-area col-xs-12';
+					$right_class = 'widget-area sidebar col-xs-12';
+
+					if( $right_active and $left_active ){
+						global $tanvas_doorway_squeeze;
+						$tanvas_doorway_squeeze = true;
+
+						$left_class .= ' col-sm-8';
+						$right_class .= ' col-sm-4';
 					}
-					if($right_active){
-						$class = 'widget-area sidebar';
-						$class .= $left_active ? ' right' : '';
-						echo "<div class='$class' id='tanvas-home-doorway-sidebar'>";
-						dynamic_sidebar('tanvas_home_doorway_sidebar');
-						echo '</div>';
+					if( $left_active){
+						echo "<div class='$left_class' id='tanvas-home-doorway-buttons'  role='complementary'>";
+							echo "<div class='row' id='tanvas-home-doorway-button-wrapper'>";
+								dynamic_sidebar('tanvas_home_doorway');
+							echo "</div> <!-- end tanvas-home-doorway-button-wrapper -->";
+						echo '</div> <!-- end tanvas-home-doorway-buttons -->';
 					}
-					echo '</div>';
-				} 
+					if( $right_active){
+						echo "<div class='$right_class' id='tanvas-home-doorway-sidebar'>";
+							dynamic_sidebar('tanvas_home_doorway_sidebar');
+						echo '</div> <!-- end tanvas-home-doorway-sidebar -->';
+					}
+
+					echo '</div> <!-- end doorway-button-sidebar-container -->';
+				}
+
+				// if( $left_active|| $right_active){
+				// 	echo '<div class="widget-area-container home col-full" id="doorway-button-sidebar-container">';
+				// 	if($left_active) {
+				// 		$class = 'widget-area flex-container doorway-buttons';
+				// 		$class .= $right_active ? ' left col-3' : ' col-4';
+				// 		echo "<div class='$class' id='tanvas-home-doorway-buttons'  role='complementary'>";
+				// 		dynamic_sidebar('tanvas_home_doorway');
+				// 		echo '</div>';
+				// 	}
+				// 	if($right_active){
+				// 		$class = 'widget-area sidebar';
+				// 		$class .= $left_active ? ' right' : '';
+				// 		echo "<div class='$class' id='tanvas-home-doorway-sidebar'>";
+				// 		dynamic_sidebar('tanvas_home_doorway_sidebar');
+				// 		echo '</div>';
+				// 	}
+				// 	echo '</div>';
+				// } 
 			?>
 
 			<!-- middle widget areas -->

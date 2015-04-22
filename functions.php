@@ -4,6 +4,7 @@
 /* pretends to be canvas then quits if woocommerce not installed */
 function theme_enqueue_styles(){
 	wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css' );
+	wp_enqueue_style('flexboxgrid', get_stylesheet_directory_uri() . '/css/flexboxgrid.css');
 	// wp_enqueue_style('this-style', get_stylesheet_uri() );
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
@@ -112,9 +113,16 @@ class lc_doorway_button extends WP_Widget
 			$alt=$title;
 		} 
 
-		echo $args['before_widget'];
+		$before_widget = $args['before_widget'];
+// replacing '<div class="widget doorway-button col-xs-6 col-sm-4">' 
+// with '<div class="widget doorway-button col-xs-6 col-sm-4 col-md-3">'
+		global $tanvas_doorway_squeeze;
+		if(!isset($tanvas_doorway_squeeze)){
+			$before_widget = preg_replace('/\<div class="widget doorway-button/', '<div class="widget doorway-button col-md-3', $before_widget);
+		}
+		echo $before_widget;
 		echo "<a href='$url' >";
-		echo "<img src='$img' alt='$alt' width=180 max-width=300, max-height=300>";
+		echo "<img src='$img' alt='$alt'>";
 		if( !empty($title) ){
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
@@ -206,43 +214,11 @@ function tanvas_widgets_init() {
 	register_sidebar( array(
 		'name' 			=> 'Home Doorway Buttons',
 		'id' 			=> 'tanvas_home_doorway',
-		'before_widget'	=> '<div class="widget doorway flex-item">',
+		'before_widget'	=> '<div class="widget doorway-button col-xs-6 col-sm-4">',
 		'after_widget'	=> '</div>',
 		'before_title'	=> '<h2>',
 		'after_title'	=> '</h2>'
 	));
-	// register_sidebar( array(
-	// 	'name' 			=> 'Home Doorway Column 1',
-	// 	'id' 			=> 'tanvas_home_doorway1',
-	// 	'before_widget'	=> '<div class="widget doorway-column flex-item">',
-	// 	'after_widget'	=> '</div>',
-	// 	'before_title'	=> '<h2>',
-	// 	'after_title'	=> '</h2>'
-	// ));
-	// register_sidebar( array(
-	// 	'name' 			=> 'Home Doorway Column 2',
-	// 	'id' 			=> 'tanvas_home_doorway2',
-	// 	'before_widget'	=> '<div class="widget doorway-column flex-item">',
-	// 	'after_widget'	=> '</div>',
-	// 	'before_title'	=> '<h2>',
-	// 	'after_title'	=> '</h2>'
-	// ));
-	// register_sidebar( array(
-	// 	'name' 			=> 'Home Doorway Column 3',
-	// 	'id' 			=> 'tanvas_home_doorway3',
-	// 	'before_widget'	=> '<div class="widget doorway-column flex-item">',
-	// 	'after_widget'	=> '</div>',
-	// 	'before_title'	=> '<h2>',
-	// 	'after_title'	=> '</h2>'
-	// ));
-	// register_sidebar( array(
-	// 	'name' 			=> 'Home Doorway Column 4',
-	// 	'id' 			=> 'tanvas_home_doorway4',
-	// 	'before_widget'	=> '<div class="widget doorway-column flex-item">',
-	// 	'after_widget'	=> '</div>',
-	// 	'before_title'	=> '<h2>',
-	// 	'after_title'	=> '</h2>'
-	// ));
 	register_sidebar( array (
 		'name' 			=> 'Home Doorway Sidebar',
 		'id'			=> 'tanvas_home_doorway_sidebar',
@@ -513,7 +489,7 @@ function my_login_logo() { ?>
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
 
 function my_login_stylesheet() {
-    wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/style-login.css' );
+    wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/css/style-login.css' );
 }
 add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 

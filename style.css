@@ -71,7 +71,6 @@ li mark.count {
 	display: none;
 }
 
-
 /* Makes category name appear inside image - woocommerce products*/
 body.home li.product-category.product a {
 	position: relative;
@@ -154,24 +153,6 @@ div.widget h2 {
 	color: #000000;
 }
 
-/* widget area container mods */
-
-div.widget-area-container {
-	background-color: #d2ab67;
-	margin-bottom: 20px;
-}
-
-div.widget-area-container div.widget-area.left{
-	width: 50%;
-	float:left;
-	clear:left;
-}
-
-div.widget-area-container div.widget-area.right{
-	width: 50%;
-	float:right;
-	clear:right;
-}
 
 /* make header widgets apear without background and align right */
 div.header-widget div.widget {
@@ -187,139 +168,27 @@ div.header-widget div.widget a {
 	font-weight:bold;
 }
 
+/* Doorway buttons widget mods */
+
 /* make doorway button widgets appear without background */
 div.widget-area-container#doorway-button-sidebar-container{
-	background: transparent;
 	background-color: transparent;
-	background-image: none;
-	color: transparent;
-	display: block;
-	clear:both;
 }
-div.widget-area-container#doorway-button-sidebar-container div.widget-area{
-	width: auto;
-	display: block;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box; 	
-}
-div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons {
-	background: transparent;
+
+div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget{
 	background-color: transparent;
-	background-image: none;
-	color: transparent;	
-	margin: -20px -20px 30px -10px;
-
-
-	/*display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;*/
-	/*display: flex;*/
-	
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: flex;	
-
-	-webkit-flex-flow: row wrap;
-	-moz-flex-flow: row wrap;
-	-ms-flex-flow: row wrap;
-	flex-flow: row wrap;
-
-	-webkit-justify-content: flex-start;
-	justify-content: flex-start;
-	
-	-webkit-align-content: flex-start;
-	align-content: flex-start;
-
-}
-@media all and (max-width: 767px){
-	div.widget-area-container#doorway-button-sidebar-container div.widget-area {
-		width: 100%;
-	}
-}
-@media all and (min-width: 768px){
-	div.widget-area-container#doorway-button-sidebar-container div#tanvas-home-doorway-buttons.widget-area {
-		max-width: 100%;
-		clear:all;
-	}	
-	div.widget-area-container#doorway-button-sidebar-container div#tanvas-home-doorway-sidebar.widget-area {
-		max-width: 100%;
-		clear:all;
-	}		
-	div.widget-area-container#doorway-button-sidebar-container div#tanvas-home-doorway-buttons.widget-area.left {
-		width: 66%;
-		float:left;
-		clear:none;
-	}
-	div.widget-area-container#doorway-button-sidebar-container div#tanvas-home-doorway-sidebar.widget-area.right {
-		width: 32%;
-		float:right;
-		clear:none;
-	}	
 }
 
-
-div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget.doorway {
-	background: transparent;
-	background-color: transparent;
-	background-image: none;
-	color: transparent;	
-	padding: 20px 0px 0px 20px;
-	margin: 0px;
-
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;	
-
-	-webkit-box-flex: 0;      /* OLD - iOS 6-, Safari 3.1-6 */
-	-moz-box-flex: 0;         /* OLD - Firefox 19- */
-	-webkit-flex: 0;          /* Chrome */
-	-ms-flex: 0;              /* IE 10 */
-	flex: 0;   
-}
-@media all and (max-width: 767px){
-	div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget.doorway{
-		width:50%;
-		-webkit-flex-basis: 50%;
-		-moz-flex-basis: 50%;
-		flex-basis: 50%;		
-	}
-}
-@media all and (min-width: 768px){
-	div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons.col-4 div.widget.doorway {
-		width:25%;
-		-webkit-flex-basis: 25%;
-		-moz-flex-basis: 25%;
-		flex-basis: 25%;
-	}
-	div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons.col-3 div.widget.doorway {
-		width:33%;
-		-webkit-flex-basis: 33%;
-		-moz-flex-basis: 33%;
-		flex-basis: 33%;
-	}
-	div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons.col-2 div.widget.doorway {
-		width:48%;
-		-webkit-flex-basis: 48%;
-		-moz-flex-basis: 48%;
-		flex-basis: 48%;
-	}
-}
-
-div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget.doorway a{
+div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a{
 	position: relative;
 	display: block;
-	top: 0px;
-	left: 0px;
-	bottom: 0px;
-	right: 0px;
+	margin: 0px 10px 20px 10px;
 	border-style:solid;
     border-width: medium;
     border-color: #d1aa67;	
 }
 
-div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget.doorway a h2{
+div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a h2{
 	position: absolute;
 	bottom: 0px;
 	left: 0px;
@@ -369,6 +238,83 @@ aside#sidebar div.widget h3  {
 	color: #d1aa67;
 }
 
+div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons {
+	background: transparent;
+	background-color: transparent;
+	background-image: none;
+	color: transparent;	
+}
+
+div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget {
+	background: transparent;
+	background-color: transparent;
+	background-image: none;
+	color: transparent;	
+	padding: 0px;
+	margin: 0px;
+}
+
+div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a{
+	position: relative;
+	display: block;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	border-style:solid;
+    border-width: medium;
+    border-color: #d1aa67;	
+}
+
+div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a h2{
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	box-sizing: border-box;
+	/*max-height: 0%;	*/
+	color: #d2ab67;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-family: Helvetica;
+	background: rgb(0,0,0);
+/* fallback color */
+	background: rgba(0,0,0,0.7);
+	margin-bottom: 0;
+	padding: 10px;
+/* trial */
+	overflow: hidden;
+	text-overflow: ellipsis;	
+	text-align: center;
+}
+
+div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget.doorway a img {
+	display:block;
+}
+
+div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a h2{
+	color: black;
+}
+/* custom homepage widgets */
+
+/* custom widget styles */
+
+div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget,
+aside#sidebar div.widget,
+div.widget-area#tanvas_home_right div.widget {
+	background-color: white;
+	border-color: #d1aa67;
+	border-style: solid;
+	border-width: medium;
+} 
+
+div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget h2,
+div.widget-area#tanvas_home_right div.widget h2,
+aside#sidebar div.widget h3  {
+	color: #d1aa67;
+}
 
 /**
  * Tanvas Homepage Mods
@@ -411,7 +357,7 @@ body.home section#main li.product-category.product a img {
 
 body.archive.tax-product_cat img.attachment-full {
 	max-width: 100%;
-	max-height: 940px;
+	max-height: 300px;
 	height: auto;
 	width: auto;
 }
