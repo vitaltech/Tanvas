@@ -667,3 +667,7 @@ div#inner-wrapper nav#navigation.col-full {
 
 /* Woocommerce price display style */
 
+small.woocommerce-price-suffix {
+	font-size: 50%;
+}
+
