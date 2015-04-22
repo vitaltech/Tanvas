@@ -213,7 +213,7 @@ div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanva
 }
 
 div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget.doorway a img {
-	display:block;
+	/*display:block;*/
 }
 
 div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a h2{
@@ -255,6 +255,7 @@ div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanva
 }
 
 div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a{
+	background-color: white;
 	position: relative;
 	display: block;
 	top: 0px;
@@ -264,6 +265,8 @@ div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanva
 	border-style:solid;
     border-width: medium;
     border-color: #d1aa67;	
+    max-width: 300px;
+	max-height: 300px;
 }
 
 div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a h2{
@@ -292,10 +295,10 @@ div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanva
 
 div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget.doorway a img {
 	display:block;
-}
-
-div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a h2{
-	color: black;
+	width: auto;
+	height: auto;
+	max-width: 300px;
+	max-height: 300px;
 }
 /* custom homepage widgets */
 
