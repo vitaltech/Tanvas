@@ -437,17 +437,7 @@ body.archive.tax-product_cat img.attachment-full {
 
 	body.archive.tax-product_cat ul.products {
 		clear:both;
-	}
-} */
-/**
- *  Hey Eva!
- *   /\_/\
- * =( °w° )=
- *   )   (  //
- *  (__ __)//
- */
-
-
+ 
 /**
  * Recent Posts Mods
  */
@@ -462,9 +452,9 @@ div.header-widget div.social-icons {
 	display: block;
 }
 div.header-widget div.social-icons img {
-	max-width: 40px;
-	max-height: 40px;
 	height: auto;
+	max-height: 40px;
+	max-width: 40px;
 	width: auto;
 }
 
@@ -674,4 +664,6 @@ div#inner-wrapper nav#navigation.col-full {
 		width: 24em;
 	}
 }
+
+/* Woocommerce price display style */
 
