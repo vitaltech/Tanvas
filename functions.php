@@ -536,4 +536,47 @@ function shrink_product_title($title, $id){
 	return $title;
 }
 add_action('the_title', 'shrink_product_title', 9999, 2);
+
+
+/*
+ * wc_remove_related_products
+ * 
+ * Clear the query arguments for related products so none show.
+ * Add this code to your theme functions.php file.  
+ */
+// function wc_remove_related_products( $args ) {
+// 	return array();
+// }
+// add_filter('woocommerce_related_products_args','wc_remove_related_products', 10);
+
+//TODO: show "available in ..." on variable product page
+//TODO: Change "Select Options" and "READ MORE" to "VIEW" when product is unavailable
+
+/**
+ * Clear Attribute Select box if no available Variations
+ */
+
+// do_action( 'woocommerce_before_add_to_cart_form' ); 
+function maybe_clear_attribute_select_box( ) { 
+	global $product;
+	if( isset($product) and $product->is_type('variable')){
+		$available_variations = $product->get_available_variations();
+		$any_available = False;
+		foreach ($available_variations as $variation_data) {
+			if(isset($variation_data['variation_is_visible']) and $variation_data['variation_is_visible']){
+				$any_available = True;
+				//stop output of option box
+			}
+		}
+		if(!$any_available){ ?>
+			<p><?php echo __('Please', 'tanvas') . " <a href=''>" . __('sign in', 'tanvas') . "</a> " . __('or', 'tanvas') . " <a href=''>". __('register', 'tanvas'). "</a> ". __("to view prices", 'tanvas') ?></p>
+			<style type="text/css">
+				form.variations_form.cart{
+					display:none;
+				}
+			</style>
+		<?php }
+	}
+}
+add_action('woocommerce_before_add_to_cart_form', 'maybe_clear_attribute_select_box');
 ?>
