@@ -493,4 +493,47 @@ function my_login_stylesheet() {
 }
 add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 
+/**
+ * change loop shop columns
+ */
+
+if (!function_exists('change_loop_columns')) {
+	function change_loop_columns() {
+		return 3; // 3 products per row
+	}
+}
+add_filter('loop_shop_columns', 'change_loop_columns', 999, 3);
+
+// change the css if there are 3 columns
+function inject_column_css(){
+	if(WP_DEBUG) error_log("called inject_column_css callback");	
+	$columns = apply_filters( 'loop_shop_columns', 4);
+	if(WP_DEBUG) error_log("-> columns: $columns");
+	if ($columns == 3 ){ ?>
+		<style type="text/css">
+		ul.products li.product {
+			width: 30%;
+		}
+		</style>
+	<?php }
+}
+add_action('woocommerce_before_shop_loop', 'inject_column_css', 999, 0);
+/**
+ * title customizations for products in category
+ */
+
+function shrink_product_title($title, $id){
+	// if(WP_DEBUG) error_log("called shrink_product_title callback | title: $title, id: $id");
+	global $product, $woocommerce_loop;
+	if(isset($product) and isset($woocommerce_loop)){
+		$title_length = strlen($title);
+		$title = preg_replace("/^(.*)( &#8212; | - | &#8211; )(.*)$/u", '<span>$1</span><small>$3</small>', $title );
+		if ($title_length > 64){
+			$title = "<span class='long-title'>".$title."</span>";
+		}
+	}
+	// if(WP_DEBUG) error_log("-> returning $title");
+	return $title;
+}
+add_action('the_title', 'shrink_product_title', 9999, 2);
 ?>

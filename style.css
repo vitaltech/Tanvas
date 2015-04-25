@@ -140,6 +140,10 @@ section#main {
 	}
 }
 
+p.woocommerce-result-count {
+	font-weight: bold;
+	margin-top: 20px;
+}
 /**
  * Tanvas Widget Mods
  */
@@ -535,10 +539,9 @@ div.header-widget div.social-icons img {
 .gallery-caption{
 }
 
-/* make product cat font smaller */
-ul.products a h3{
-	font-size: 18;
-}
+
+
+
 
 
 /* Product Price Display mods */
@@ -557,6 +560,9 @@ p.out-of-stock {
 	color: red;
 }
 
+small.woocommerce-price-suffix {
+	font-size: 66%;
+}
 
 
 /* make the slider title color brown isntead of white */
@@ -615,8 +621,25 @@ div#inner-wrapper nav#navigation.col-full {
 }
 
 /* Woocommerce price display style */
+ul.products a h3{
+	font-size: 15pt;
+}
 
-small.woocommerce-price-suffix {
-	font-size: 50%;
+ul.products a h3 span.long-title{
+	font-size: 13pt;
+}
+
+li.product a h3 span{
+	display: block;
+	clear: both;
+	float: center;
+}
+li.product a h3 small{
+	font-size: 75%;
+	display: block;
+	float:center;
+	clear:both;
+	color: black;
+	line-height: normal
 }
 
