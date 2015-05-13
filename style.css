@@ -400,14 +400,14 @@ body.archive.tax-product_cat img.attachment-full {
  */
 
 /* Header Social Media icons */
-div.header-widget div.social-icons {
-	float: right;
+div.social-icons {
+	/*float: right;*/
 	display: block;
 }
-div.header-widget div.social-icons img {
+div.social-icons img {
 	height: auto;
-	max-height: 40px;
-	max-width: 40px;
+	max-height: 35px;
+	max-width: 35px;
 	width: auto;
 }
 
@@ -643,3 +643,18 @@ li.product a h3 small{
 	line-height: normal
 }
 
+/* Woocommerce Product Bundles / Composite product display */
+.component .composited_product_images img {
+	height: auto;
+}
+
+div.product-type-composite div.summary,
+div.product-type-bundle div.summary{
+	float:none;
+	width:100%;	
+}
+
+form.bundle_form,
+form.composite_form {
+	clear:both;
+}
