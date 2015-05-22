@@ -38,7 +38,7 @@ global $woo_options, $wp_query;
 				
 		<?php get_template_part('templates/content', 'topheader'); ?>
 		
-		<?php get_template_part('templates/content', 'header'); ?>
+		<?php get_template_part('templates/content', 'simpleads-header'); ?>
 		
 		<?php get_template_part('templates/content', 'menu'); ?>
 		

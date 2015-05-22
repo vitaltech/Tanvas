@@ -1,4 +1,7 @@
 <?php
+
+define( 'TRANSLATION', 'tanvas');
+
 $woo_options = get_option( 'woo_options' );
 
 // TODO: Allow discounts to be specified based on how many liters of solution
