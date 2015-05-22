@@ -824,6 +824,7 @@ class CUSTOM_LATEST_POSTS_WIDGETS extends WP_Widget {
 
 		//Set up some default widget settings.
 		$display_thumbnails = isset( $instance['display_thumbnails'] ) ? (bool) $instance['display_thumbnails'] : false;
+		$defaults = array();
 		$instance = wp_parse_args( (array) $instance, $defaults ); 
 		?>
 		

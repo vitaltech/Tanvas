@@ -318,6 +318,12 @@ div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanva
 	max-width: 300px;
 	max-height: 300px;
 }
+
+div.doorway-container {
+	min-height: 100px;
+	min-width: 100px;
+}
+
 /* custom homepage widgets */
 
 /* custom widget styles */
