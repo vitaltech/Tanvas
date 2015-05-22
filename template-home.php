@@ -19,12 +19,11 @@ $page_template = woo_get_page_template();
 	<?php if ( ( isset( $woo_options['woo_slider_biz'] ) && 'true' == $woo_options['woo_slider_biz'] ) && ( isset( $woo_options['woo_slider_biz_full'] ) && 'true' == $woo_options['woo_slider_biz_full'] ) ) { $saved = $wp_query; woo_slider_biz(); $wp_query = $saved; } ?>
     <div id="content" class="col-full home">
 
-    	<div id="main-sidebar-container">
+    	<div id="main-sidebar-container" class="home-page">
 
             <!-- #main Starts -->
-            <?php woo_main_before(); ?>
-
-			<?php if ( ( isset( $woo_options['woo_slider_biz'] ) && 'true' == $woo_options['woo_slider_biz'] ) && ( isset( $woo_options['woo_slider_biz_full'] ) && 'false' == $woo_options['woo_slider_biz_full'] ) ) { $saved = $wp_query; woo_slider_biz(); $wp_query = $saved; } ?>
+            <?php //woo_main_before(); ?>
+			<?php// if ( ( isset( $woo_options['woo_slider_biz'] ) && 'true' == $woo_options['woo_slider_biz'] ) && ( isset( $woo_options['woo_slider_biz_full'] ) && 'false' == $woo_options['woo_slider_biz_full'] ) ) { $saved = $wp_query; woo_slider_biz(); $wp_query = $saved; } ?>
 
 			<!-- doorway button & sidebar widgets -->
 			<?php 
@@ -32,22 +31,30 @@ $page_template = woo_get_page_template();
 				$right_active = is_active_sidebar('tanvas_home_doorway_sidebar');
 
 				if( $left_active or $right_active ){
-					echo '<div class="widget-area-container home row" id="doorway-button-sidebar-container">';
+					
+					//echo '<div class="widget-area-container home row" id="doorway-button-sidebar-container">';
+					echo '<div id="doorway-button-sidebar-container" class="widget-area-container home foundation f-row">';
 
-					$left_class = 'widget-area col-xs-12';
-					$right_class = 'widget-area sidebar col-xs-12';
+					//$left_class = 'widget-area col-xs-12';
+					//$right_class = 'widget-area sidebar col-xs-12';	
+					$left_class = 'widget-area';
+					$right_class = 'widget-area';
 
 					if( $right_active and $left_active ){
 						global $tanvas_doorway_squeeze;
 						$tanvas_doorway_squeeze = true;
 
-						$left_class .= ' col-sm-8';
-						$right_class .= ' col-sm-4';
+						//$left_class .= ' col-sm-8';
+						//$right_class .= ' col-sm-4';
+						$left_class .= ' medium-8 columns';
+						$right_class .= ' medium-4 columns';
 					}
 					if( $left_active){
 						echo "<div class='$left_class' id='tanvas-home-doorway-buttons'  role='complementary'>";
 							echo "<div class='row' id='tanvas-home-doorway-button-wrapper'>";
-								dynamic_sidebar('tanvas_home_doorway');
+								echo '<ul id="doorway-items" class="small-block-grid-2 medium-block-grid-2 large-block-grid-3">';
+									dynamic_sidebar('tanvas_home_doorway');
+								echo '</ul>';	
 							echo "</div> <!-- end tanvas-home-doorway-button-wrapper -->";
 						echo '</div> <!-- end tanvas-home-doorway-buttons -->';
 					}
@@ -102,6 +109,16 @@ $page_template = woo_get_page_template();
 					}
 					echo "</div>";
 				} 
+			?>
+			
+			<!-- bottom widget areas -->
+			<?php 
+				$bottom_active = is_active_sidebar('tanvas_home_doorway_bottom');
+				if( $bottom_active){
+						echo "<div class='' id='tanvas-home-doorway-bottom'>";
+							dynamic_sidebar('tanvas_home_doorway_bottom');
+						echo '</div> <!-- end tanvas-home-doorway-bottom -->';
+					}
 			?>
 
             <section id="main">

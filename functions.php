@@ -1,10 +1,18 @@
 <?php
+$woo_options = get_option( 'woo_options' );
+
 // TODO: Allow discounts to be specified based on how many liters of solution
 
 /* pretends to be canvas then quits if woocommerce not installed */
 function theme_enqueue_styles(){
+	wp_enqueue_style('foundation', get_stylesheet_directory_uri() . '/css/foundation.css' );
+	wp_enqueue_style('owl.carousel', get_stylesheet_directory_uri() . '/css/owl.carousel.css');
+	wp_enqueue_style('owl.theme', get_stylesheet_directory_uri() . '/css/owl.theme.css');
+	wp_enqueue_style('design-style', get_stylesheet_directory_uri() . '/design-style.css');
+	
 	wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style('flexboxgrid', get_stylesheet_directory_uri() . '/css/flexboxgrid.css');
+
 	// wp_enqueue_style('this-style', get_stylesheet_uri() );
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
@@ -112,22 +120,51 @@ class lc_doorway_button extends WP_Widget
 		if( !$alt ){
 			$alt=$title;
 		} 
+		
+		if(isset($instance['view'])){
+			$view = esc_attr($instance['view']);
+		} else {
+			$view = 'View All';
+		}
 
-		$before_widget = $args['before_widget'];
-// replacing '<div class="widget doorway-button col-xs-6 col-sm-4">' 
-// with '<div class="widget doorway-button col-xs-6 col-sm-4 col-md-3">'
-		global $tanvas_doorway_squeeze;
-		if(!isset($tanvas_doorway_squeeze)){
-			$before_widget = preg_replace('/\<div class="widget doorway-button/', '<div class="widget doorway-button col-md-3', $before_widget);
-		}
+		$before_widget 	= isset($args['before_widget']) ? $args['before_widget'] 	: '<li><div class="doorway-container">' ;
+		$after_widget 	= isset($args['after_widget']) 	? $args['after_widget'] 	: '</div></li>' ;
+		$before_title 	= isset($args['before_title']) 	? $args['before_title'] 	: '<h5 class="doorway-title">' ;
+		$after_title 	= isset($args['after_title']) 	? $args['after_title']		: '</h5>';
+		
 		echo $before_widget;
-		echo "<a href='$url' >";
-		echo "<img src='$img' alt='$alt'>";
-		if( !empty($title) ){
-			echo $args['before_title'] . $title . $args['after_title'];
-		}
-		echo "</a>";
-		echo $args['after_widget'];
+			echo "<img id='doorway-img' src='$img' alt='$alt' />";
+			echo "<div class='doorway-title-section'>";
+				if( !empty($title) ){
+					echo $before_title . $title . $after_title;
+				}
+				echo "<a id='doorway-link' href='$url' > $view ";
+				echo "</a>";
+			echo "</div>";		
+		echo $after_widget;
+
+		// echo $before_widget;
+		// echo "<a href='$url' >";
+		// echo "<img src='$img' alt='$alt'>";
+		// if( !empty($title) ){
+			// echo $args['before_title'] . $title . $args['after_title'];
+		// }
+		// echo "</a>";
+		// echo $args['after_widget'];
+		
+		// echo "<li>";
+		// echo "<div class='doorway-container'>";
+		// 	echo "<img id='doorway-img' src='$img' alt='$alt' />";
+		// 	echo "<div class='doorway-title-section'>";
+		// 		if( !empty($title) ){
+		// 			echo '<h5 class="doorway-title">' . $title . '</h5>';
+		// 		}
+		// 		echo "<a id='doorway-link' href='$url' > $view ";
+		// 		echo "</a>";
+		// 	echo "</div>";
+		// echo "</div>";
+		// echo "</li>";
+		
 	}
 
 	public function form ( $instance ) {
@@ -153,6 +190,12 @@ class lc_doorway_button extends WP_Widget
 			$alt = $instance['alt'];
 		} else {
 			$alt = '';
+		}
+		
+		if(isset($instance['view'])){
+			$view = $instance['view'];
+		} else {
+			$view = 'View All';
 		}
 
 		?>
@@ -196,6 +239,16 @@ class lc_doorway_button extends WP_Widget
 				value="<?php echo esc_attr($alt); ?>"
 			/>
 		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id('view'); ?>"><?php _e('View Text:'); ?></label>
+			<input
+				class="widefat"
+				id="<?php echo $this->get_field_id('view');?>"
+				name="<?php echo $this->get_field_name('view') ; ?>"
+				type="text"
+				value="<?php echo esc_attr($view); ?>"
+			/>
+		</p>
 		<?php
 	}
 
@@ -206,6 +259,7 @@ class lc_doorway_button extends WP_Widget
 		$instance['url'] = ( ! empty($new_instance['url'])) ? strip_tags( $new_instance['url']) : '' ;
 		$instance['img'] = ( ! empty($new_instance['img'])) ? strip_tags( $new_instance['img']) : '' ;
 		$instance['alt'] = ( ! empty($new_instance['alt'])) ? strip_tags( $new_instance['alt']) : '' ;
+		$instance['view'] = ( ! empty($new_instance['view'])) ? strip_tags( $new_instance['view']) : '' ;
 		return $instance;
 	}
 }
@@ -214,10 +268,10 @@ function tanvas_widgets_init() {
 	register_sidebar( array(
 		'name' 			=> 'Home Doorway Buttons',
 		'id' 			=> 'tanvas_home_doorway',
-		'before_widget'	=> '<div class="widget doorway-button col-xs-6 col-sm-4">',
-		'after_widget'	=> '</div>',
-		'before_title'	=> '<h2>',
-		'after_title'	=> '</h2>'
+		'before_widget'	=> '<li><div class="doorway-container">',
+		'after_widget'	=> '</div></li>',
+		'before_title'	=> '<h5 class="doorway-title">',
+		'after_title'	=> '</h5>'
 	));
 	register_sidebar( array (
 		'name' 			=> 'Home Doorway Sidebar',
@@ -242,7 +296,60 @@ function tanvas_widgets_init() {
 		'after_widget'	=> '</div>',
 		'before_title'	=> '<h2>',
 		'after_title'	=> '</h2>'
-	));		
+	));	
+	register_sidebar( array (
+		'name' 			=> 'Home Doorway Bottom',
+		'id'			=> 'tanvas_home_doorway_bottom',
+		'before_widget' => '<div class="widget-doorway-bottom">',
+		'after_widget'	=> '</div>',
+		'before_title'	=> '<h2>',
+		'after_title'	=> '</h2>'
+	));	
+	
+	register_sidebar(array(
+		'name' => __( 'Footer Widgets One', TRANSLATION ),
+		'id' => 'widget-one',
+		'before_widget' => '<div class="footer-wigget">',
+		'after_widget' => '</div>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>'
+	));
+	
+	register_sidebar(array(
+		'name' => __( 'Footer Widgets Two', TRANSLATION ),
+		'id' => 'widget-two',
+		'before_widget' => '<div class="footer-wigget">',
+		'after_widget' => '</div>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>'
+	));
+	
+	register_sidebar(array(
+		'name' => __( 'Footer Widgets Three', TRANSLATION ),
+		'id' => 'widget-three',
+		'before_widget' => '<div class="footer-wigget">',
+		'after_widget' => '</div>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>'
+	));
+	
+	register_sidebar(array(
+		'name' => __( 'Footer Widgets Four', TRANSLATION ),
+		'id' => 'widget-four',
+		'before_widget' => '<div class="footer-wigget">',
+		'after_widget' => '</div>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>'
+	));
+	
+	register_sidebar(array(
+		'name' => __( 'Footer Widgets Five', TRANSLATION ),
+		'id' => 'widget-five',
+		'before_widget' => '<div class="footer-wigget">',
+		'after_widget' => '</div>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>'
+	));
 
 	register_widget( 'lc_doorway_button');
 }
@@ -579,4 +686,164 @@ function maybe_clear_attribute_select_box( ) {
 	}
 }
 add_action('woocommerce_before_add_to_cart_form', 'maybe_clear_attribute_select_box');
-?>
+
+
+
+add_action( 'init', 'register_my_menu' );
+function register_my_menu() {
+    register_nav_menu( 'new-menu', __( 'New Menu' ) );
+}
+
+
+//custom excerpt length
+function excerpt($limit) {
+  $excerpt = explode(' ', get_the_excerpt(), $limit);
+  if (count($excerpt)>=$limit) {
+    array_pop($excerpt);
+    $excerpt = implode(" ",$excerpt).'...';
+  } else {
+    $excerpt = implode(" ",$excerpt);
+  }
+  $excerpt = preg_replace('`[[^]]*]`','',$excerpt);
+  return $excerpt;
+}
+
+//Register Post Types
+// add_action( 'init', 'create_testimonial' );
+// function create_testimonial() {
+	// register_post_type( 'testimonial',
+		// array(
+			// 'labels' => array(
+				// 'name' => __( 'Testimonials' ),
+				// 'singular_name' => __( 'Testimonial' )
+			// ),
+		// 'public' => true,
+		// 'has_archive' => true,
+		// 'menu_icon' => get_stylesheet_directory_uri() .'/img/testimonials-16.png',
+		// 'supports' => array( 'title', 'editor', 'author', 'thumbnail')
+		// )
+	// );
+// }
+
+//Widget Recent Posts
+add_action( 'widgets_init', 'custom_latest_posts_widget' );
+function custom_latest_posts_widget() {
+	register_widget( 'CUSTOM_LATEST_POSTS_WIDGETS' );
+}
+
+class CUSTOM_LATEST_POSTS_WIDGETS extends WP_Widget {
+
+	function CUSTOM_LATEST_POSTS_WIDGETS() {
+		$widget_ops = array( 'classname' => 'custom_latest_posts_widget', 'description' => __('A widget that displays recent posts', 'custom_latest_posts_widget') );
+		
+		$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'custom_latest_posts_widget' );
+		
+		$this->WP_Widget( 'custom_latest_posts_widget', __('Technotan: Latest Posts', 'custom_latest_posts_widget'), $widget_ops, $control_ops );
+	}
+	
+	function widget( $args, $instance ) {
+		extract( $args );
+
+		//Our variables from the widget settings.
+		$title = apply_filters('widget_title', $instance['title'] );
+		$number_of_posts = $instance['number_of_posts'];
+		$display_thumbnails = isset( $instance['display_thumbnails'] ) ? $instance['display_thumbnails'] : false;
+		
+		echo $before_widget;
+
+
+		$number_of_posts = ( ! empty( $instance['number_of_posts'] ) ) ? absint( $instance['number_of_posts'] ) : 10;
+		if ( ! $number_of_posts )
+ 			$number_of_posts = 10;
+		
+		$viewall = $instance['viewall'];
+?>		
+		<?php 
+		
+		query_posts(array('posts_per_page' => $number_of_posts)); ?>
+		<div id="recent-posts-section" class="f-row">
+			<div id="recent-posts" class="large-10 columns">
+				
+				<?php 
+					// Display the widget title 
+					if ( $title )
+					echo '<center>'.$before_title . $title . $after_title.'</center>';
+				?>
+			
+				<ul id="recent-posts-items" class="small-block-grid-1 medium-block-grid-3 large-block-grid-3">
+				<?php 						
+					while ( have_posts() ) : the_post(); 	
+					global $post;		
+					$featured_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );					
+				?>
+					<li class="list">															
+						<?php if ( $display_thumbnails ) : ?>
+							<?php if ( has_post_thumbnail() ) { ?>
+								<center><img class="recent-posts-img" src="<?php bloginfo('stylesheet_directory');?>/timthumb.php?src=<?= $featured_image; ?>&amp;w=91&amp;h=91" /></center>
+							<?php } ?>
+						<?php endif;?>
+										
+						<center><h5 class="title"><?php the_title(); ?></h5></center>
+												
+						<p><?php echo excerpt(10); ?></p>
+						<a class="read-more" href="<?php the_permalink(); ?>">Read more</a>
+												
+					</li>
+				<?php endwhile; wp_reset_query();?>
+				</ul>
+				
+				<?php if($viewall) : ?>
+					<center>
+						<a class="view-all" href="<?php echo $viewall; ?>">View All</a>
+					</center>
+				<?php endif;?>
+				
+			</div>
+		</div>
+<?php
+		echo $after_widget;
+	}
+
+	//Update the widget 
+	function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+
+		//Strip tags from title and name to remove HTML 
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['number_of_posts'] = strip_tags( $new_instance['number_of_posts'] );
+		$instance['viewall'] = strip_tags( $new_instance['viewall'] );
+		$instance['display_thumbnails'] = isset( $new_instance['display_thumbnails'] ) ? (bool) $new_instance['display_thumbnails'] : false;
+
+		return $instance;
+	}
+
+	function form( $instance ) {
+
+		//Set up some default widget settings.
+		$display_thumbnails = isset( $instance['display_thumbnails'] ) ? (bool) $instance['display_thumbnails'] : false;
+		$instance = wp_parse_args( (array) $instance, $defaults ); 
+		?>
+		
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'custom_latest_posts_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
+		</p>
+		
+		<p>
+			<label for="<?php echo $this->get_field_id( 'number_of_posts' ); ?>"><?php _e('Number of posts to show:', 'custom_latest_posts_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'number_of_posts' ); ?>" name="<?php echo $this->get_field_name( 'number_of_posts' ); ?>" value="<?php echo $instance['number_of_posts']; ?>" style="width:100%;" />
+		</p>
+		
+		<p>
+			<label for="<?php echo $this->get_field_id( 'display_thumbnails' ); ?>"><?php _e('Display post thumbnail?', 'custom_latest_posts_widget'); ?></label>
+			<input class="checkbox" type="checkbox" <?php checked($display_thumbnails); ?> id="<?php echo $this->get_field_id( 'display_thumbnails' ); ?>" name="<?php echo $this->get_field_name( 'display_thumbnails' ); ?>" /> 
+			
+		</p>
+		
+		<p>
+			<label for="<?php echo $this->get_field_id( 'viewall' ); ?>"><?php _e('View All Link:', 'custom_latest_posts_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'viewall' ); ?>" name="<?php echo $this->get_field_name( 'viewall' ); ?>" value="<?php echo $instance['viewall']; ?>" style="width:100%;" />
+		</p>
+	<?php
+	}
+}

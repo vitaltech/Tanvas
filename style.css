@@ -16,6 +16,19 @@
 /* =Theme customization starts here
 -------------------------------------------------------------- */
 
+
+@font-face {
+	font-family: "texgyreadventor";
+	src: url("fonts/texgyreadventor-regular.eot");
+	src: url("fonts/texgyreadventor-regular.eot#iefix") format("embedded-opentype"),
+	url("fonts/texgyreadventor-regular.woff") format("woff"),
+	url("fonts/texgyreadventor-regular.ttf") format("truetype"),
+	url("fonts/texgyreadventor-regular.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+
 /**
  * DEMO STORE NOTICE MODS
  */
@@ -187,9 +200,10 @@ div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanva
 	position: relative;
 	display: block;
 	margin: 0px 10px 20px 10px;
-	border-style:solid;
+	/*border-style:solid;
     border-width: medium;
-    border-color: #d1aa67;	
+    border-color: #d1aa67;	*/
+	max-height: 300px;
 }
 
 div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a h2{
@@ -259,16 +273,16 @@ div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanva
 }
 
 div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget a{
-	background-color: white;
+	/*background-color: white;*/
 	position: relative;
 	display: block;
 	top: 0px;
 	left: 0px;
 	bottom: 0px;
 	right: 0px;
-	border-style:solid;
+	/*border-style:solid;
     border-width: medium;
-    border-color: #d1aa67;	
+    border-color: #d1aa67;	*/
     max-width: 300px;
 	max-height: 300px;
 }
@@ -312,9 +326,10 @@ div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget,
 aside#sidebar div.widget,
 div.widget-area#tanvas_home_right div.widget {
 	background-color: white;
-	border-color: #d1aa67;
+	/*border-color: #d1aa67;
 	border-style: solid;
-	border-width: medium;
+	border-width: medium;*/
+	border: 3px solid #020016;
 } 
 
 div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget h2,
@@ -598,6 +613,7 @@ form.searchform {
 div.woocommerce.widget_product_search form#searchform input#s{
 	background: inherit;
 	background-color: white;
+	position: relative;
 }
 
 /* improve search box text visibility */
