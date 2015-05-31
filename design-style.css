@@ -23,8 +23,29 @@ div.widget #connect p a{
 	padding-bottom: 5px !important;
 }
 
-#connect .newsletter-form .email {
+#connect .newsletter-form .email, form#searchform input#s {
 	width: 70% !important;
+}
+aside#sidebar form#searchform #searchsubmit {
+	cursor: pointer;
+	padding: 10px 21px;
+	margin: 0 0 0 5px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+body #wrapper .button:hover, 
+body #wrapper #content .button:hover, 
+body #wrapper #content #respond .form-submit input#submit:hover, 
+input[type=submit]:hover, 
+body #wrapper #searchsubmit:hover, 
+#navigation ul.cart .button:hover, 
+body #wrapper .woo-sc-button:hover {
+	background: #C09957 !important;
+	transition-duration: 0.6s;
+	-moz-transition-duration: 0.6s;
+	-webkit-transition-duration: 0.6s;
+	-o-transition-duration: 0.6s;
 }
 
 #connect p {
@@ -40,9 +61,21 @@ body {
   background-color: #FFFFFF !important;
 }
 
-section.main-section {
+/*page*/
+section#main {
+	border-color: #020016 !important;
+}
+.breadcrumbs {
+	margin-bottom: 1.5em !important;
+}
+body.page-id-8 article.post-8 .woocommerce h2 {
+	font-weight: 100;
+}
+
+#wrapper-section {
 	background-image: url(img/doorway-bgimage.png);
 	background-position: center center;
+	background-size: cover;
 }
 
 /*slider*/
@@ -52,7 +85,7 @@ section.main-section {
 }
 
 .home #wrapper {
-	margin-top: 5px;
+	padding-top: 5px !important;
 }
  
 .main-slider #loopedSlider.business-slider img.woo-image {
@@ -92,7 +125,7 @@ div#doorway-button-sidebar-container .widget {
 	background-color: transparent;
 	margin: 0 0 10px;
 	padding: 10px 13px 5px;
-	border: solid 2px #e2b86f;
+	border: solid 2px #020016;
 	-webkit-box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.39);
 	-moz-box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.39);
 	box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.39);
@@ -121,7 +154,7 @@ ul#doorway-items {
 
 .doorway-container {
 	position: relative;
-	border: solid 2px #e2b86f;
+	border: solid 2px #020016;
 	max-width: 300px;
 	max-height: 300px !important;
 	margin: 0;
@@ -188,6 +221,9 @@ a#doorway-link:hover {
 #recent-posts {
 	margin: 0 auto;
 	float: none;
+}
+#recent-posts .title h2 {
+	color: #000000 !important;
 }
 
 #recent-posts-section {
@@ -296,7 +332,7 @@ ul.contact-us li {
 	display: inline-block;
 }
 
-ul.contact-us li.first {
+ul.contact-us li.border {
 	border-right: 1px solid #d1aa67;
 	padding-right: 9px;
 }
@@ -326,20 +362,30 @@ li.woo-items {
 	padding-top: 0;
 	padding-left: 10px;
 }
-
-a.call {
-	/*background: url(img/call.png) no-repeat 0 8px scroll transparent;*/
-	background: url(img/phone.png) no-repeat 0 9px scroll transparent;
+a.cphone {
+	background: url(img/phone.png) no-repeat 0 7px scroll transparent;
 	display: block;
-	/*padding-top: 6px;*/
-	padding-top: 10px;
-	/*padding-left: 20px;*/
+	padding-top: 6px;
 	padding-left: 15px;
-	padding-right: 8px;
+	padding-right: 20px;
+	padding-bottom: 6px;
 	font: normal 11px/1.5em Arial, sans-serif !important;
 	color: #fff !important;
-	
-	padding-bottom: 9px;
+}
+a.phone {
+	/*background: url(img/call.png) no-repeat 0 8px scroll transparent;*/
+	background: url(img/phone-b.png) no-repeat 0 9px scroll transparent;
+	display: block;
+	padding-top: 12px;
+	padding-left: 31px;
+	padding-right: 8px;
+	padding-bottom: 12px;
+	font-size: 40px !important;
+	font-family: "texgyreadventor" !important;
+	color: #d1aa67 !important;
+}
+a.phone:hover {
+	text-decoration: none;
 }
 
 .woo-items a {
@@ -359,13 +405,13 @@ a.bag {
 	height: 25px;
 }
 
-a.phone {
-	/*background: url(img/phone.png) no-repeat 0 0 scroll transparent; */
+/*a.phone {
+	/*background: url(img/phone.png) no-repeat 0 0 scroll transparent; 
 	background: url(img/call.png) no-repeat 0 5px scroll transparent; 
 	display: block;
 	padding-top: 4px;
 	padding-left: 25px;
-}
+}*/
 
 a.shop {
 	margin-left: auto;
@@ -390,7 +436,6 @@ a.shop:hover {
 /*socil icons*/
 ul.social-icons {
 	margin-left: 8px;
-	top: 8px;
 	position: relative;
 }
 
@@ -399,9 +444,26 @@ ul.social-icons li{
 	list-style: none;
 	margin-left: -3px;
 }
+ul.social-icons li h2 {
+	color: #000000 !important;
+}
+ul.social-icons li.title {
+	position: absolute;
+	top: 3px;
+	color: #000000 !important;
+	left: -110px;
+	margin: 0;
+}
+ul#show-title {
+	margin-left: 115px;
+}
+ul.social-icons  li.icon:first-child {
+	margin-left: 15px !important;
+}
 
 ul.social-icons a{
 	background-size: 100% 100%;
+	margin-right: 4px;
 	display: block;
 	opacity: 1;
 	height: 30px;
@@ -424,11 +486,11 @@ ul.social-icons a.youtube{
 	background: url(img/youtube-icon.png) no-repeat 0 0 scroll transparent; 
 }
 
-ul.social-icons a.instagram{ 
+ul.social-icons a.ig{ 
 	background: url(img/ig-icon.png) no-repeat 0 0 scroll transparent; 
 }
 
-ul.social-icons a.gmail{ 
+ul.social-icons a.googleplus{ 
 	background: url(img/gmail-icon.png) no-repeat 0 0 scroll transparent; 
 }
 
@@ -480,6 +542,7 @@ ul.social-icons a.gmail{
 .menu-search .fa-search:before {
 	content: "";
 	background-image: url(img/search-icon.png);
+	background-size: 100% 100%;
 	height: 17px;
 	width: 17px;
 	display: block;
@@ -610,6 +673,7 @@ ul.social-icons a.gmail{
 .primary-navigation .menu-item-has-children:hover > a:after,
 .primary-navigation .page_item_has_children:hover > a:after {
 	background-image: url(img/menu-icon-hover.png);
+	background-size: 100% 100%;   
 }
 	
 .primary-navigation .menu-item-has-children > a:after,
@@ -617,6 +681,7 @@ ul.social-icons a.gmail{
 	content: "";
 	display: inline-block;
 	background-image: url(img/menu-icon-black.png);
+	background-size: 100% 100%;   
 	height: 6px;
 	width: 10px;
 	line-height: .75;
@@ -685,6 +750,7 @@ ul.social-icons a.gmail{
 	content: "";
 	display: inline-block;
 	background-image: url(img/menu-icon.png);
+	background-size: 100% 100%;
 	height: 6px;
 	width: 10px;
 	line-height: .75;
@@ -704,6 +770,7 @@ ul.social-icons a.gmail{
 .main-menu-bottom ul#top-nav li.current_page_item.parent > a:after,
 .main-menu-bottom ul#top-nav li.current-menu-item.parent > a:after {
 	background-image: url(img/menu-icon-hover.png);
+	background-size: 100% 100%; 
 }
 
 li#menu-item-2381 {
@@ -907,6 +974,12 @@ ul.paypal li {
 	list-style-type: none;
 }
 
+/*login*/
+form.login {
+	max-width: 300px;
+}
+
+
 /*responsive*/
 @media only screen and (min-width: 64.0625em) {
 	.large-block-grid-4 > li.address-technotan {
@@ -1012,6 +1085,21 @@ ul.paypal li {
 	a.shop {
 		margin-right: auto;
 	}
+	#registered-user ul.woo-contact-us li#cphone {
+		padding-left: 22px;
+	}
+	#registered-user ul.woo-contact-us li.woo-items {
+		display: table;
+		margin: 0 auto;
+		padding-left: 0;
+	}
+	#registered-user ul.woo-contact-us li a.cphone {
+		display: table;
+		margin: 0 auto;
+	}
+	#registered-user ul.woo-contact-us li {
+		float: none;
+	}
 }
 
 @media only screen and (max-width: 690px) {
@@ -1074,6 +1162,21 @@ ul.paypal li {
 	}
 	.home #wrapper {
 		padding: 0 .6em .6em;
+	}
+	#visitor ul.woo-contact-us li#cphone {
+		padding-left: 22px;
+	}
+	#visitor ul.woo-contact-us li.woo-items {
+		display: table;
+		margin: 0 auto;
+		padding-left: 0;
+	}
+	#visitor ul.woo-contact-us li a.cphone {
+		display: table;
+		margin: 0 auto;
+	}
+	#visitor ul.woo-contact-us li {
+		float: none;
 	}
 }
 

@@ -17,6 +17,7 @@
 	</div><!-- /#inner-wrapper -->
 
 </div><!-- /#wrapper -->
+</div><!-- /#wrapper-section -->
 
 <div class="fix"></div><!--/.fix-->
 
@@ -95,6 +96,9 @@
 			autoHeight : true,
 			transitionStyle:"fade"
 		});
+		
+		$(".nav-entries span.nav-prev.fl").html("Previous");
+		$(".nav-entries span.nav-next.fr").html("Next");
 	});
 	</script>
 	

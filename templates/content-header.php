@@ -18,18 +18,18 @@
 			</div>
 			<div class="medium-6 columns">	
 				<ul class="contact-us">
-					<li class="first">
+					<li>
 						<!--a href="tel://61894123000" class="phone">+618 9412 3000</a-->
 						<a href="tel://1300135941" class="phone">1300 135 941</a>
 					</li>
-					<li>
+					<!--li>
 						<ul class="social-icons">
 							<li><a href="" class="facebook"></a></li>
 							<li><a href="" class="youtube"></a></li>
 							<li><a href="" class="instagram"></a></li>
 							<li><a href="" class="gmail"></a></li>
 						</ul>
-					</li>
+					</li-->
 				</ul>
 				<a href="<?php echo esc_url( $site_url );?>shop/" class="shop">SHOP ONLINE</a>
 			</div>

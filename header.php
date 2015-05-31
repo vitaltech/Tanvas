@@ -38,7 +38,7 @@ global $woo_options, $wp_query;
 				
 		<?php get_template_part('templates/content', 'topheader'); ?>
 		
-		<?php get_template_part('templates/content', 'simpleads-header'); ?>
+		<?php get_template_part('templates/content', 'header'); ?>
 		
 		<?php get_template_part('templates/content', 'menu'); ?>
 		
@@ -52,6 +52,7 @@ global $woo_options, $wp_query;
 		<?php if ( ( isset( $woo_options['woo_slider_biz'] ) && 'true' == $woo_options['woo_slider_biz'] ) && ( isset( $woo_options['woo_slider_biz_full'] ) && 'false' == $woo_options['woo_slider_biz_full'] ) ) { $saved = $wp_query; woo_slider_biz(); $wp_query = $saved; } ?>
 	</div>
 
+<div id="wrapper-section">
 <div id="wrapper">
 	<div id="inner-wrapper">
 	

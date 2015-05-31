@@ -1,12 +1,12 @@
 	<div id="<?php if ( is_user_logged_in() ) { echo 'registered-user'; } else { echo 'visitor'; } ?>" class="top-header">
 		<div class="f-row">
-	
-			<div class="small-5 columns">			
-				<a href="tel://0477764985" class="call">0477 764 985 </a>
-			</div>
-			<div class="small-7 columns">
+
+			<div class="small-12 columns">
 				<ul class="woo-contact-us">
-					<li class="first">
+					<li id="cphone">
+						<a href="tel://0477764985" class="cphone">(+61) 0477 764 985 </a>
+					</li>
+					<li class="border">
 						<!--a href="tel://1300135941" class="call">1300 135 941</a-->
 						<p class="woo-link">
 						<?php 
@@ -17,7 +17,7 @@
 						echo "<a href='$account_url'>My Account</a> | ";
 						echo "<a href='$admin_url'>Admin</a> | ";
 						echo "<a href='$logout_url'>Log Out</a>";
-						echo "<br/> ";
+						echo "  ";
 						global $current_user;
 						get_currentuserinfo();
 						$display_name = $current_user->display_name;
@@ -29,7 +29,7 @@
 						}
 						} else {
 							$login_url = wp_login_url( $account_url );
-							$request_url = '/';
+							$request_url = get_site_url(0,"create-account");;
 							echo "<a href='$login_url'>Log In</a> | <a href='$request_url'>Request Account</a>";
 						}
 						?>
