@@ -28,8 +28,10 @@
 							echo " | " . $user->roles[0];
 						}
 						} else {
-							$login_url = wp_login_url( $account_url );
+							// $login_url = wp_login_url( $account_url );
+							$login_url = $account_url;
 							$request_url = get_site_url(0,"create-account");;
+							// $request_url = wp_registration_url(); 
 							echo "<a href='$login_url'>Log In</a> | <a href='$request_url'>Request Account</a>";
 						}
 						?>
