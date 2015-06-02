@@ -162,10 +162,7 @@ p.woocommerce-result-count {
  */
 
 /* make <a> font visible on widgets */
-div.widget a {
-	color: #000000;
-}
-
+div.widget a,
 div.widget h2 {
 	color: #000000;
 }
@@ -192,16 +189,13 @@ div.widget-area-container#doorway-button-sidebar-container{
 	background: transparent;
 }
 
-div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-sidebar div.widget{
+div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-sidebar div.widget,
+div#tanvas-home-doorway-bottom div.widget-doorway-bottom div{
 	background: white;
 }
 
 div#tanvas-home-doorway-bottom div.widget-doorway-bottom {
 	padding: 0px;
-}
-
-div#tanvas-home-doorway-bottom div.widget-doorway-bottom div {
-	background: white;
 }
 
 div#recent-posts-section {
@@ -358,6 +352,11 @@ div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget h2,
 div.widget-area#tanvas_home_right div.widget h2,
 aside#sidebar div.widget h3  {
 	color: #d1aa67;
+}
+
+aside#sidebar div.widget p.buttons,
+aside#sidebar div.widget a.woo-sc-button {
+	margin-bottom: 0px;
 }
 
 /**
