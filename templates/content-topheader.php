@@ -12,27 +12,31 @@
 						<?php 
 						$account_url = get_site_url(0,"my-account");
 						if( is_user_logged_in() ){
-						$logout_url = wp_logout_url();
-						$admin_url = get_admin_url();
-						echo "<a href='$account_url'>My Account</a> | ";
-						echo "<a href='$admin_url'>Admin</a> | ";
-						echo "<a href='$logout_url'>Log Out</a>";
-						echo "  ";
-						global $current_user;
-						get_currentuserinfo();
-						$display_name = $current_user->display_name;
-						echo "Hello <strong>".$display_name."</strong>";
-						$user_ID = $current_user->ID;
-						$user = new WP_User( $user_ID );
-						if ( !empty( $user->roles ) && is_array( $user->roles ) ) {
-							echo " | " . $user->roles[0];
-						}
+							global $current_user;
+							get_currentuserinfo();
+							$display_name = $current_user->display_name;
+							echo "Hello <strong>".$display_name."</strong>";
+							$user_ID = $current_user->ID;
+							$user = new WP_User( $user_ID );
+							if ( !empty( $user->roles ) && is_array( $user->roles ) ) {
+								echo " (" . $user->roles[0] .")";
+							}
+
+							$logout_url = wp_logout_url();
+							$admin_url = get_admin_url();
+							echo " | <a href='$account_url'>My Account</a>";
+							if(is_admin()){
+								echo " | <a href='$admin_url'>Admin</a>";
+							}
+							echo " | <a href='$logout_url'>Log Out</a>";
+
 						} else {
 							// $login_url = wp_login_url( $account_url );
 							$login_url = $account_url;
-							$request_url = get_site_url(0,"create-account");;
+							// $request_url = get_site_url(0,"create-account");;
+							$help_url = get_site_url(0,"my-account/help");
 							// $request_url = wp_registration_url(); 
-							echo "<a href='$login_url'>Log In</a> | <a href='$request_url'>Request Account</a>";
+							echo "<a href='$login_url'>Log In</a> | <a href='$help_url'>Account Help</a>";
 						}
 						?>
 						</p>

@@ -690,7 +690,12 @@ function maybe_clear_attribute_select_box( ) {
 }
 add_action('woocommerce_before_add_to_cart_form', 'maybe_clear_attribute_select_box');
 
+function tanvas_output_login_help(){
+	$help_link = get_site_url(0,"my-account/help");
+	echo do_shortcode( '[button link="'.$help_link.'" bg_color="#d1aa67"]account help[/button]');
+}
 
+add_action( 'woocommerce_login_form_end', 'tanvas_output_login_help');
 
 add_action( 'init', 'register_my_menu' );
 function register_my_menu() {

@@ -189,7 +189,23 @@ div.header-widget div.widget a {
 
 /* make doorway button widgets appear without background */
 div.widget-area-container#doorway-button-sidebar-container{
-	background-color: transparent;
+	background: transparent;
+}
+
+div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-sidebar div.widget{
+	background: white;
+}
+
+div#tanvas-home-doorway-bottom div.widget-doorway-bottom {
+	padding: 0px;
+}
+
+div#tanvas-home-doorway-bottom div.widget-doorway-bottom div {
+	background: white;
+}
+
+div#recent-posts-section {
+	border-width: 2px;
 }
 
 div.widget-area-container#doorway-button-sidebar-container div.widget-area#tanvas-home-doorway-buttons div.widget{
@@ -704,6 +720,12 @@ li.product a h3 small{
 	padding-right: 8px;
 	padding-top: 6px;
 	text-align: center;
+}
+
+/* Ninja forms hide hidden wrap */
+
+div.ninja-forms-all-fields-wrap div.hidden-wrap{
+	display: none;
 }
 
 /* Woocommerce Product Bundles / Composite product display */
