@@ -71,11 +71,11 @@ add_action('wp_enqueue_scripts', function(){
 
 /* Ensure slider js is loaded */
 add_filter('woo_load_slider_js', function($load_slider_js){
-	if(WP_DEBUG) error_log("woo_load_slider_js filter called wit h" . ($load_slider_js?"T":"F"));
+	// if(WP_DEBUG) error_log("woo_load_slider_js filter called wit h" . ($load_slider_js?"T":"F"));
 	if(is_page_template( 'template-home.php')){
 		$load_slider_js = true;
 	} 
-	if(WP_DEBUG) error_log("woo_load_slider_js returning ". ($load_slider_js?"T":"F"));
+	// if(WP_DEBUG) error_log("woo_load_slider_js returning ". ($load_slider_js?"T":"F"));
 	return $load_slider_js;
 
 }, 999, 1);
@@ -368,8 +368,8 @@ function tanvas_add_social_icons () {
 	echo "<ul><li class='fr fa-facebook'><i class='facebook-official'></i></lu></ul>";
 }
 //add_action( 'woo_nav_inside', 'tanvas_add_social_icons', 20);
-
 function woo_options_add($options){
+
 	//if(WP_DEBUG) error_log("woo_options_add called with :".serialize($options));
 	return $options;
 }
