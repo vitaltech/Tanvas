@@ -3,9 +3,9 @@
 
 			<div class="small-12 columns">
 				<ul class="woo-contact-us">
-					<!-- <li id="cphone">
+					<li id="cphone">
 						<a href="tel://0477764985" class="cphone">(+61) 0477 764 985 </a>
-					</li> -->
+					</li>
 					<li class="border">
 						<!--a href="tel://1300135941" class="call">1300 135 941</a-->
 						<p class="woo-link">
