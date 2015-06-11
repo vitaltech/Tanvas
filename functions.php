@@ -402,6 +402,50 @@ function woocommerce_category_image() {
 
 /** Add log in warning to category **/
 
+function tanvas_get_help_button(){
+	return '[button link="/my-account/help" bg_color="#d1aa67"]'.__('Help', TANVAS_DOMAIN).'[/button]';
+}
+
+function tanvas_get_login_button(){
+	return '[button link="/my-account/" bg_color="#d1aa67"]'.__('Log In', TANVAS_DOMAIN).'[/button]';
+}
+
+function tanvas_display_user_cap_warnings($read_caps, $object_type){
+	$user_id = get_current_user_id();
+    if($read_caps){ //cat is restricted
+		$group_str = '"'. implode(', ', $read_caps). '"';
+		$first_group = $groups[0];
+
+		if($user_id){//logged in
+			$instructions = __('apply for a wholesale account or continue shopping for other products.', TANVAS_DOMAIN).' </br>'.
+				'[button link="/shop/" bg_color="#d1aa67"]'.__('Continue Shopping', TANVAS_DOMAIN).' '.tanvas_get_help_button();
+		} else {//not logged in
+			$instructions = __('log in or create an account.', TANVAS_DOMAIN).' </br>'.
+				tanvas_get_login_button() . ' ' . tanvas_get_help_button()  ;
+		}
+		
+		echo do_shortcode(
+			'[groups_non_member group='.$group_str.']'.
+				'[box type="alert"]'.
+					__('This '.$object_type.' is not visible to you because you do not have the correct privileges. ', TANVAS_DOMAIN).
+					__('To view these products please ', TANVAS_DOMAIN).
+					$instructions .
+				'[/box]'.
+			'[/groups_non_member]'
+		);						
+
+    } else {//cat is not restricted
+    	if(!$user_id){
+    		echo do_shortcode(
+    			'[box type="info"]'.
+	    			__('You may not be getting the best deal! Log in or create an account to get prices crafted specially for you.', TANVAS_DOMAIN).'<br/>'.
+	    			tanvas_get_login_button() . ' ' . tanvas_get_help_button() .
+    			'[/box]'
+			);
+    	}
+    }
+}
+
 function tanvas_woocommerce_category_warning() {
     if ( is_product_category() ){
 	    global $wp_query;
@@ -411,39 +455,25 @@ function tanvas_woocommerce_category_warning() {
 	    if(class_exists('Groups_Restrict_Categories')){
 		    $read_caps = Groups_Restrict_Categories::get_term_read_capabilities( $term_id );
 	    }
-	    // echo print_r(serialize($read_caps), true);
-
-	    if($read_caps){ //cat is restricted
-			$group_str = '"'. implode(', ', $read_caps). '"';
-			$first_group = $groups[0];
-			$user_id = get_current_user_id();
-
-			if($user_id){//logged in
-				$instructions = 'apply for a wholesale account or continue shopping for other products. </br>'.
-					'[button link="/shop/" bg_color="#d1aa67"]Continue Shopping[/button][button link="/my-account/help?topic=upgrade" bg_color="#d1aa67"]Account Help[/button]';
-			} else {//not logged in
-				$instructions = 'log in or create an account. </br>'.
-					'[button link="/my-account/" bg_color="#d1aa67"]Log In[/button][button link="/my-account/help" bg_color="#d1aa67"]Account Help[/button]';
-			}
-			
-			echo do_shortcode(
-				'[groups_non_member group='.$group_str.']'.
-					'[box type="alert"]'.
-						'This category is not visible to you because you do not have the correct privileges. '.
-						'To view these products please '.
-						$instructions .
-					'[/box]'.
-				'[/groups_non_member]</p>'
-			);						
-
-	    } else {//cat is not restricted
-	    	if(!$user_id){
-	    		echo do_shortcode('<p>[box type="info"]You may not be getting the best deal! Log in or create an account to get prices crafted specially for you.</p>[button link="/my-account/" bg_color="#d1aa67"]Log In[/button][button link="/my-account/help" bg_color="#d1aa67"]Account Help[/button] [/box]');
-	    	}
-	    }
+	    tanvas_display_user_cap_warnings($read_caps, 'category');
 	}
 }
+
+function tanvas_woocommerce_product_warning(){
+	if( is_product() ){
+		global $product;
+		$product_id = $product->id;
+		$read_caps = null;
+		if(class_exists('Groups_Post_Access')){
+			$read_caps = Groups_Post_Access::get_read_post_capabilities( $product_id );
+		}
+		tanvas_display_user_cap_warnings($read_caps, 'product');
+	}
+}
+
 add_action( 'woocommerce_archive_description', 'tanvas_woocommerce_category_warning', 15 );
+
+add_action( 'woocommerce_single_product_summary', 'tanvas_woocommerce_product_warning', 7);
 
 
 /** Removes sort by dropdown **/
