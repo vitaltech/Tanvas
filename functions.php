@@ -418,7 +418,7 @@ function tanvas_display_user_cap_warnings($read_caps, $object_type){
 
 		if($user_id){//logged in
 			$instructions = __('apply for a wholesale account or continue shopping for other products.', TANVAS_DOMAIN).' </br>'.
-				'[button link="/shop/" bg_color="#d1aa67"]'.__('Continue Shopping', TANVAS_DOMAIN).' '.tanvas_get_help_button();
+				'[button link="/shop/" bg_color="#d1aa67"]'.__('Continue Shopping', TANVAS_DOMAIN).'[/button] '.tanvas_get_help_button();
 		} else {//not logged in
 			$instructions = __('log in or create an account.', TANVAS_DOMAIN).' </br>'.
 				tanvas_get_login_button() . ' ' . tanvas_get_help_button()  ;
