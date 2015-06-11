@@ -380,13 +380,13 @@ function woo_options_add($options){
 
 /** Add category image to category archive page */
 
-add_action( 'woocommerce_archive_description', 'woocommerce_category_image', 2 );
+// add_action( 'woocommerce_archive_description', 'woocommerce_category_image', 2 );
 function woocommerce_category_image() {
     if ( is_product_category() ){
 	    global $wp_query;
 	    $cat = $wp_query->get_queried_object();
 	    $thumbnail_id = get_woocommerce_term_meta( $cat->term_id, 'thumbnail_id', true );
-	    
+
 	    // if( $thumbnail_id ){
 	    // 	echo wp_get_attachment_image( $thumbnail_id, 'full' );
 	    // }
@@ -400,8 +400,53 @@ function woocommerce_category_image() {
 	}
 }
 
-/** Removes sort by dropdown **/
+/** Add log in warning to category **/
 
+function tanvas_woocommerce_category_warning() {
+    if ( is_product_category() ){
+	    global $wp_query;
+	    $cat = $wp_query->get_queried_object();
+	    $term_id = $cat->term_id;
+	    $read_caps = null;
+	    if(class_exists('Groups_Restrict_Categories')){
+		    $read_caps = Groups_Restrict_Categories::get_term_read_capabilities( $term_id );
+	    }
+	    // echo print_r(serialize($read_caps), true);
+
+	    if($read_caps){ //cat is restricted
+			$group_str = '"'. implode(', ', $read_caps). '"';
+			$first_group = $groups[0];
+			$user_id = get_current_user_id();
+
+			if($user_id){//logged in
+				$instructions = 'apply for a wholesale account or continue shopping for other products. </br>'.
+					'[button link="/shop/" bg_color="#d1aa67"]Continue Shopping[/button][button link="/my-account/help?topic=upgrade" bg_color="#d1aa67"]Account Help[/button]';
+			} else {//not logged in
+				$instructions = 'log in or create an account. </br>'.
+					'[button link="/my-account/" bg_color="#d1aa67"]Log In[/button][button link="/my-account/help" bg_color="#d1aa67"]Account Help[/button]';
+			}
+			
+			echo do_shortcode(
+				'[groups_non_member group='.$group_str.']'.
+					'[box type="alert"]'.
+						'This category is not visible to you because you do not have the correct privileges. '.
+						'To view these products please '.
+						$instructions .
+					'[/box]'.
+				'[/groups_non_member]</p>'
+			);						
+
+	    } else {//cat is not restricted
+	    	if(!$user_id){
+	    		echo do_shortcode('<p>[box type="info"]You may not be getting the best deal! Log in or create an account to get prices crafted specially for you.</p>[button link="/my-account/" bg_color="#d1aa67"]Log In[/button][button link="/my-account/help" bg_color="#d1aa67"]Account Help[/button] [/box]');
+	    	}
+	    }
+	}
+}
+add_action( 'woocommerce_archive_description', 'tanvas_woocommerce_category_warning', 15 );
+
+
+/** Removes sort by dropdown **/
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 
 
