@@ -742,3 +742,12 @@ form.bundle_form,
 form.composite_form {
 	clear:both;
 }
+
+.entry img {
+	border-style: none;
+}
+
+
+strong.warning {
+	color: red;
+}

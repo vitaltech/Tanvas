@@ -836,7 +836,7 @@ footer .f-row {
 
 /*mobile menu*/
 p.demo_store {
-	display: none;
+	display: block;
 }
 
 ul.off-canvas-list li a:hover {
