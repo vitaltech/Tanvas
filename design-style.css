@@ -979,6 +979,29 @@ form.login {
 	max-width: 300px;
 }
 
+/*shop*/
+div#productcategory {
+  position: relative;
+}
+ul.products li.product a img {
+	position: relative;
+	z-index: 1;
+}
+ul.products li.product a {
+	position: relative;
+}
+ul.products .product-category-gold-img-section {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	text-align: center;
+	background-image: url(img/gold-background.jpg);
+	background-size: 100% 100%;
+	width: 100%;
+	height: 100%;
+}
 
 /*responsive*/
 @media only screen and (min-width: 64.0625em) {
