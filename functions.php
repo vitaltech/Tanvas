@@ -581,7 +581,6 @@ add_filter(
 	3
 );
 
-
 /**
  * Login Customizations
  */
