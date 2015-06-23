@@ -747,7 +747,6 @@ form.composite_form {
 	border-style: none;
 }
 
-
 strong.warning {
-	color: red;
+	background-color: red;
 }
