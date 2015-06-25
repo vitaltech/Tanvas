@@ -363,7 +363,7 @@ li.woo-items {
 	padding-left: 10px;
 }
 a.cphone {
-	background: url(img/phone.png) no-repeat 0 7px scroll transparent;
+	/*background: url(img/phone.png) no-repeat 0 7px scroll transparent;*/
 	display: block;
 	padding-top: 6px;
 	padding-left: 15px;
@@ -374,13 +374,16 @@ a.cphone {
 }
 a.phone {
 	/*background: url(img/call.png) no-repeat 0 8px scroll transparent;*/
-	background: url(img/phone-b.png) no-repeat 0 9px scroll transparent;
+	/*background: url(img/phone-b.png) no-repeat 0 9px scroll transparent;*/
 	display: block;
-	padding-top: 12px;
+	/*padding-top: 12px;*/
+	padding-top: 4px;
 	padding-left: 31px;
 	padding-right: 8px;
-	padding-bottom: 12px;
-	font-size: 40px !important;
+	/*padding-bottom: 12px;*/
+	/*font-size: 40px !important;*/
+	font-size: 20px !important;
+	padding-bottom: 4px;
 	font-family: "texgyreadventor" !important;
 	color: #d1aa67 !important;
 }
@@ -421,7 +424,8 @@ a.shop {
 	font: normal 31px/1.5em Arial, sans-serif !important;
 	background-color: #940000;
 	max-width: 284px;
-	margin-top: 25px;
+	/*margin-top: 25px;*/
+	margin-top: 6px;
 	transition-duration: 0.6s;
 	-moz-transition-duration: 0.6s;
 	-webkit-transition-duration: 0.6s;

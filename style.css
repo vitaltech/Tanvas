@@ -750,3 +750,13 @@ form.composite_form {
 strong.warning {
 	background-color: red;
 }
+
+/*table h2*/
+.entry table tbody h2 {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+a.woo-sc-button {
+	margin-bottom: 0px !important;
+}
