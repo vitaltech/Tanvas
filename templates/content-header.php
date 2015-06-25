@@ -21,7 +21,7 @@
 					<li>
 						<a href="tel://1300135941" class="phone"><i class="fa fa-phone"></i> 1300 135 941</a>
 						<a href="tel://61894123000" class="phone"><i class="fa fa-phone"></i><i class="fa fa-globe"></i> (+61) 08 9412 3000</a>
-						<!-- <a href="tel://61477764985" class="phone">TXT <i class="fa fa-mobile"></i> (+61) 04 7776 4985</a> -->
+						<!-- <a href="tel://61477764985" class="phone">SMS <i class="fa fa-mobile"></i> (+61) 04 7776 4985</a> -->
 					</li>
 					<!--li>
 						<ul class="social-icons">

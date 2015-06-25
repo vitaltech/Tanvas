@@ -743,6 +743,14 @@ form.composite_form {
 	clear:both;
 }
 
+.entry img {
+	border-style: none;
+}
+
+strong.warning {
+	background-color: red;
+}
+
 /*table h2*/
 .entry table tbody h2 {
 	font-size: 1.2em;
