@@ -639,7 +639,7 @@ add_filter(
 		   }
 		}
 
-		if(WP_DEBUG) error_log("\nMETADATA: ".serialize($metadata));
+		// if(WP_DEBUG) error_log("\nMETADATA: ".serialize($metadata));
 
 		if(isset($metadata['title'])){
 			$meta['title'] = $metadata['title'];
@@ -655,6 +655,21 @@ add_filter(
 	0, 
 	3
 );
+
+/**
+ * Dynamic pricing customization
+ */
+
+function tanvas_remove_dynamic_cumulative( $default, $module_id, $cart_item, $cart_item_key){
+	// error_log("tanvas dynamic cumulative: ");
+	// error_log(" -> def: ".serialize($default));
+	// error_log(" -> mod: ".serialize($module_id));
+	// error_log(" -> car: ".serialize($cart_item));
+	// error_log(" -> cak: ".serialize($cart_item_key));
+	return $default;
+}
+
+add_filter('woocommerce_dynamic_pricing_is_cumulative', 'tanvas_remove_dynamic_cumulative', 10, 4);
 
 /**
  * Login Customizations
@@ -691,9 +706,9 @@ add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 
 // change the css if there are 3 columns
 function inject_column_css(){
-	if(WP_DEBUG) error_log("called inject_column_css callback");	
+	// if(WP_DEBUG) error_log("called inject_column_css callback");	
 	$columns = apply_filters( 'loop_shop_columns', 4);
-	if(WP_DEBUG) error_log("-> columns: $columns");
+	// if(WP_DEBUG) error_log("-> columns: $columns");
 	if ($columns == 3 ){ ?>
 		<style type="text/css">
 		ul.products li.product {
