@@ -781,7 +781,7 @@ function maybe_clear_attribute_select_box( ) {
 add_action('woocommerce_before_add_to_cart_form', 'maybe_clear_attribute_select_box');
 
 function tanvas_output_login_help(){
-	$help_link = get_site_url(0,"my-account/help");
+	$help_link = get_site_url(0,"/my-account/help");
 	echo do_shortcode( '[button link="'.$help_link.'" bg_color="#d1aa67"]account help[/button]');
 }
 
