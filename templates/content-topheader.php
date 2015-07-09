@@ -25,11 +25,11 @@
 
 							$logout_url = wp_logout_url();
 							$admin_url = get_admin_url();
-							echo " | <a href='$account_url'>My Account</a>";
+							echo " | <a rel="nofollow" href='$account_url'>My Account</a>";
 							if(is_admin()){
-								echo " | <a href='$admin_url'>Admin</a>";
+								echo " | <a rel="nofollow" href='$admin_url'>Admin</a>";
 							}
-							echo " | <a href='$logout_url'>Log Out</a>";
+							echo " | <a rel="nofollow" href='$logout_url'>Log Out</a>";
 
 						} else {
 							// $login_url = wp_login_url( $account_url );
