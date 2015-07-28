@@ -1,6 +1,6 @@
 <?php
 
-define( 'TRANSLATION', 'tanvas');
+define( 'TANVAS_DOMAIN', 'tanvas');
 
 $woo_options = get_option( 'woo_options' );
 
@@ -112,7 +112,7 @@ class lc_doorway_button extends WP_Widget
 			$img = '';
 		}
 		if( !$img ){
-			$img = 'http://staging.technotan.com.au/wp-content/themes/tanvas/img/logo-transparent-zoomed-out.png';
+			$img = 'https://staging.technotan.com.au/wp-content/themes/tanvas/img/logo-transparent-zoomed-out.png';
 		}
 		if(isset($instance['alt'])){
 			$alt = esc_attr($instance['alt']);
@@ -145,28 +145,6 @@ class lc_doorway_button extends WP_Widget
 				echo "</a>";
 			echo "</div>";		
 		echo $after_widget;
-
-		// echo $before_widget;
-		// echo "<a href='$url' >";
-		// echo "<img src='$img' alt='$alt'>";
-		// if( !empty($title) ){
-			// echo $args['before_title'] . $title . $args['after_title'];
-		// }
-		// echo "</a>";
-		// echo $args['after_widget'];
-		
-		// echo "<li>";
-		// echo "<div class='doorway-container'>";
-		// 	echo "<img id='doorway-img' src='$img' alt='$alt' />";
-		// 	echo "<div class='doorway-title-section'>";
-		// 		if( !empty($title) ){
-		// 			echo '<h5 class="doorway-title">' . $title . '</h5>';
-		// 		}
-		// 		echo "<a id='doorway-link' href='$url' > $view ";
-		// 		echo "</a>";
-		// 	echo "</div>";
-		// echo "</div>";
-		// echo "</li>";
 		
 	}
 
@@ -310,7 +288,7 @@ function tanvas_widgets_init() {
 	));	
 	
 	register_sidebar(array(
-		'name' => __( 'Footer Widgets One', TRANSLATION ),
+		'name' => __( 'Footer Widgets One', TANVAS_DOMAIN ),
 		'id' => 'widget-one',
 		'before_widget' => '<div class="footer-wigget">',
 		'after_widget' => '</div>',
@@ -319,7 +297,7 @@ function tanvas_widgets_init() {
 	));
 	
 	register_sidebar(array(
-		'name' => __( 'Footer Widgets Two', TRANSLATION ),
+		'name' => __( 'Footer Widgets Two', TANVAS_DOMAIN ),
 		'id' => 'widget-two',
 		'before_widget' => '<div class="footer-wigget">',
 		'after_widget' => '</div>',
@@ -328,7 +306,7 @@ function tanvas_widgets_init() {
 	));
 	
 	register_sidebar(array(
-		'name' => __( 'Footer Widgets Three', TRANSLATION ),
+		'name' => __( 'Footer Widgets Three', TANVAS_DOMAIN ),
 		'id' => 'widget-three',
 		'before_widget' => '<div class="footer-wigget">',
 		'after_widget' => '</div>',
@@ -337,7 +315,7 @@ function tanvas_widgets_init() {
 	));
 	
 	register_sidebar(array(
-		'name' => __( 'Footer Widgets Four', TRANSLATION ),
+		'name' => __( 'Footer Widgets Four', TANVAS_DOMAIN ),
 		'id' => 'widget-four',
 		'before_widget' => '<div class="footer-wigget">',
 		'after_widget' => '</div>',
@@ -346,7 +324,7 @@ function tanvas_widgets_init() {
 	));
 	
 	register_sidebar(array(
-		'name' => __( 'Footer Widgets Five', TRANSLATION ),
+		'name' => __( 'Footer Widgets Five', TANVAS_DOMAIN ),
 		'id' => 'widget-five',
 		'before_widget' => '<div class="footer-wigget">',
 		'after_widget' => '</div>',
@@ -410,6 +388,10 @@ function tanvas_get_login_button(){
 	return '[button link="/my-account/" bg_color="#d1aa67"]'.__('Log In', TANVAS_DOMAIN).'[/button]';
 }
 
+function tanvas_get_register_button(){
+	return '[button link="/create-account/" bg_color="#d1aa67"]'.__('Register', TANVAS_DOMAIN).'[/button]';
+}
+
 function tanvas_display_user_cap_warnings($read_caps, $object_type){
 	$user_id = get_current_user_id();
     if($read_caps){ //cat is restricted
@@ -420,8 +402,11 @@ function tanvas_display_user_cap_warnings($read_caps, $object_type){
 			$instructions = __('apply for a wholesale account or continue shopping for other products.', TANVAS_DOMAIN).' </br>'.
 				'[button link="/shop/" bg_color="#d1aa67"]'.__('Continue Shopping', TANVAS_DOMAIN).'[/button] '.tanvas_get_help_button();
 		} else {//not logged in
-			$instructions = __('log in or create an account.', TANVAS_DOMAIN).' </br>'.
-				tanvas_get_login_button() . ' ' . tanvas_get_help_button()  ;
+			$instructions = __('log in or create an account.', TANVAS_DOMAIN).' </br>'. implode(' ', array(
+				tanvas_get_login_button(),
+				tanvas_get_register_button(),
+				tanvas_get_help_button()
+			));
 		}
 		
 		echo do_shortcode(
@@ -792,6 +777,18 @@ function register_my_menu() {
     register_nav_menu( 'new-menu', __( 'New Menu' ) );
 }
 
+/**
+ * Woocommerce cart prices notice
+ */
+function tanvas_output_cart_price_notice(){
+	echo do_shortcode(
+		'[box type="info"]'.
+			__('Dear customer our new cart has just been launched, while we have endeavored to ensure all pricing is correct we reserve the right to revise all pricing in line with our current listed prices. We thank you for your understanding.', TANVAS_DOMAIN).'<br/>'.
+		'[/box]'		
+	);
+}
+add_action( 'woocommerce_before_cart', 'tanvas_output_cart_price_notice');
+
 
 //custom excerpt length
 function excerpt($limit) {
@@ -805,6 +802,61 @@ function excerpt($limit) {
   $excerpt = preg_replace('`[[^]]*]`','',$excerpt);
   return $excerpt;
 }
+
+// Fix twitter button
+
+function lc_shortcode_twitter($atts, $content = null) {
+   	global $post;
+   	extract(shortcode_atts(array(	'url' => '',
+   									'style' => '',
+   									'source' => '',
+   									'text' => '',
+   									'related' => '',
+   									'lang' => '',
+   									'float' => 'left',
+   									'use_post_url' => 'false',
+   									'recommend' => '',
+   									'hashtag' => '',
+   									'size' => '',
+   									 ), $atts));
+	$output = '';
+
+	if ( $url )
+		$output .= ' data-url="' . esc_url( $url ) . '"';
+
+	if ( $source )
+		$output .= ' data-via="' . esc_attr( $source ) . '"';
+
+	if ( $text )
+		$output .= ' data-text="' . esc_attr( $text ) . '"';
+
+	if ( $related )
+		$output .= ' data-related="' . esc_attr( $related ) . '"';
+
+	if ( $hashtag )
+		$output .= ' data-hashtags="' . esc_attr( $hashtag ) . '"';
+
+	if ( $size )
+		$output .= ' data-size="' . esc_attr( $size ) . '"';
+
+	if ( $lang )
+		$output .= ' data-lang="' . esc_attr( $lang ) . '"';
+
+	if ( $style != '' ) {
+		$output .= 'data-count="' . esc_attr( $style ) . '"';
+	}
+
+	if ( $use_post_url == 'true' && $url == '' ) {
+		$output .= ' data-url="' . get_permalink( $post->ID ) . '"';
+	}
+
+	$output = '<div class="woo-sc-twitter ' . esc_attr( $float ) . '"><a href="' . esc_url( 'https://twitter.com/share' ) . '" class="twitter-share-button"'. $output .'>' . __( 'Tweet', 'woothemes' ) . '</a><script type="text/javascript" src="' . esc_url ( 'https://platform.twitter.com/widgets.js' ) . '"></script></div>';
+	return $output;
+
+} // End woo_shortcode_twitter()
+
+add_shortcode( 'twitter-https', 'lc_shortcode_twitter' );
+
 
 
 //Widget Recent Posts
