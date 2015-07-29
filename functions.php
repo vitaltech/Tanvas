@@ -380,16 +380,32 @@ function woocommerce_category_image() {
 
 /** Add log in warning to category **/
 
+function tanvas_get_button($link, $text){
+	return '[button link="'.$link.'" bg_color="#d1aa67"]'.__($text, TANVAS_DOMAIN).'[/button]';
+}
+
 function tanvas_get_help_button(){
-	return '[button link="/my-account/help" bg_color="#d1aa67"]'.__('Help', TANVAS_DOMAIN).'[/button]';
+	return tanvas_get_button('/my-account/help', 'Help');
+	// return '[button link="/my-account/help" bg_color="#d1aa67"]'.__('Help', TANVAS_DOMAIN).'[/button]';
 }
 
 function tanvas_get_login_button(){
-	return '[button link="/my-account/" bg_color="#d1aa67"]'.__('Log In', TANVAS_DOMAIN).'[/button]';
+	return tanvas_get_button('/my-account', 'Log In');
+	// return '[button link="/my-account/" bg_color="#d1aa67"]'.__('Log In', TANVAS_DOMAIN).'[/button]';
 }
 
 function tanvas_get_register_button(){
-	return '[button link="/create-account/" bg_color="#d1aa67"]'.__('Register', TANVAS_DOMAIN).'[/button]';
+	return tanvas_get_button('/create-account', 'Register');
+	// return '[button link="/create-account/" bg_color="#d1aa67"]'.__('Register', TANVAS_DOMAIN).'[/button]';
+}
+
+function tanvas_get_continue_shopping_button(){
+	return tanvas_get_button('/shop', 'Continue Shopping');
+	// return '[button link="/shop/" bg_color="#d1aa67"]'.__('Continue Shopping', TANVAS_DOMAIN).'[/button]';
+}
+
+function tanvas_get_upgrade_account_button(){
+	return tanvas_get_button('/my-account/upgrade', 'Upgrade Account');
 }
 
 function tanvas_display_user_cap_warnings($read_caps, $object_type){
@@ -399,8 +415,11 @@ function tanvas_display_user_cap_warnings($read_caps, $object_type){
 		$first_group = $groups[0];
 
 		if($user_id){//logged in
-			$instructions = __('apply for a wholesale account or continue shopping for other products.', TANVAS_DOMAIN).' </br>'.
-				'[button link="/shop/" bg_color="#d1aa67"]'.__('Continue Shopping', TANVAS_DOMAIN).'[/button] '.tanvas_get_help_button();
+			$instructions = __('apply for a wholesale account or continue shopping for other products.', TANVAS_DOMAIN).' </br>'. implode(' ', array(
+				tanvas_get_continue_shopping_button(),
+				tanvas_get_upgrade_account_button(),
+				tanvas_get_help_button()
+			));
 		} else {//not logged in
 			$instructions = __('log in or create an account.', TANVAS_DOMAIN).' </br>'. implode(' ', array(
 				tanvas_get_login_button(),
