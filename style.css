@@ -32,9 +32,9 @@
 /**
  * DEMO STORE NOTICE MODS
  */
-div#wrapper p.demo_store {
-	position: relative;
-	z-index: inherit;
+p.demo_store {
+	padding: 0 !important;
+	font-size: 10px;
 }
 
 /**
@@ -780,3 +780,8 @@ div.product-info-detail {
 .widget p.woo-ma-error {
 	color: red;
 }
+
+/**
+ * Register form mods
+ */
+

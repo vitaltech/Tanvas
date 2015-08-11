@@ -55,6 +55,16 @@ if(!Tanvas_WoocommerceCheck() or !Tanvas_WoocommerceCheck()) {
 }
 
 /**
+ * Log In Mods
+ */
+function tanvas_login_message(){
+	echo "<p>Forgot your email? <a href='/contact-us'>Contact head office</a></p>";
+}
+
+add_action('login_form', 'tanvas_login_message');
+
+
+/**
  * Demo Store Notice Mods
  */
 
@@ -79,6 +89,7 @@ add_filter('woo_load_slider_js', function($load_slider_js){
 	return $load_slider_js;
 
 }, 999, 1);
+
 
 
 /**
@@ -385,17 +396,19 @@ function tanvas_get_button($link, $text){
 }
 
 function tanvas_get_help_button(){
-	return tanvas_get_button('/my-account/help', 'Help');
+	return tanvas_get_button( '/my-account/help', 'Help');
 	// return '[button link="/my-account/help" bg_color="#d1aa67"]'.__('Help', TANVAS_DOMAIN).'[/button]';
 }
 
 function tanvas_get_login_button(){
-	return tanvas_get_button('/my-account', 'Log In');
+	return tanvas_get_button( wp_login_url(), 'Log In');
+	// return tanvas_get_button('/my-account', 'Log In');
 	// return '[button link="/my-account/" bg_color="#d1aa67"]'.__('Log In', TANVAS_DOMAIN).'[/button]';
 }
 
 function tanvas_get_register_button(){
-	return tanvas_get_button('/create-account', 'Register');
+	return tanvas_get_button( wp_registration_url(), 'Register');
+	// return tanvas_get_button('/create-account', 'Register');
 	// return '[button link="/create-account/" bg_color="#d1aa67"]'.__('Register', TANVAS_DOMAIN).'[/button]';
 }
 
