@@ -392,7 +392,7 @@ function woocommerce_category_image() {
 /** Add log in warning to category **/
 
 function tanvas_get_button($link, $text){
-	return '[button link="'.$link.'" bg_color="#d1aa67"]'.__($text, TANVAS_DOMAIN).'[/button]';
+	return '[button link="'.$link.'" class="tanvas"]'.__($text, TANVAS_DOMAIN).'[/button]';
 }
 
 function tanvas_get_help_button(){

@@ -761,6 +761,10 @@ a.woo-sc-button {
 	margin-bottom: 0px !important;
 }
 
+a.woo-sc-button.tanvas {
+	background-color: #d1aa67 !important;
+}
+
 /**
  * product info display
  */
