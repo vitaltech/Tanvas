@@ -32,9 +32,9 @@
 /**
  * DEMO STORE NOTICE MODS
  */
-div#wrapper p.demo_store {
-	position: relative;
-	z-index: inherit;
+p.demo_store {
+	padding: 0 !important;
+	font-size: 10px;
 }
 
 /**
@@ -760,3 +760,28 @@ strong.warning {
 a.woo-sc-button {
 	margin-bottom: 0px !important;
 }
+
+/**
+ * product info display
+ */
+
+div.product-info-summary {
+	display: table-row!important; 
+}
+
+div.product-info-img {
+	display: table-cell!important;
+}
+
+div.product-info-detail {
+	display: table-cell!important
+}
+
+.widget p.woo-ma-error {
+	color: red;
+}
+
+/**
+ * Register form mods
+ */
+

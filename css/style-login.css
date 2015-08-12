@@ -1,3 +1,11 @@
 body {
 	background: black;
+    min-height: 100%;
+    height: auto;
+}
+
+p#billing_phone-p::after {
+    content: "By supplying your telephone number we can serve you better!";
+    background-color: lightyellow;
+    /*padding: 1em;*/
 }
