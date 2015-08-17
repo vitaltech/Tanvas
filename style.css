@@ -785,6 +785,12 @@ div.product-info-detail {
 	color: red;
 }
 
+/* make sale sign appear above product image */
+span.onsale {
+	/*position: relative;*/
+	z-index: 2;
+}
+
 /**
  * Register form mods
  */
