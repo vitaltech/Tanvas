@@ -56,6 +56,11 @@ body #wrapper .woo-sc-button:hover {
 	margin-bottom: 0 !important;
 }
 
+/*header*/
+.searchform button.submit {
+	top: .5em !important;
+}
+
 /*home page*/
 body {
   background-color: #FFFFFF !important;
@@ -77,6 +82,100 @@ body.page-id-8 article.post-8 .woocommerce h2 {
 	background-position: center center;
 	background-size: cover;
 }
+.term-description {
+    margin-bottom: 20px;
+}
+
+/*woocomerce page*/
+.woocommerce .woocommerce-tabs ul.tabs li a {
+	padding: .5em .85em !important;
+}
+.woocommerce .summary h1.product_title {
+	font-size: 17px !important;
+}
+ul.products a h3 {
+	font-size: 12pt !important;
+}
+.woocommerce .summary h1.product_title {
+    margin-bottom: 5px !important;
+}
+.woocommerce .summary p.price {
+	font-size: 1.2em !important;
+	margin-bottom: .5em !important;
+}
+ul.products li  a.add_to_cart_button {
+	font-size: 14px !important;
+}
+
+.entry table thead th.product-quantity,
+.entry table thead th.product-price {
+	padding: 1.387em 5px !important;
+	text-align: center;
+}
+.entry table.cart tbody td {
+	padding: 10px !important;
+    text-align: center;
+}
+.entry table tbody td.product-name,
+.entry table tbody tr.cart-subtotal td,
+.entry table tbody tr.order-total td,
+.entry table tbody tr.shipping td {
+	text-align: left;
+}
+table.cart td.actions #coupon_code {
+	margin-bottom: 5px !important;
+}
+table.cart td.actions .coupon .button {
+	width: 100%;
+	max-width: 206px;
+}
+td.product-thumbnail {
+    width: 84px;
+    height: 84px;
+}
+table.cart img {
+    width: 60px !important;
+}
+table.woocommerce-checkout-review-order-table th.product-name {
+	width: 60%;
+}
+form.woocommerce-shipping-calculator {
+	position: relative;
+}
+span.office-hours {
+	display: none;
+    position: absolute;
+    top: -56px;
+    left: -18px;
+    font-size: 12px;
+    line-height: 1;
+    background-color: #D2AD6C;
+    padding: 10px;
+    width: 185px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+}
+form.woocommerce-shipping-calculator a:hover + span.office-hours {
+	display: block;
+}
+span.office-hours:before {
+    position: absolute;
+    z-index: 1;
+    content: '';
+    left: calc(50% - 10px);
+    bottom: 0;
+    border-style: solid;
+    border-width: 10px 10px 0 10px;
+    border-color: #D2AD6C transparent transparent transparent;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+	-webkit-transform: translateY(10px);
+    transform: translateY(10px);
+}
+
 
 /*slider*/
 
@@ -1180,6 +1279,13 @@ ul.products .product-category-gold-img-section {
 	}
 	#visitor .woo-link a, #visitor .woo-link, #visitor a.call {
 		font-size: 11px !important;
+	}
+}
+
+@media only screen and (max-width: 560px) {
+	.entry table.table tbody td {
+		width: 100% !important;
+		display: block;
 	}
 }
 
