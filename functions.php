@@ -293,32 +293,40 @@ function tanvas_display_user_cap_warnings($read_caps, $object_type){
 }
 
 function tanvas_display_user_membership_warnings($required_membership_plans, $object_type) {
-	$user_id = get_current_user_id();
 	if($required_membership_plans){
-		$first_plan = $required_membership_plans[0];
-		if($user_id){//is logged in
-			$first_plan_name = $first_plan->get_name();
-			$instructions = __('Apply for a '.$first_plan_name.' account or continue shopping for other products.', TANVAS_DOMAIN).' </br>'. implode(' ', array(
-				tanvas_get_continue_shopping_button(),
-				tanvas_get_upgrade_account_button($first_plan_name),
-				tanvas_get_help_button()
-			));
-		} else {
+		$_procedure = 'MEMBERSHIP_DISPLAY_WARN: ';
+    	error_log($_procedure."commencing");
+
+		$user_id = get_current_user_id();
+
+		$visible = false;
+		if(!$user_id){
 			$instructions = __('log in or create an account.', TANVAS_DOMAIN).' </br>'. implode(' ', array(
 				tanvas_get_login_button(),
 				tanvas_get_register_button(),
 				tanvas_get_help_button()
 			));
+		} else {
+			$possible_membership_plans = wc_memberships_get_membership_plans();
+	    	foreach ($possible_membership_plans as $plan) {
+	    		if(wc_memberships_is_user_active_member($user_id, $plan)){
+	    			$visible = true;
+	    			break;
+	    		}
+	    	}
+			$first_plan = $required_membership_plans[0];
+			$first_plan_name = $first_plan->get_name();
+	    	error_log($_procedure."first plan name:".serialize($first_plan_name));
+			$instructions = __('Apply for a '.$first_plan_name.' account or continue shopping for other products.', TANVAS_DOMAIN).' </br>'. implode(' ', array(
+				tanvas_get_continue_shopping_button(),
+				tanvas_get_upgrade_account_button($first_plan_name),
+				tanvas_get_help_button()
+			));
 		}
-		$visible = false;
-		$possible_membership_plans = wc_memberships()->plans->get_membership_plans();
-    	foreach ($possible_membership_plans as $plan) {
-    		if(wc_memberships_is_user_active_member($user_id, $plan)){
-    			$visible = true;
-    			break;
-    		}
-    	}
+
     	if(!$visible){
+	    	error_log($_procedure."category is not visible");
+
     		echo do_shortcode(
 				'[box type="alert"]'.
 					__('This '.$object_type.' is not visible to you because you do not have the correct privileges. ', TANVAS_DOMAIN).
@@ -326,8 +334,11 @@ function tanvas_display_user_membership_warnings($required_membership_plans, $ob
 					$instructions .
 				'[/box]'
     		);	
+    	} else {
+	    	error_log($_procedure."category is visible");
     	}
 		
+    	error_log($_procedure."complete");
 	}
 }
 
@@ -357,25 +368,30 @@ function tanvas_woocommerce_category_warning() {
 
 	    //Membership Integration
 	    $required_memberships = null;
+	    $_procedure = 'MEMBERSHIP_WARNINGS: ';
+	    error_log($_procedure."commencing");
 	    if(class_exists('WC_Memberships')){
+	    	
+	    	
 	    	// get required membership plan
 	    	$possible_membership_plans = wc_memberships_get_membership_plans();
 	    	foreach ($possible_membership_plans as $plan) {
+	    		error_log($_procedure."processing plan | ".$plan->get_name());
 	    		$product_restriction_rules = $plan->get_product_restriction_rules();
 	    		$rules_contain_term = false;
 	    		foreach ($product_restriction_rules as $rule) {
 		    		if($rule->get_content_type() == 'taxonomy'){
-		    			error_log("Taxonomy Rule: ".$rule->get_id());
+		    			error_log($_procedure." -> Taxonomy Rule: ".$rule->get_id());
 		    			$this_id = $term_id;
 		    			do {
 		    				$term = get_term_by('id', $this_id, 'product_cat');
-			    			error_log(" -> term: ".serialize($term));
+			    			error_log($_procedure." --> term: ".$this_id);
 		    				if($rule->applies_to_single_object($this_id)){
-		    					error_log(" --> applies to this category:".$this_id);
+		    					error_log($_procedure." ---> applies to this category");
 		    					$rules_contain_term = true;
 		    					break;
 		    				} else {
-		    					error_log(" --> does not apply to this category: ".$this_id);
+		    					error_log($_procedure." ---> does not apply to this category: ");
 		    				}
 		    				$this_id = $term->parent;
 		    			} while($this_id);
@@ -385,12 +401,21 @@ function tanvas_woocommerce_category_warning() {
 	    			$required_memberships[] = $plan;
 	    		}
 	    	}
+	    	
 	    }
+	    error_log($_procedure."required memberships:");
+	    if($required_memberships) foreach ($required_memberships as $membership) {
+	    	error_log($_procedure." -> ".serialize($membership));
+	    }
+	    error_log($_procedure."displaying warnings:");
     	tanvas_display_user_membership_warnings($required_memberships, 'category');
 
 	    if(!$required_memberships and !$read_caps){
+	    	error_log($_procedure."no required_memberships or read_caps");
 	    	tanvas_display_unrestricted_login_warning();
 	    }
+
+	    error_log($_procedure."complete");
 	}
 }
 
