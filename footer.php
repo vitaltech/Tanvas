@@ -65,6 +65,8 @@
 	jQuery(document).ready(function( $ ) {
 		$(document).foundation();
 		
+		$( "body.page table, body.single table" ).addClass( "table" );
+		$( "body.woocommerce-page table" ).removeClass( "table" );
 		$( "#off-canvas-list1 .menu-item-has-children, #off-canvas-list1 .page_item_has_children" ).addClass( "has-submenu" );
 		$( "#off-canvas-list1 ul.sub-menu" ).addClass( "left-submenu" );
 		$("#off-canvas-list1 ul.sub-menu li:first-child").before(' <li class="back"><a href="#">Back</a></li>');
@@ -99,6 +101,8 @@
 		
 		$(".nav-entries span.nav-prev.fl").html("Previous");
 		$(".nav-entries span.nav-next.fr").html("Next");
+		
+		$("form.woocommerce-shipping-calculator p a").after("<span class='office-hours'>pickup from jandakot<br/>office hours: 8:00AM - 5:00PM</span>");
 	});
 	</script>
 	
