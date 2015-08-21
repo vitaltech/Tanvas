@@ -2,12 +2,13 @@
 
 class CUSTOM_LATEST_POSTS_WIDGETS extends WP_Widget {
 
-    function CUSTOM_LATEST_POSTS_WIDGETS() {
+    function __construct() {
         $widget_ops = array( 'classname' => 'custom_latest_posts_widget', 'description' => __('A widget that displays recent posts', 'custom_latest_posts_widget') );
         
         $control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'custom_latest_posts_widget' );
         
-        $this->WP_Widget( 'custom_latest_posts_widget', __('Technotan: Latest Posts', 'custom_latest_posts_widget'), $widget_ops, $control_ops );
+        // $this->WP_Widget( 'custom_latest_posts_widget', __('Technotan: Latest Posts', 'custom_latest_posts_widget'), $widget_ops, $control_ops );
+        parent::__construct( 'custom_latest_posts_widget', __('Technotan: Latest Posts', 'custom_latest_posts_widget'), $widget_ops, $control_ops );
     }
     
     function widget( $args, $instance ) {

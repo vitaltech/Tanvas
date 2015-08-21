@@ -632,9 +632,4 @@ function lc_shortcode_twitter($atts, $content = null) {
 
 add_shortcode( 'twitter-https', 'lc_shortcode_twitter' );
 
-
-function custom_social_media_widget() {
-	r
-}
-
 ?>

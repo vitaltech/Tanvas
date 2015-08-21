@@ -1,11 +1,12 @@
 <?php
 class CUSTOM_SOCIAL_MEDIA_WIDGETS extends WP_Widget {
-    function CUSTOM_SOCIAL_MEDIA_WIDGETS() {
+    function __construct() {
         $widget_ops = array( 'classname' => 'custom_social_media_widget', 'description' => __('A widget that displays social media ', 'custom_social_media_widget') );
         
         $control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'custom_social_media_widget' );
         
-        $this->WP_Widget( 'custom_social_media_widget', __('Technotan: Social Media', 'custom_social_media_widget'), $widget_ops, $control_ops );
+        // $this->WP_Widget( 'custom_social_media_widget', __('Technotan: Social Media', 'custom_social_media_widget'), $widget_ops, $control_ops );
+        parent::__construct( 'custom_social_media_widget', __('Technotan: Social Media', 'custom_social_media_widget'), $widget_ops, $control_ops );
     }
     
     function widget( $args, $instance ) {
