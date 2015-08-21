@@ -5,6 +5,7 @@ define( 'TANVAS_DOMAIN', 'tanvas');
 include_once('widgets/doorway-button-widget.php');
 include_once('widgets/custom-latest-posts-widget.php');
 include_once('widgets/custom-social-media-widget.php');
+include_once('widgets/woocommerce-my-account-widget.php');
 include_once('warnings.php');
 
 $woo_options = get_option( 'woo_options' );
@@ -187,6 +188,7 @@ function tanvas_widgets_init() {
 	register_widget( 'lc_doorway_button');
 	register_widget( 'CUSTOM_SOCIAL_MEDIA_WIDGETS' );
 	register_widget( 'CUSTOM_LATEST_POSTS_WIDGETS' );
+	register_widget( 'WooCommerceMyAccountWidget');
 
 }
 add_action('widgets_init', 'tanvas_widgets_init');
