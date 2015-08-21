@@ -2,7 +2,10 @@
 
 define( 'TANVAS_DOMAIN', 'tanvas');
 
-include_once('doorway-button-widget.php');
+include_once('widgets/doorway-button-widget.php');
+include_once('widgets/custom-latest-posts-widget.php');
+include_once('widgets/custom-social-media-widget.php');
+include_once('warnings.php');
 
 $woo_options = get_option( 'woo_options' );
 
@@ -182,6 +185,9 @@ function tanvas_widgets_init() {
 	));
 
 	register_widget( 'lc_doorway_button');
+	register_widget( 'CUSTOM_SOCIAL_MEDIA_WIDGETS' );
+	register_widget( 'CUSTOM_LATEST_POSTS_WIDGETS' );
+
 }
 add_action('widgets_init', 'tanvas_widgets_init');
 
@@ -191,15 +197,15 @@ add_action('widgets_init', 'tanvas_widgets_init');
  * Adds social media and newsletter icons to nav menu
  */
 
-function tanvas_add_social_icons () {
-	echo "<ul><li class='fr fa-facebook'><i class='facebook-official'></i></lu></ul>";
-}
+// function tanvas_add_social_icons () {
+// 	echo "<ul><li class='fr fa-facebook'><i class='facebook-official'></i></lu></ul>";
+// }
 //add_action( 'woo_nav_inside', 'tanvas_add_social_icons', 20);
 
-function woo_options_add($options){
-	//if(WP_DEBUG) error_log("woo_options_add called with :".serialize($options));
-	return $options;
-}
+// function woo_options_add($options){
+// 	//if(WP_DEBUG) error_log("woo_options_add called with :".serialize($options));
+// 	return $options;
+// }
 
 /**
  * Product Category / Taxonomy Display Mods
@@ -228,220 +234,6 @@ function woocommerce_category_image() {
 }
 
 /** Add log in warning to category **/
-
-function tanvas_get_button($link, $text){
-	return '[button link="'.$link.'" class="tanvas"]'.__($text, TANVAS_DOMAIN).'[/button]';
-}
-
-function tanvas_get_help_button(){
-	return tanvas_get_button( '/my-account/help', 'Help');
-	// return '[button link="/my-account/help" bg_color="#d1aa67"]'.__('Help', TANVAS_DOMAIN).'[/button]';
-}
-
-function tanvas_get_login_button(){
-	return tanvas_get_button( wp_login_url(), 'Log In');
-	// return tanvas_get_button('/my-account', 'Log In');
-	// return '[button link="/my-account/" bg_color="#d1aa67"]'.__('Log In', TANVAS_DOMAIN).'[/button]';
-}
-
-function tanvas_get_register_button(){
-	return tanvas_get_button( wp_registration_url(), 'Register');
-	// return tanvas_get_button('/create-account', 'Register');
-	// return '[button link="/create-account/" bg_color="#d1aa67"]'.__('Register', TANVAS_DOMAIN).'[/button]';
-}
-
-function tanvas_get_continue_shopping_button(){
-	return tanvas_get_button('/shop', 'Continue Shopping');
-	// return '[button link="/shop/" bg_color="#d1aa67"]'.__('Continue Shopping', TANVAS_DOMAIN).'[/button]';
-}
-
-function tanvas_get_upgrade_account_button($name = null){
-	return tanvas_get_button('/my-account/upgrade'.$name?'?name='.esc_attr($name):'', 'Upgrade Account');
-}
-
-function tanvas_display_user_cap_warnings($read_caps, $object_type){
-	$user_id = get_current_user_id();
-    if($read_caps){ //cat is restricted
-		$group_str = '"'. implode(', ', $read_caps). '"';
-		$first_group = $groups[0];
-
-		if($user_id){//logged in
-			$instructions = __('apply for a wholesale account or continue shopping for other products.', TANVAS_DOMAIN).' </br>'. implode(' ', array(
-				tanvas_get_continue_shopping_button(),
-				tanvas_get_upgrade_account_button(),
-				tanvas_get_help_button()
-			));
-		} else {//not logged in
-			$instructions = __('log in or create an account.', TANVAS_DOMAIN).' </br>'. implode(' ', array(
-				tanvas_get_login_button(),
-				tanvas_get_register_button(),
-				tanvas_get_help_button()
-			));
-		}
-		
-		echo do_shortcode(
-			'[groups_non_member group='.$group_str.']'.
-				'[box type="alert"]'.
-					__('This '.$object_type.' is not visible to you because you do not have the correct privileges. ', TANVAS_DOMAIN).
-					__('To view these products please ', TANVAS_DOMAIN).
-					$instructions .
-				'[/box]'.
-			'[/groups_non_member]'
-		);						
-
-    } 
-}
-
-function tanvas_display_user_membership_warnings($required_membership_plans, $object_type) {
-	if($required_membership_plans){
-		$_procedure = 'MEMBERSHIP_DISPLAY_WARN: ';
-    	error_log($_procedure."commencing");
-
-		$user_id = get_current_user_id();
-
-		$visible = false;
-		if(!$user_id){
-			$instructions = __('log in or create an account.', TANVAS_DOMAIN).' </br>'. implode(' ', array(
-				tanvas_get_login_button(),
-				tanvas_get_register_button(),
-				tanvas_get_help_button()
-			));
-		} else {
-			$possible_membership_plans = wc_memberships_get_membership_plans();
-	    	foreach ($possible_membership_plans as $plan) {
-	    		if(wc_memberships_is_user_active_member($user_id, $plan)){
-	    			$visible = true;
-	    			break;
-	    		}
-	    	}
-			$first_plan = $required_membership_plans[0];
-			$first_plan_name = $first_plan->get_name();
-	    	error_log($_procedure."first plan name:".serialize($first_plan_name));
-			$instructions = __('Apply for a '.$first_plan_name.' account or continue shopping for other products.', TANVAS_DOMAIN).' </br>'. implode(' ', array(
-				tanvas_get_continue_shopping_button(),
-				tanvas_get_upgrade_account_button($first_plan_name),
-				tanvas_get_help_button()
-			));
-		}
-
-    	if(!$visible){
-	    	error_log($_procedure."category is not visible");
-
-    		echo do_shortcode(
-				'[box type="alert"]'.
-					__('This '.$object_type.' is not visible to you because you do not have the correct privileges. ', TANVAS_DOMAIN).
-					__('To view these products please ', TANVAS_DOMAIN).
-					$instructions .
-				'[/box]'
-    		);	
-    	} else {
-	    	error_log($_procedure."category is visible");
-    	}
-		
-    	error_log($_procedure."complete");
-	}
-}
-
-function tanvas_display_unrestricted_login_warning(){
-	$user_id = get_current_user_id();
-	if(!$user_id){
-		echo do_shortcode(
-			'[box type="info"]'.
-    			__('You may not be getting the best deal! Log in or create an account to get prices crafted specially for you.', TANVAS_DOMAIN).'<br/>'.
-    			tanvas_get_login_button() . ' ' . tanvas_get_help_button() .
-			'[/box]'
-		);
-	}
-}
-
-function tanvas_woocommerce_category_warning() {
-    if ( is_product_category() ){
-	    global $wp_query;
-	    $cat = $wp_query->get_queried_object();
-	    $term_id = $cat->term_id;
-
-	    $read_caps = null;
-	    if(class_exists('Groups_Restrict_Categories')){
-		    $read_caps = Groups_Restrict_Categories::get_term_read_capabilities( $term_id );
-	    }
-	    tanvas_display_user_cap_warnings($read_caps, 'category');
-
-	    //Membership Integration
-	    $required_memberships = null;
-	    $_procedure = 'MEMBERSHIP_WARNINGS: ';
-	    error_log($_procedure."commencing");
-	    if(class_exists('WC_Memberships')){
-	    	
-	    	
-	    	// get required membership plan
-	    	$possible_membership_plans = wc_memberships_get_membership_plans();
-	    	foreach ($possible_membership_plans as $plan) {
-	    		error_log($_procedure."processing plan | ".$plan->get_name());
-	    		$product_restriction_rules = $plan->get_product_restriction_rules();
-	    		$rules_contain_term = false;
-	    		foreach ($product_restriction_rules as $rule) {
-		    		if($rule->get_content_type() == 'taxonomy'){
-		    			error_log($_procedure." -> Taxonomy Rule: ".$rule->get_id());
-		    			$this_id = $term_id;
-		    			do {
-		    				$term = get_term_by('id', $this_id, 'product_cat');
-			    			error_log($_procedure." --> term: ".$this_id);
-		    				if($rule->applies_to_single_object($this_id)){
-		    					error_log($_procedure." ---> applies to this category");
-		    					$rules_contain_term = true;
-		    					break;
-		    				} else {
-		    					error_log($_procedure." ---> does not apply to this category: ");
-		    				}
-		    				$this_id = $term->parent;
-		    			} while($this_id);
-		    		}
-	    		}
-	    		if ($rules_contain_term) {
-	    			$required_memberships[] = $plan;
-	    		}
-	    	}
-	    	
-	    }
-	    error_log($_procedure."required memberships:");
-	    if($required_memberships) foreach ($required_memberships as $membership) {
-	    	error_log($_procedure." -> ".serialize($membership));
-	    }
-	    error_log($_procedure."displaying warnings:");
-    	tanvas_display_user_membership_warnings($required_memberships, 'category');
-
-	    if(!$required_memberships and !$read_caps){
-	    	error_log($_procedure."no required_memberships or read_caps");
-	    	tanvas_display_unrestricted_login_warning();
-	    }
-
-	    error_log($_procedure."complete");
-	}
-}
-
-function tanvas_woocommerce_product_warning(){
-	if( is_product() ){
-		global $product;
-		$product_id = $product->id;
-		$read_caps = null;
-		if(class_exists('Groups_Post_Access')){
-			$read_caps = Groups_Post_Access::get_read_post_capabilities( $product_id );
-		}
-		tanvas_display_user_cap_warnings($read_caps, 'product');
-
-		//Membership Integration
-		if(class_exists('WC_Memberships')){
-			// get required membership plan
-			$required_memberships = array();
-			//TODO THIS
-			tanvas_display_user_membership_warnings($required_memberships, 'product');
-		}
-	}
-}
-
-add_action( 'woocommerce_archive_description', 'tanvas_woocommerce_category_warning', 15 );
-
-add_action( 'woocommerce_single_product_summary', 'tanvas_woocommerce_product_warning', 7);
 
 
 /** Removes sort by dropdown **/
@@ -841,229 +633,8 @@ function lc_shortcode_twitter($atts, $content = null) {
 add_shortcode( 'twitter-https', 'lc_shortcode_twitter' );
 
 
-
-//Widget Recent Posts
-add_action( 'widgets_init', 'custom_latest_posts_widget' );
-function custom_latest_posts_widget() {
-	register_widget( 'CUSTOM_LATEST_POSTS_WIDGETS' );
-}
-
-class CUSTOM_LATEST_POSTS_WIDGETS extends WP_Widget {
-
-	function CUSTOM_LATEST_POSTS_WIDGETS() {
-		$widget_ops = array( 'classname' => 'custom_latest_posts_widget', 'description' => __('A widget that displays recent posts', 'custom_latest_posts_widget') );
-		
-		$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'custom_latest_posts_widget' );
-		
-		$this->WP_Widget( 'custom_latest_posts_widget', __('Technotan: Latest Posts', 'custom_latest_posts_widget'), $widget_ops, $control_ops );
-	}
-	
-	function widget( $args, $instance ) {
-		extract( $args );
-
-		//Our variables from the widget settings.
-		$title = apply_filters('widget_title', $instance['title'] );
-		$number_of_posts = $instance['number_of_posts'];
-		$display_thumbnails = isset( $instance['display_thumbnails'] ) ? $instance['display_thumbnails'] : false;
-		
-		echo $before_widget;
-
-
-		$number_of_posts = ( ! empty( $instance['number_of_posts'] ) ) ? absint( $instance['number_of_posts'] ) : 10;
-		if ( ! $number_of_posts )
- 			$number_of_posts = 10;
-		
-		$viewall = $instance['viewall'];
-?>		
-		<?php 
-		
-		query_posts(array('posts_per_page' => $number_of_posts)); ?>
-		<div id="recent-posts-section" class="f-row">
-			<div id="recent-posts" class="large-10 columns">
-				
-				<?php 
-					// Display the widget title 
-					if ( $title )
-					echo '<center class="title">'.$before_title . $title . $after_title.'</center>';
-				?>
-			
-				<ul id="recent-posts-items" class="small-block-grid-1 medium-block-grid-3 large-block-grid-3">
-				<?php 						
-					while ( have_posts() ) : the_post(); 	
-					global $post;		
-					$featured_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );					
-				?>
-					<li class="list">															
-						<?php if ( $display_thumbnails ) : ?>
-							<?php if ( has_post_thumbnail() ) { ?>
-								<center><img class="recent-posts-img" src="<?php bloginfo('stylesheet_directory');?>/timthumb.php?src=<?= $featured_image; ?>&amp;w=91&amp;h=91" /></center>
-							<?php } ?>
-						<?php endif;?>
-										
-						<center><h5 class="title"><?php the_title(); ?></h5></center>
-												
-						<p><?php echo excerpt(10); ?></p>
-						<a class="read-more" href="<?php the_permalink(); ?>">Read more</a>
-												
-					</li>
-				<?php endwhile; wp_reset_query();?>
-				</ul>
-				
-				<?php if($viewall) : ?>
-					<center>
-						<a class="view-all" href="<?php echo $viewall; ?>">View All</a>
-					</center>
-				<?php endif;?>
-				
-			</div>
-		</div>
-<?php
-		echo $after_widget;
-	}
-
-	//Update the widget 
-	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
-
-		//Strip tags from title and name to remove HTML 
-		$instance['title'] = strip_tags( $new_instance['title'] );
-		$instance['number_of_posts'] = strip_tags( $new_instance['number_of_posts'] );
-		$instance['viewall'] = strip_tags( $new_instance['viewall'] );
-		$instance['display_thumbnails'] = isset( $new_instance['display_thumbnails'] ) ? (bool) $new_instance['display_thumbnails'] : false;
-
-		return $instance;
-	}
-
-	function form( $instance ) {
-
-		//Set up some default widget settings.
-		$display_thumbnails = isset( $instance['display_thumbnails'] ) ? (bool) $instance['display_thumbnails'] : false;
-		$defaults = array();
-		$instance = wp_parse_args( (array) $instance, $defaults ); 
-		?>
-		
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'custom_latest_posts_widget'); ?></label>
-			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
-		</p>
-		
-		<p>
-			<label for="<?php echo $this->get_field_id( 'number_of_posts' ); ?>"><?php _e('Number of posts to show:', 'custom_latest_posts_widget'); ?></label>
-			<input id="<?php echo $this->get_field_id( 'number_of_posts' ); ?>" name="<?php echo $this->get_field_name( 'number_of_posts' ); ?>" value="<?php echo $instance['number_of_posts']; ?>" style="width:100%;" />
-		</p>
-		
-		<p>
-			<label for="<?php echo $this->get_field_id( 'display_thumbnails' ); ?>"><?php _e('Display post thumbnail?', 'custom_latest_posts_widget'); ?></label>
-			<input class="checkbox" type="checkbox" <?php checked($display_thumbnails); ?> id="<?php echo $this->get_field_id( 'display_thumbnails' ); ?>" name="<?php echo $this->get_field_name( 'display_thumbnails' ); ?>" /> 
-			
-		</p>
-		
-		<p>
-			<label for="<?php echo $this->get_field_id( 'viewall' ); ?>"><?php _e('View All Link:', 'custom_latest_posts_widget'); ?></label>
-			<input id="<?php echo $this->get_field_id( 'viewall' ); ?>" name="<?php echo $this->get_field_name( 'viewall' ); ?>" value="<?php echo $instance['viewall']; ?>" style="width:100%;" />
-		</p>
-	<?php
-	}
-}
-
-//Widget Social Media
-add_action( 'widgets_init', 'custom_social_media_widget' );
-
 function custom_social_media_widget() {
-	register_widget( 'CUSTOM_SOCIAL_MEDIA_WIDGETS' );
+	r
 }
 
-class CUSTOM_SOCIAL_MEDIA_WIDGETS extends WP_Widget {
-	function CUSTOM_SOCIAL_MEDIA_WIDGETS() {
-		$widget_ops = array( 'classname' => 'custom_social_media_widget', 'description' => __('A widget that displays social media ', 'custom_social_media_widget') );
-		
-		$control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'custom_social_media_widget' );
-		
-		$this->WP_Widget( 'custom_social_media_widget', __('Technotan: Social Media', 'custom_social_media_widget'), $widget_ops, $control_ops );
-	}
-	
-	function widget( $args, $instance ) {
-		extract( $args );
-
-		//Our variables from the widget settings.
-		$title = apply_filters('widget_title', $instance['title'] );
-		$facebook = $instance['facebook'];
-		$youtube = $instance['youtube'];
-		$ig = $instance['ig'];
-		$googleplus = $instance['googleplus'];
-		
-		
-		echo $before_widget;
-
-		// Display the widget title 
-		//if ( $title )
-			//echo $before_title . $title . $after_title;
-		?>
-		
-		<ul id="<?php if($title) : ?>show-title<?php endif;?>" class="social-icons clearfix">
-			<?php if($title) : ?>
-				<li class="title"><?php echo $before_title . $title . $after_title; ?></li>
-			<?php endif;?>
-			<?php if($facebook) : ?>
-				<li class="icon"><a class="facebook" title="Facebook" href="<?php echo $facebook; ?>" target="_blank"></a></li>
-			<?php endif;?>
-			
-			<?php if($youtube) : ?>
-				<li class="icon"><a class="youtube" title="Youtube" href="<?php echo $youtube; ?>" target="_blank"></a></li>
-			<?php endif;?>
-			
-			<?php if($ig) : ?>
-				<li class="icon"><a class="ig" title="Instagram" href="<?php echo $ig; ?>" target="_blank"></a></li>
-			<?php endif;?>
-
-			<?php if($googleplus) : ?>
-				<li class="icon"><a class="googleplus" title="Googleplus" href="<?php echo $googleplus; ?>" target="_blank"></a></li>
-			<?php endif;?>
-
-		</ul>
-	
-	<?php	
-		echo $after_widget;
-	}
-	//Update the widget 
-	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
-
-		//Strip tags from title and name to remove HTML 
-		$instance['title'] = strip_tags( $new_instance['title'] );
-		$instance['facebook'] = strip_tags( $new_instance['facebook'] );
-		$instance['youtube'] = strip_tags( $new_instance['youtube'] );
-		$instance['ig'] = strip_tags( $new_instance['ig'] );
-		$instance['googleplus'] = strip_tags( $new_instance['googleplus'] );
-		
-		return $instance;
-	}
-	function form( $instance ) {
-		?>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'custom_social_media_widget'); ?></label>
-			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'facebook' ); ?>"><?php _e('Facebook:', 'custom_social_media_widget'); ?></label>
-			<input id="<?php echo $this->get_field_id( 'facebook' ); ?>" name="<?php echo $this->get_field_name( 'facebook' ); ?>" value="<?php echo $instance['facebook']; ?>" style="width:90%;" />
-		</p>
-		
-		<p>
-			<label for="<?php echo $this->get_field_id( 'youtube' ); ?>"><?php _e('Youtube:', 'custom_social_media_widget'); ?></label>
-			<input id="<?php echo $this->get_field_id( 'youtube' ); ?>" name="<?php echo $this->get_field_name( 'youtube' ); ?>" value="<?php echo $instance['youtube']; ?>" style="width:90%;" />
-		</p>
-		
-		<p>
-			<label for="<?php echo $this->get_field_id( 'ig' ); ?>"><?php _e('Instagram:', 'custom_social_media_widget'); ?></label>
-			<input id="<?php echo $this->get_field_id( 'ig' ); ?>" name="<?php echo $this->get_field_name( 'ig' ); ?>" value="<?php echo $instance['ig']; ?>" style="width:90%;" />
-		</p>
-		
-		<p>
-			<label for="<?php echo $this->get_field_id( 'googleplus' ); ?>"><?php _e('Googleplus:', 'custom_social_media_widget'); ?></label>
-			<input id="<?php echo $this->get_field_id( 'googleplus' ); ?>" name="<?php echo $this->get_field_name( 'googleplus' ); ?>" value="<?php echo $instance['googleplus']; ?>" style="width:90%;" />
-		</p>
-	<?php
-	}
-}
 ?>

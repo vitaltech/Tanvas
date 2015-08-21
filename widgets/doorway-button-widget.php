@@ -8,7 +8,7 @@ class lc_doorway_button extends WP_Widget
     
     function __construct()
     {
-        parent::__construct(
+        WP_Widget::__construct(
             'lc_doorway_button',
             __('Doorway Button', 'lasercommerce'),
             array(
@@ -115,7 +115,7 @@ class lc_doorway_button extends WP_Widget
                 id="<?php echo $this->get_field_id('url'); ?>"
                 name="<?php echo $this->get_field_name('url');?>"
                 type="text"
-                value="<? echo esc_attr($url); ?>"
+                value="<?php echo esc_attr($url); ?>"
             />
         </p>
         <p>
