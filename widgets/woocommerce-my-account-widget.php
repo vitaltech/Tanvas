@@ -2,6 +2,7 @@
 /*
 
 This is a customized version of the free plugin Woocommerce My Account Widget avaiable here: https://wordpress.org/plugins/woocommerce-my-account-widget/
+I did not write this, only customized it to my needs.
 
 */
 
