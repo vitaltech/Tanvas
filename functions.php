@@ -634,4 +634,11 @@ function lc_shortcode_twitter($atts, $content = null) {
 
 add_shortcode( 'twitter-https', 'lc_shortcode_twitter' );
 
+/**
+ * Remove deprecated constructor warnings
+ */
+add_filter('deprecated_constructor_trigger_error', '__return_false');
+
+
+
 ?>
