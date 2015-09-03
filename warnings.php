@@ -125,10 +125,13 @@ function tanvas_display_unrestricted_login_warning(){
 }
 
 function tanvas_woocommerce_category_warning() {
+    $_procedure = 'MEMBERSHIP_WARNINGS: ';
     if ( is_product_category() ){
         global $wp_query;
         $cat = $wp_query->get_queried_object();
         $term_id = $cat->term_id;
+
+        if(TANSYNC_DEBUG) error_log($_procedure."current category: ".$term_id);
 
         $read_caps = null;
         if(class_exists('Groups_Restrict_Categories')){
@@ -138,10 +141,8 @@ function tanvas_woocommerce_category_warning() {
 
         //Membership Integration
         $required_memberships = null;
-        $_procedure = 'MEMBERSHIP_WARNINGS: ';
         error_log($_procedure."commencing");
         if(class_exists('WC_Memberships')){
-            
             
             // get required membership plan
             $possible_membership_plans = wc_memberships_get_membership_plans();
