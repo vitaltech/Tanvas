@@ -107,7 +107,7 @@ function tanvas_display_user_membership_warnings($required_membership_plans, $ob
         } else {
             error_log($_procedure."category is visible");
         }
-        
+
         error_log($_procedure."complete");
     }
 }
@@ -131,7 +131,7 @@ function tanvas_woocommerce_category_warning() {
         $cat = $wp_query->get_queried_object();
         $term_id = $cat->term_id;
 
-        if(TANVAS_DEBUG) error_log($_procedure."current category: ".$term_id);
+        if(TANVAS_DEBUG) error_log($_procedure."current category: ".serialize($term_id));
 
         $read_caps = null;
         if(class_exists('Groups_Restrict_Categories')){
@@ -152,18 +152,26 @@ function tanvas_woocommerce_category_warning() {
                 $rules_contain_term = false;
                 foreach ($product_restriction_rules as $rule) {
                     if($rule->get_content_type() == 'taxonomy'){
-                        if(TANVAS_DEBUG) error_log($_procedure." -> Taxonomy Rule: ".$rule->get_id());
+                        $rule_id = $rule->get_id();
+                        if(TANVAS_DEBUG) error_log($_procedure." -> Taxonomy Rule: ".$rule_id);
+                        $rule_applies_to = $rule->get_object_ids();
+                        if(TANVAS_DEBUG) error_log($_procedure." -> applies to: ".serialize($rule_applies_to));
+                        
+                        //determine if rule applies to this term or parents
                         $this_id = $term_id;
                         do {
                             $term = get_term_by('id', $this_id, 'product_cat');
                             if(TANVAS_DEBUG) error_log($_procedure." --> does it apply to term? : ".$this_id);
+                            if(in_array(strval($this_id), $rule_applies_to)){
+                                if(TANVAS_DEBUG) error_log($_procedure." ---> term in list");
+                                $rules_contain_term = true;
+                                break;
+                            } 
                             if($rule->applies_to_single_object($this_id)){
                                 if(TANVAS_DEBUG) error_log($_procedure." ---> applies to this category");
                                 $rules_contain_term = true;
                                 break;
-                            } else {
-                                if(TANVAS_DEBUG) error_log($_procedure." ---> does not apply to this category: ");
-                            }
+                            } 
                             $this_id = $term->parent;
                         } while($this_id);
                     }
@@ -176,7 +184,7 @@ function tanvas_woocommerce_category_warning() {
         }
         if(TANVAS_DEBUG) error_log($_procedure."required memberships:");
         if($required_memberships) foreach ($required_memberships as $membership) {
-            if(TANVAS_DEBUG) error_log($_procedure." -> ".serialize($membership));
+            if(TANVAS_DEBUG) error_log($_procedure." -> ".serialize($membership->id) ." | ". serialize($membership->name) );
         }
         if(TANVAS_DEBUG) error_log($_procedure."displaying warnings:");
         tanvas_display_user_membership_warnings($required_memberships, 'category');

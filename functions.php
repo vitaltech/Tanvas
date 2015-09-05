@@ -1,6 +1,10 @@
 <?php
 
 define( 'TANVAS_DOMAIN', 'tanvas');
+if(!defined('TANVAS_DEBUG') ){
+	define( 'TANVAS_DEBUG', 'true');
+}
+
 
 include_once('widgets/doorway-button-widget.php');
 include_once('widgets/custom-latest-posts-widget.php');
@@ -95,8 +99,6 @@ add_filter('woo_load_slider_js', function($load_slider_js){
 	return $load_slider_js;
 
 }, 999, 1);
-
-
 
 function tanvas_widgets_init() {
 	register_sidebar( array(
@@ -639,6 +641,11 @@ add_shortcode( 'twitter-https', 'lc_shortcode_twitter' );
  */
 add_filter('deprecated_constructor_trigger_error', '__return_false');
 
+/**
+ * Remove product count
+ */
+
+remove_filter('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
 
 
 ?>
