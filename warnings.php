@@ -131,7 +131,7 @@ function tanvas_woocommerce_category_warning() {
         $cat = $wp_query->get_queried_object();
         $term_id = $cat->term_id;
 
-        if(TANSYNC_DEBUG) error_log($_procedure."current category: ".$term_id);
+        if(TANVAS_DEBUG) error_log($_procedure."current category: ".$term_id);
 
         $read_caps = null;
         if(class_exists('Groups_Restrict_Categories')){
@@ -152,17 +152,17 @@ function tanvas_woocommerce_category_warning() {
                 $rules_contain_term = false;
                 foreach ($product_restriction_rules as $rule) {
                     if($rule->get_content_type() == 'taxonomy'){
-                        error_log($_procedure." -> Taxonomy Rule: ".$rule->get_id());
+                        if(TANVAS_DEBUG) error_log($_procedure." -> Taxonomy Rule: ".$rule->get_id());
                         $this_id = $term_id;
                         do {
                             $term = get_term_by('id', $this_id, 'product_cat');
-                            error_log($_procedure." --> term: ".$this_id);
+                            if(TANVAS_DEBUG) error_log($_procedure." --> does it apply to term? : ".$this_id);
                             if($rule->applies_to_single_object($this_id)){
-                                error_log($_procedure." ---> applies to this category");
+                                if(TANVAS_DEBUG) error_log($_procedure." ---> applies to this category");
                                 $rules_contain_term = true;
                                 break;
                             } else {
-                                error_log($_procedure." ---> does not apply to this category: ");
+                                if(TANVAS_DEBUG) error_log($_procedure." ---> does not apply to this category: ");
                             }
                             $this_id = $term->parent;
                         } while($this_id);
@@ -174,19 +174,19 @@ function tanvas_woocommerce_category_warning() {
             }
             
         }
-        error_log($_procedure."required memberships:");
+        if(TANVAS_DEBUG) error_log($_procedure."required memberships:");
         if($required_memberships) foreach ($required_memberships as $membership) {
-            error_log($_procedure." -> ".serialize($membership));
+            if(TANVAS_DEBUG) error_log($_procedure." -> ".serialize($membership));
         }
-        error_log($_procedure."displaying warnings:");
+        if(TANVAS_DEBUG) error_log($_procedure."displaying warnings:");
         tanvas_display_user_membership_warnings($required_memberships, 'category');
 
         if(!$required_memberships and !$read_caps){
-            error_log($_procedure."no required_memberships or read_caps");
+            if(TANVAS_DEBUG) error_log($_procedure."no required_memberships or read_caps");
             tanvas_display_unrestricted_login_warning();
         }
 
-        error_log($_procedure."complete");
+        if(TANVAS_DEBUG) error_log($_procedure."complete");
     }
 }
 
