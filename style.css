@@ -685,6 +685,21 @@ li.product a h3 small{
 	color: black;
 	line-height: normal
 }
+li.product a div.price_tier_table {
+	display: table;
+	width: 100%;
+}
+li.product a div.price_tier_table div.price_tier_row {
+	display: table-row;
+	width: 100%;
+	padding: auto;
+}
+li.product a div.price_tier_table div.price_tier_row .price_tier_cell {
+	display: table-cell;
+}
+li.product a div.price_tier_table div.price_tier_row .price_tier_cell.price {
+	width: 100%;
+}
 
 .nf-modal-link {
 	background-color: rgb(209, 170, 103);

@@ -27,6 +27,13 @@ function theme_enqueue_styles(){
 	wp_enqueue_style('flexboxgrid', get_stylesheet_directory_uri() . '/css/flexboxgrid.css');
 
 	// wp_enqueue_style('this-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'prefix-font-awesome', '//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css', array(), '4.4.0' );
+	global $is_IE;
+	if ( $is_IE ) {
+	    wp_enqueue_style( 'prefix-font-awesome-ie', '//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome-ie7.min.css', array('prefix-font-awesome'), '4.4.0' );
+	    // Add IE conditional tags for IE 7 and older
+	    $wp_styles->add_data( 'prefix-font-awesome-ie', 'conditional', 'lte IE 7' );
+	}
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
 	
@@ -461,17 +468,17 @@ add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
  * change loop shop columns
  */
 
-// if (!function_exists('change_loop_columns')) {
-// 	function change_loop_columns() {
-// 		return 3; // 3 products per row
-// 	}
-// }
-// add_filter('loop_shop_columns', 'change_loop_columns', 999, 3);
+if (!function_exists('change_loop_columns')) {
+	function change_loop_columns() {
+		return 3; // 3 products per row
+	}
+}
+add_filter('loop_shop_columns', 'change_loop_columns', 999, 3);
 
 // change the css if there are 3 columns
 function inject_column_css(){
 	// if(WP_DEBUG) error_log("called inject_column_css callback");	
-	$columns = apply_filters( 'loop_shop_columns', 4);
+	$columns = apply_filters( 'loop_shop_columns', 3);
 	// if(WP_DEBUG) error_log("-> columns: $columns");
 	if ($columns == 3 ){ ?>
 		<style type="text/css">
