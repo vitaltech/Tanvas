@@ -688,17 +688,23 @@ li.product a h3 small{
 li.product a div.price_tier_table {
 	display: table;
 	width: 100%;
+	/*background-color: whitesmoke;*/
+	font-size: 75%;
 }
 li.product a div.price_tier_table div.price_tier_row {
 	display: table-row;
 	width: 100%;
-	padding: auto;
+	vertical-align: middle;
 }
 li.product a div.price_tier_table div.price_tier_row .price_tier_cell {
 	display: table-cell;
+	vertical-align: middle;
 }
-li.product a div.price_tier_table div.price_tier_row .price_tier_cell.price {
+li.product a div.price_tier_table div.price_tier_row .price_tier_cell.price_html {
 	width: 100%;
+}
+li.product a div.price_tier_table div.price_tier_row .price_tier_cell.tier_id {
+	padding-left: 5px;
 }
 
 .nf-modal-link {
