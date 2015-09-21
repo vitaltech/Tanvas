@@ -467,13 +467,13 @@ add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
 /**
  * change loop shop columns
  */
-
-if (!function_exists('change_loop_columns')) {
-	function change_loop_columns() {
-		return 3; // 3 products per row
-	}
-}
-add_filter('loop_shop_columns', 'change_loop_columns', 999, 3);
+// THIS IS NOT NEEDED NOW THAT WE USE PRODUCT ARCHIVE CUSTOMIZER
+// if (!function_exists('change_loop_columns')) {
+// 	function change_loop_columns() {
+// 		return 3; // 3 products per row
+// 	}
+// }
+// add_filter('loop_shop_columns', 'change_loop_columns', 999, 3);
 
 // change the css if there are 3 columns
 function inject_column_css(){
