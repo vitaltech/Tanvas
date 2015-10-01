@@ -32,6 +32,7 @@ function theme_enqueue_styles(){
 	if ( $is_IE ) {
 	    wp_enqueue_style( 'prefix-font-awesome-ie', '//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome-ie7.min.css', array('prefix-font-awesome'), '4.4.0' );
 	    // Add IE conditional tags for IE 7 and older
+	    global $wp_styles;
 	    $wp_styles->add_data( 'prefix-font-awesome-ie', 'conditional', 'lte IE 7' );
 	}
 }
