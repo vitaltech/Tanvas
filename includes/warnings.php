@@ -33,7 +33,7 @@ function tanvas_display_user_cap_warnings($read_caps, $object_type){
     $user_id = get_current_user_id();
     if($read_caps){ //cat is restricted
         $group_str = '"'. implode(', ', $read_caps). '"';
-        $first_group = $groups[0];
+        $first_group = $read_caps[0];
 
         if($user_id){//logged in
             $instructions = __('apply for a wholesale account or continue shopping for other products.', TANVAS_DOMAIN).' </br>'. implode(' ', array(
@@ -209,11 +209,16 @@ function tanvas_woocommerce_product_warning(){
         tanvas_display_user_cap_warnings($read_caps, 'product');
 
         //Membership Integration
+        $required_memberships = array();
         if(class_exists('WC_Memberships')){
             // get required membership plan
-            $required_memberships = array();
             //TODO THIS
             tanvas_display_user_membership_warnings($required_memberships, 'product');
+        }
+
+        if(!$required_memberships and !$read_caps){
+            if(TANVAS_DEBUG) error_log($_procedure."no required_memberships or read_caps");
+            tanvas_display_unrestricted_login_warning();
         }
     }
 }
