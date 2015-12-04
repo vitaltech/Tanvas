@@ -9,7 +9,12 @@ function tanvas_get_help_button(){
 }
 
 function tanvas_get_login_button(){
-    return tanvas_get_button( wp_login_url(), 'Log In');
+    // if( is_user_logged_in() ){
+    //     return "";
+    // } else {
+        return tanvas_get_button( wp_login_url(), 'Log In');
+    // }
+
     // return tanvas_get_button('/my-account', 'Log In');
     // return '[button link="/my-account/" bg_color="#d1aa67"]'.__('Log In', TANVAS_DOMAIN).'[/button]';
 }
@@ -113,15 +118,43 @@ function tanvas_display_user_membership_warnings($required_membership_plans, $ob
 }
 
 function tanvas_display_unrestricted_login_warning(){
+    $_procedure = "MEMBERSHIP_UNRESTRICTED: ";
     $user_id = get_current_user_id();
+    $public_authority = 'a public (retail) customer';
+    $help_button = tanvas_get_help_button();
+    $buttons = array($help_button);
     if(!$user_id){
-        echo do_shortcode(
-            '[box type="info"]'.
-                __('You may not be getting the best deal! Log in or create an account to get prices crafted specially for you.', TANVAS_DOMAIN).'<br/>'.
-                tanvas_get_login_button() . ' ' . tanvas_get_help_button() .
-            '[/box]'
-        );
+        $authority = $public_authority;
+        $login_button = tanvas_get_login_button();
+        array_push($buttons, $login_button);
+    } else {
+        $upgrade_button = tanvas_get_upgrade_account_button();
+        array_push($buttons, $upgrade_button);
+        global $Lasercommerce_Tier_Tree;
+        if(!isset($Lasercommerce_Tier_Tree)){
+            if (class_exists('Lasercommerce_Tier_Tree')){
+                $Lasercommerce_Tier_Tree = new Lasercommerce_Tier_Tree( 'lc_' );
+            } else {
+                error_log($_procedure."could not initialize Lasercommerce_Tier_Tree");
+            }
+        }
+        $tiers = $Lasercommerce_Tier_Tree->getUserTiers($user_id);
+        if(!$tiers){
+            $authority = $public_authority;
+        } else {
+            $names = array();
+            foreach($tiers as $tier){
+                array_push($names, $tier->name);
+            }
+            $authority = 'a ' . implode(' / ', $names) . ' customer';
+        }
     }
+    echo do_shortcode(
+        '[box type="info"]'.
+            __('You are currently viewing our site as', TANVAS_DOMAIN). ' '. $authority.'<br/>'.
+            implode(' ', $buttons).
+        '[/box]'
+    );
 }
 
 function tanvas_woocommerce_category_warning() {
@@ -191,7 +224,7 @@ function tanvas_woocommerce_category_warning() {
 
         if(!$required_memberships and !$read_caps){
             if(TANVAS_DEBUG) error_log($_procedure."no required_memberships or read_caps");
-            tanvas_display_unrestricted_login_warning();
+            // tanvas_display_unrestricted_login_warning();
         }
 
         if(TANVAS_DEBUG) error_log($_procedure."complete");
@@ -199,6 +232,8 @@ function tanvas_woocommerce_category_warning() {
 }
 
 function tanvas_woocommerce_product_warning(){
+    $_procedure = 'PRODUCT_WARNINGS: ';
+
     if( is_product() ){
         global $product;
         $product_id = $product->id;
@@ -222,6 +257,13 @@ function tanvas_woocommerce_product_warning(){
         }
     }
 }
+
+function tanvas_shop_warning(){
+    $_procedure = "SHOP_WARNINGS: ";
+    tanvas_display_unrestricted_login_warning();
+}
+
+add_action( 'woocommerce_before_shop_loop', 'tanvas_shop_warning', 10 );
 
 add_action( 'woocommerce_archive_description', 'tanvas_woocommerce_category_warning', 15 );
 
