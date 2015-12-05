@@ -140,9 +140,9 @@ li.product-category.product a h3 {
 /* Make main box background white */
 section#main {
     background:white;
-    border-style:solid;
+/*    border-style:solid;
     border-width: medium;
-    border-color: #d1aa67;
+    border-color: #d1aa67;*/
     padding: 20px;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
@@ -258,9 +258,9 @@ div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget,
 aside#sidebar div.widget,
 div.widget-area#tanvas_home_right div.widget {
 	background-color: white;
-	border-color: #d1aa67;
+/*	border-color: #d1aa67;
 	border-style: solid;
-	border-width: medium;
+	border-width: medium;*/
 } 
 
 div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget h2,
@@ -348,7 +348,7 @@ div.widget-area#tanvas_home_right div.widget {
 	/*border-color: #d1aa67;
 	border-style: solid;
 	border-width: medium;*/
-	border: 3px solid #020016;
+	/*border: 3px solid #020016;*/
 } 
 
 div.widget-area.sidebar#tanvas-home-doorway-sidebar div.widget h2,
@@ -384,9 +384,9 @@ body.home section#main div.breadcrumb {
 
 /* product category / doorway button display */
 body.home section#main li.product-category.product {
-    border-style:solid;
+/*    border-style:solid;
     border-width: thick;
-    border-color: #d1aa67;
+    border-color: #d1aa67;*/
     -webkit-box-sizing: border-box; 
     -moz-box-sizing: border-box;    
     box-sizing: border-box;
@@ -826,6 +826,22 @@ span.onsale {
 }
 
 /**
- * Register form mods
+ * remove background image
  */
 
+ div#wrapper-section{
+ 	background-image: None;
+ 	background-color: gainsboro;
+ }
+
+ /** 
+  * Remove borders
+  */
+
+div.doorway-container {
+	border-style: none;
+}
+
+div.widget {
+	border-style: None;
+}

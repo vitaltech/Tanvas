@@ -68,7 +68,7 @@ body {
 
 /*page*/
 section#main {
-	border-color: #020016 !important;
+	/*border-color: #020016 !important;*/
 }
 .breadcrumbs {
 	margin-bottom: 1.5em !important;
@@ -224,7 +224,7 @@ div#doorway-button-sidebar-container .widget {
 	background-color: transparent;
 	margin: 0 0 10px;
 	padding: 10px 13px 5px;
-	border: solid 2px #020016;
+	/*border: solid 2px #020016;*/
 	-webkit-box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.39);
 	-moz-box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.39);
 	box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.39);
@@ -326,7 +326,7 @@ a#doorway-link:hover {
 }
 
 #recent-posts-section {
-	border: 3px solid #020016;
+	/*border: 3px solid #020016;*/
 	margin: 2px;
 	padding: 15px 0 5px;
 }
