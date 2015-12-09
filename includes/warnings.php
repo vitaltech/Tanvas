@@ -117,19 +117,12 @@ function tanvas_display_user_membership_warnings($required_membership_plans, $ob
     }
 }
 
-function tanvas_display_unrestricted_login_warning(){
-    $_procedure = "MEMBERSHIP_UNRESTRICTED: ";
+function tanvas_get_user_authority(){
     $user_id = get_current_user_id();
-    $public_authority = 'a public (retail) customer';
-    $help_button = tanvas_get_help_button();
-    $buttons = array($help_button);
+    $public_authority = 'Retail';
     if(!$user_id){
-        $authority = $public_authority;
-        $login_button = tanvas_get_login_button();
-        array_push($buttons, $login_button);
+        return $public_authority;
     } else {
-        $upgrade_button = tanvas_get_upgrade_account_button();
-        array_push($buttons, $upgrade_button);
         global $Lasercommerce_Tier_Tree;
         if(!isset($Lasercommerce_Tier_Tree)){
             if (class_exists('Lasercommerce_Tier_Tree')){
@@ -140,18 +133,34 @@ function tanvas_display_unrestricted_login_warning(){
         }
         $tiers = $Lasercommerce_Tier_Tree->getUserTiers($user_id);
         if(!$tiers){
-            $authority = $public_authority;
+            return $public_authority;
         } else {
             $names = array();
             foreach($tiers as $tier){
                 array_push($names, $tier->name);
             }
-            $authority = 'a ' . implode(' / ', $names) . ' customer';
+            return implode(' / ', $names);
         }
     }
+    return $public_authority;
+}
+
+function tanvas_display_unrestricted_login_warning(){
+    $_procedure = "MEMBERSHIP_UNRESTRICTED: ";
+    $user_id = get_current_user_id();
+    $help_button = tanvas_get_help_button();
+    $buttons = array($help_button);
+    if(!$user_id){
+        $login_button = tanvas_get_login_button();
+        array_push($buttons, $login_button);
+    } else {
+        $upgrade_button = tanvas_get_upgrade_account_button();
+        array_push($buttons, $upgrade_button);
+    }
+    $authority = tanvas_get_user_authority(); 
     echo do_shortcode(
         '[box type="info"]'.
-            __('You are currently viewing our site as', TANVAS_DOMAIN). ' '. $authority.'<br/>'.
+            __('You are currently viewing our site at', TANVAS_DOMAIN). ' '. $authority.'<br/>'.
             implode(' ', $buttons).
         '[/box]'
     );
@@ -237,6 +246,21 @@ function tanvas_woocommerce_product_warning(){
     if( is_product() ){
         global $product;
         $product_id = $product->id;
+
+        // $required_tier = "";
+        // if(class_exists('Lasercommerce_Tier_Tree')){
+        //     global $Lasercommerce_Tier_Tree;
+        //     $tiers = $Lasercommerce_Tier_Tree->getTreeTiers();
+        //     $all_pricing = array();
+        //     foreach ($tiers as $tier) {
+        //         $pricing = new Lasercommerce_Pricing($product_id, $tier->id);
+        //         if($pricing->regular_price){
+                    
+        //         }
+        //     }
+        // }
+
+
         $read_caps = null;
         if(class_exists('Groups_Post_Access')){
             $read_caps = Groups_Post_Access::get_read_post_capabilities( $product_id );
