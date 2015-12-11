@@ -829,7 +829,7 @@ span.onsale {
  * remove background image
  */
 
- div#wrapper-section{
+div#wrapper-section{
  	background-image: None;
  	background-color: gainsboro;
  }
