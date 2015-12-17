@@ -10,58 +10,48 @@ function tanvas_get_button($link, $text) {
 
 function tanvas_get_help_button() {
     return tanvas_get_button('/my-account/help', 'Help');
-    
-    // return '[button link="/my-account/help" bg_color="#d1aa67"]'.__('Help', TANVAS_DOMAIN).'[/button]';
-    
 }
 
 function tanvas_get_login_button() {
-    
-    // if( is_user_logged_in() ){
-    //     return "";
-    // } else {
     return tanvas_get_button(wp_login_url(), 'Log In');
-    
-    // }
-    
-    // return tanvas_get_button('/my-account', 'Log In');
-    // return '[button link="/my-account/" bg_color="#d1aa67"]'.__('Log In', TANVAS_DOMAIN).'[/button]';
-    
+}
+
+function tanvas_get_trade_login_button() {
+    //TODO: This
+    return tanvas_get_button(wp_login_url(), 'Log In');
 }
 
 function tanvas_get_register_button() {
     return tanvas_get_button(wp_registration_url(), 'Register');
-    
-    // return tanvas_get_button('/create-account', 'Register');
-    // return '[button link="/create-account/" bg_color="#d1aa67"]'.__('Register', TANVAS_DOMAIN).'[/button]';
-    
 }
 
 function tanvas_get_continue_shopping_button() {
     return tanvas_get_button('/shop', 'Continue Shopping');
-    
-    // return '[button link="/shop/" bg_color="#d1aa67"]'.__('Continue Shopping', TANVAS_DOMAIN).'[/button]';
-    
 }
 
-function tanvas_get_upgrade_account_button($name = null) {
-    return tanvas_get_button('/my-account/upgrade' . $name ? '?name=' . esc_attr($name) : '', 'Upgrade Account');
+function tanvas_get_wholesale_application_button($name = null) {
+    return tanvas_get_button('/my-account/upgrade' . ($name ? '?name=' . esc_attr($name) : ''), 'Wholesale Application');
+}
+
+function tanvas_get_distributor_application_button($name = null) {
+    //TODO: get link
+    return tanvas_get_button('#', 'Distributor Application');
+}
+
+function tanvas_get_membership_application_button() {
+    //TODO: get link
+    return tanvas_get_button('#', 'Membership Application');
 }
 
 function tanvas_get_warning_buttons($authorized = null) {
     $help_button = tanvas_get_help_button();
     $buttons = array($help_button);
     if (!$authorized) {
-        if (is_user_logged_in()) {
-            $upgrade_button = tanvas_get_upgrade_account_button();
-            array_push($buttons, $upgrade_button);
-        } 
-        else {
+        if (!is_user_logged_in()) {
             $login_button = tanvas_get_login_button();
             array_push($buttons, $login_button);
-            
-            // $register_button = tanvas_get_register_button();
-            // array_push($buttons, $register_button);
+            $register_button = tanvas_get_register_button();
+            array_push($buttons, $register_button);
             
         }
     }
@@ -71,6 +61,49 @@ function tanvas_get_warning_buttons($authorized = null) {
 /**
  *  Warning Display Functions
  */
+
+    //code inspired by https://github.com/Kaivosukeltaja/php-indefinite-article/blob/master/IndefiniteArticle.class.php
+global $tanvas_indef_A_abbrev, $tanvas_indef_A_y_cons, $tanvas_indef_A_explicit_an, $tanvas_indef_A_ordinal_an, $tanvas_indef_A_ordinal_a;
+
+$tanvas_indef_A_abbrev = "(?! FJO | [HLMNS]Y.  | RY[EO] | SQU
+          | ( F[LR]? | [HL] | MN? | N | RH? | S[CHKLMNPTVW]? | X(YL)?) [AEIOU])
+            [FHLMNRSX][A-Z]
+        ";
+$tanvas_indef_A_y_cons = 'y(b[lor]|cl[ea]|fere|gg|p[ios]|rou|tt)';
+$tanvas_indef_A_explicit_an = "euler|hour(?!i)|heir|honest|hono";
+$tanvas_indef_A_ordinal_an = "[aefhilmnorsx]-?th";
+$tanvas_indef_A_ordinal_a = "[bcdgjkpqtuvwyz]-?th";
+
+function tanvas_indefinite_article($input){
+    global $tanvas_indef_A_abbrev, $tanvas_indef_A_y_cons, $tanvas_indef_A_explicit_an, $tanvas_indef_A_ordinal_an, $tanvas_indef_A_ordinal_a;
+    $word = preg_replace("^\s*(.*)\s*^", "$1", $input);
+    if(preg_match("/^[8](\d+)?/", $word)) {
+        return "an $word";
+    }
+    if(preg_match("/^[1][1](\d+)?/", $word) || (preg_match("/^[1][8](\d+)?/", $word))) {
+        if(strlen(preg_replace(array("/\s/", "/,/", "/\.(\d+)?/"), '', $word))%3 == 2) {
+            return "an $word";
+        }
+    }
+    if(preg_match("/^(".$tanvas_indef_A_ordinal_a.")/i", $word))       return "a $word";
+    if(preg_match("/^(".$tanvas_indef_A_ordinal_an.")/i", $word))      return "an $word";
+    if(preg_match("/^(".$tanvas_indef_A_explicit_an.")/i", $word))         return "an $word";
+    if(preg_match("/^[aefhilmnorsx]$/i", $word))        return "an $word";
+    if(preg_match("/^[bcdgjkpqtuvwyz]$/i", $word))      return "a $word";
+    if(preg_match("/^(".$tanvas_indef_A_abbrev.")/x", $word))          return "an $word";
+    if(preg_match("/^[aefhilmnorsx][.-]/i", $word))         return "an $word";
+    if(preg_match("/^[a-z][.-]/i", $word))          return "a $word";
+    if(preg_match("/^[^aeiouy]/i", $word))                  return "a $word";
+    if(preg_match("/^e[uw]/i", $word))                      return "a $word";
+    if(preg_match("/^onc?e\b/i", $word))                    return "a $word";
+    if(preg_match("/^uni([^nmd]|mo)/i", $word))     return "a $word";
+    if(preg_match("/^ut[th]/i", $word))                     return "an $word";
+    if(preg_match("/^u[bcfhjkqrst][aeiou]/i", $word))   return "a $word";
+    if(preg_match("/^U[NK][AIEO]?/", $word))                return "a $word";
+    if(preg_match("/^[aeiou]/i", $word))            return "an $word";
+    if(preg_match("/^(".$tanvas_indef_A_y_cons.")/i", $word))  return "an $word";
+    return "a $word";
+}
 
 function tanvas_get_warning_string($warning_type, $message, $instructions, $buttons) {
     if (!$warning_type) {
@@ -90,57 +123,182 @@ function tanvas_get_warning_string($warning_type, $message, $instructions, $butt
         $lines[] = $instructions;
     }
     if ($buttons and is_array($buttons)) {
-        $lines[] = implode(' ', $buttons);
+        $lines[] = implode(
+            ' ', 
+            array_filter($buttons)
+        );
     }
     return '[box type="' . $warning_type . '"]' . implode('<br/>', $lines) . '[/box]';
 }
 
-function tanvas_display_tier_warnings($required_tiers, $user_tiers, $object_type) {
+function tanvas_authorities_contain($authorities, $needle){
+    $_procedure = "AUTHORITIES_CONTAIN: ";
+    $auth_sting = strtolower(tanvas_get_authority_string($authorities));
+    if(TANVAS_DEBUG) error_log($_procedure."$auth_sting");
+    if(strpos($auth_sting, strtolower($needle) ) >= 0){
+        return true;
+    }
+    return false;
+}
+
+function tanvas_is_wholesale_required($required_authorities){
+    return tanvas_authorities_contain($required_authorities, 'Wholes');
+}
+
+function tanvas_is_distributor_required($required_authorities){
+    return tanvas_authorities_contain($required_authorities, 'Distr');
+}
+
+function tanvas_get_authority_message($authority, $authority_type = 'customer');
+    return __('You are viewing our site as', TANVAS_DOMAIN) . ' ' . tanvas_indefinite_article($authority) . ' ' . $authority_type;
+}
+
+function tanvas_get_action_string($object_type){
+    if(in_array($object_type, array("product_cat"))){
+        return __("purchase these products", TANVAS_DOMAIN );
+    }
+    if(in_array($object_type, array("category", "cat"))){
+        return __("view this category", TANVAS_DOMAIN );
+    }
+    if(in_array($object_type, array("product"))){
+        return __("purchase this product", TANVAS_DOMAIN);
+    }
+    if(in_array($object_type, array("post", "page"))){
+        return __("view this $object_type", TANVAS_DOMAIN);
+    }
+    return __("view this item", TANVAS_DOMAIN);
+}
+
+function tanvas_display_star_warinigs($star, $required_authorities, $user_authorities, $object_type, $visible = false){
+    $_procedure = "DISPLAY_STAR_WARN|$star";
+
+    $authority = tanvas_get_tier_authority($user_tiers);
+    $required_authority = tanvas_get_tier_authority($required_tiers);
+    $message = tanvas_get_authority_message($Authority);
+    $buttons = array();
+    $action = tanvas_get_action_string($object_type);
+
+    if($required_authorities){
+
+    } else {
+
+    }
+}
+
+function tanvas_display_tier_warnings($required_tiers, $user_tiers, $object_type, $visible = false) {
     $_procedure = "DISPLAY_TIER_WARN: ";
     if ($required_tiers) {
-        $buttons = tanvas_get_warning_buttons();
-        $instructions = "";
+        $buttons = array();
         $box_type = "";
         $authority = tanvas_get_tier_authority($user_tiers);
-        $message = __('You are viewing our site at ', TANVAS_DOMAIN) . ' ' . $authority . '.';
+        $required_authority = tanvas_get_tier_authority($required_tiers);
+        $message = tanvas_get_authority_message($Authority);
+        $action = tanvas_get_action_string($object_type);
+        $login_button = tanvas_get_login_button();
+        $register_button = tanvas_get_register_button();
+        $help_button = tanvas_get_help_button();
         
-        if (is_user_logged_in()) {
-            $required_authority = tanvas_get_tier_authority($required_tiers);
-            // $message.= __('</br>This item is restricted to ', TANVAS_DOMAIN) . ' ' . $required_authority . '.';
-            $instructions = __("Please apply for a $required_authority account to continue.", TANVAS_DOMAIN);
-        } 
-        else {
-            // $message.= __('</br>This item is restricted because you are not logged in.', TANVAS_DOMAIN);
-            $instructions = __("Please log in at $required_authority to continue.", TANVAS_DOMAIN);
+        if(tanvas_is_wholesale_required($required_tiers)){
+            $login_button = tanvas_get_trade_login_button();
+            $register_button = tanvas_get_wholesale_application_button();
+            $required_authority = "wholesale"; 
+            $instructions = __("Wholesale (trade) customers can", TANVAS_DOMAIN);
+        } elseif (tanvas_is_distributor_required($required_tiers) ) {
+            $login_button = tanvas_get_trade_login_button();
+            $register_button = tanvas_get_distributor_application_button();
+            $required_authority = "distributor";
+            $instructions = __("Distributor customers can", TANVAS_DOMAIN);
+        } else {
+            $instructions = __("Please", TANVAS_DOMAIN);
         }
+
+        if (is_user_logged_in()) {
+            $instructions .= ' ' . __("apply for", TANVAS_DOMAIN);
+        } else {
+            $instructions .= ' ' . __("log in with", TANVAS_DOMAIN);
+            array_push($buttons, $login_button);
+        }
+
+        $instructions .= ' ' . tanvas_indefinite_article( $required_authority ) . ' ' . __("account to", TANVAS_DOMAIN) . ' ' . $action;
+
+        if($register_button){
+            array_push($buttons, $register_button);
+        }
+
+        array_push($buttons, $help_button);
         
         echo do_shortcode(tanvas_get_warning_string($box_type, $message, $instructions, $buttons));
         
         return true;
     } 
     else {
-        error_log($_procedure . "no reqwuired tiers");
+        error_log($_procedure . "no required tiers");
         return false;
     }
 }
 
-function tanvas_display_user_membership_warnings($required_membership_plans, $user_memberships, $object_type) {
+function tanvas_display_user_membership_warnings($required_membership_plans, $user_memberships, $object_type, $visible = false) {
     $_procedure = 'DISPLAY_MEMBERSHIP_WARN: ';
     if ($required_membership_plans) {
-        $buttons = tanvas_get_warning_buttons();
-        $message = "";
-        $instructions = "";
+        $buttons = array();
         $box_type = "";
-        
+        $authority = tanvas_get_tier_authority($user_tiers);
+        $required_authority = tanvas_get_tier_authority($required_tiers);
+        $message = tanvas_get_authority_message($Authority);
+        $action = tanvas_get_action_string($object_type);
+        $login_button = tanvas_get_login_button();
+        $register_button = tanvas_get_register_button();
+        $help_button = tanvas_get_help_button();
+
+
+        if(tanvas_is_wholesale_required($required_tiers)){
+            $login_button = tanvas_get_trade_login_button();
+            $register_button = tanvas_get_wholesale_application_button();
+            $required_authority = "wholesale"; 
+            $instructions = __("Wholesale (trade) customers can", TANVAS_DOMAIN);
+        } elseif (tanvas_is_distributor_required($required_tiers) ) {
+            $login_button = tanvas_get_trade_login_button();
+            $register_button = tanvas_get_distributor_application_button();
+            $required_authority = "distributor";
+            $instructions = __("Distributor customers can", TANVAS_DOMAIN);
+        } else {
+            $instructions = __("Please", TANVAS_DOMAIN);
+        }
+
+
+
+
+
+        $buttons = tanvas_get_warning_buttons();
+        $required_authority = tanvas_get_memberships_authority(array_slice($required_membership_plans, 0, 1));
+        $box_type = "";
+
+        if(tanvas_is_wholesale_required($required_membership_plans)){
+            $upgrade_button = tanvas_get_wholesale_application_button();
+            $instructions = __("Please apply for a Wholesale plan to continue.", TANVAS_DOMAIN);
+            array_push($buttons, $upgrade_button);
+        } elseif (tanvas_is_distributor_required($required_membership_plans) ) {
+            $instructions = __("Please apply for a Distributor plan to continue.", TANVAS_DOMAIN);
+            $upgrade_button = tanvas_get_distributor_application_button();
+            array_push($buttons, $upgrade_button);
+        } else {
+            if (is_user_logged_in()) {
+                $instructions = __("Please apply for a $required_authority plan or continue shopping.", TANVAS_DOMAIN);
+            } else {
+                $instructions = __("Please log in with a $required_authority plan.", TANVAS_DOMAIN);
+            }
+        }
         if (is_user_logged_in()) {
-            $first_plan = $required_membership_plans[0];
-            $first_plan_name = $first_plan->get_name();
-            error_log($_procedure . "first plan name:" . serialize($first_plan_name));
-            $instructions = __("Please apply for a $first_plan_name plan or continue shopping.", TANVAS_DOMAIN);
+            if($user_memberships){
+                $authority = tanvas_get_memberships_authority($user_memberships);
+                $message = __('This item is restricted because you are viewing our site at ', TANVAS_DOMAIN) . ' ' . $authority . '.';
+            } else {
+                $message = __('This item is restricted because you do not have any active membership plans.', TANVAS_DOMAIN);
+            }
             $buttons[] = tanvas_get_continue_shopping_button();
         } 
         else {
-            $buttons = tanvas_get_warning_buttons();
+            $message = __('This item is restricted because you are not logged in.');
         }
         
         echo do_shortcode(tanvas_get_warning_string($box_type, $message, $instructions, $buttons));
@@ -153,24 +311,37 @@ function tanvas_display_user_membership_warnings($required_membership_plans, $us
     }
 }
 
-function tanvas_display_group_warnings($required_caps, $user_groups, $object_type) {
+function tanvas_display_group_warnings($required_caps, $user_groups, $object_type, $visible = false) {
     $_procedure = 'DISPLAY_GROUP_WARN: ';
     if ($required_caps) {
         $buttons = tanvas_get_warning_buttons();
-        $message = "";
-        $instructions = "";
+        $authority = tanvas_get_memberships_authority($user_groups);
+        $required_authority = tanvas_get_memberships_authority(array_slice($required_caps, 0, 1));
+        $first_group = $required_caps[0];
         $box_type = "";
         
+        if(tanvas_is_wholesale_required($required_caps)){
+            $upgrade_button = tanvas_get_wholesale_application_button();
+            array_push($buttons, $upgrade_button);
+        } elseif (tanvas_is_distributor_required($required_caps) ) {
+            $upgrade_button = tanvas_get_distributor_application_button();
+            array_push($buttons, $upgrade_button);
+        }
+
         if (is_user_logged_in()) {
-            $group_str = '"' . implode(', ', $required_caps) . '"';
-            $first_group = $required_caps[0];
-            $reason = __('because you do not have the correct privileges', TANVAS_DOMAIN);
+            $message = __('You are viewing our site as a ', TANVAS_DOMAIN) . " $authority member.";
             $required_authority = tanvas_get_group_authority($required_caps);
-            $instructions = __('Please apply for ' . $required_authority . ' access or continue shopping.', TANVAS_DOMAIN);
+            $instructions = __("Please apply for $required_authority access or continue shopping.", TANVAS_DOMAIN);
             array_push($buttons, tanvas_get_continue_shopping_button());
+        } else {
+            $message = __('This item is restricted because you are not logged in.');
+            $instructions = __("Please log in with $required_authority access.", TANVAS_DOMAIN);
         }
         
-        echo do_shortcode('[groups_non_member group=' . $group_str . ']' . tanvas_get_warning_string($box_type, $message, $instructions, $buttons) . '[/groups_non_member]');
+        $group_str = '"' . implode(', ', $required_caps) . '"';
+        echo do_shortcode('[groups_non_member group=' . $group_str . ']' . 
+            tanvas_get_warning_string($box_type, $message, $instructions, $buttons) . 
+            '[/groups_non_member]');
         return true;
     } 
     else {
@@ -179,13 +350,22 @@ function tanvas_display_group_warnings($required_caps, $user_groups, $object_typ
     }
 }
 
-function tanvas_display_unrestricted_warning() {
+function tanvas_display_unrestricted_warning($required_authorities, $user_authority) {
     $_procedure = "MEMBERSHIP_UNRESTRICTED: ";
     if (TANVAS_DEBUG) error_log($_procedure . "start");
     
     $buttons = tanvas_get_warning_buttons();
-    $authority = tanvas_get_tier_authority();
-    echo do_shortcode('[box type="info"]' . __('You are currently viewing our site at', TANVAS_DOMAIN) . ' ' . $authority . '<br/>' . implode(' ', $buttons) . '[/box]');
+    $authority = tanvas_get_authority_string($user_authority);
+    if(is_user_logged_in()){
+        $box_type = 'tick';
+        $message = __('You are currently viewing our site at', TANVAS_DOMAIN) . ' ' . $authority;
+    } else {
+        $box_type = 'info';
+        $message = __('You are not logged in and are currently viewing our site at', TANVAS_DOMAIN) . ' ' . $authority;
+    }
+    echo do_shortcode(
+        tanvas_get_warning_string($box_type, $message, "", $buttons) 
+    );
     if (TANVAS_DEBUG) error_log($_procedure . "end");
 }
 
@@ -193,10 +373,20 @@ function tanvas_display_unrestricted_warning() {
  *  Authority functions
  */
 
-function tanvas_get_authority_string($names, $default = 'Public') {
-    if ($names) {
-        return implode(' / ', $names);
+function tanvas_get_authority_string($authorities, $default = 'Public') {
+    $names = array();
+    if ($authorities) {
+        foreach($authorities as $authority){
+            if (!property_exists($authority, 'name')) continue;
+            $name = $authority->name;
+            if($name){
+                $names[] = $name;
+            }
+        }
     } 
+    if($names){
+        return implode(' / ', $names);
+    }
     else {
         return $default;
     }
@@ -228,13 +418,7 @@ function tanvas_get_user_tiers($user = null) {
 
 function tanvas_get_tier_authority($tiers = array()) {
     $public_authority = 'Retail';
-    $names = array();
-    if ($tiers) {
-        foreach ($tiers as $tier) {
-            array_push($names, $tier->name);
-        }
-    }
-    return tanvas_get_authority_string($names, $public_authority);
+    return tanvas_get_authority_string($tiers, $public_authority);
 }
 
 function tanvas_get_user_memberships($user = null) {
@@ -256,13 +440,7 @@ function tanvas_get_user_memberships($user = null) {
 }
 
 function tanvas_get_memberships_authority($memberships) {
-    $names = array();
-    if ($memberships) {
-        foreach ($memberships as $membership) {
-            array_push($names, $membership->name);
-        }
-    }
-    return tanvas_get_authority_string($names, null);
+    return tanvas_get_authority_string($memberships);
 }
 
 function tanvas_get_user_groups($user = null) {
@@ -285,13 +463,7 @@ function tanvas_get_user_groups($user = null) {
 }
 
 function tanvas_get_group_authority($groups = array()) {
-    $names = array();
-    if ($groups) {
-        foreach ($groups as $group) {
-            array_push($names, $group->name);
-        }
-    }
-    return tanvas_get_authority_string($names, null);
+    return tanvas_get_authority_string($groups);
 }
 
 /**
@@ -309,7 +481,7 @@ function tanvas_term_get_required_tiers($term) {
     return $required_tiers;
 }
 
-function tanvas_term_tiers_visibility($term) {
+function tanvas_term_tiers_visibile($term) {
     
     //TODO: this
     return true;
@@ -377,12 +549,14 @@ function tanvas_term_get_required_memberships($term) {
     return $required_memberships;
 }
 
-function tanvas_get_term_memberships_visibility($term) {
+function tanvas_term_memberships_visible($term) {
     $_procedure = 'TERM_MEMBERSHIPS_VISIBILILTY: ';
     
     if (!property_exists($term, 'taxonomy') || $term->taxonomy !== 'product_cat') {
         return true;
     }
+
+    //TODO: This only shows if the category is visible but ignores parents
     return current_user_can('wc_memberships_view_restricted_product_taxonomy_term', 'product_cat', $term->term_id);
 }
 
@@ -437,6 +611,7 @@ function tanvas_term_messages() {
     elseif ($user_memberships) {
         $user_authority = $user_memberships;
     }
+    $required_authorities = array();
     
     if (is_tax()) {
         if (TANVAS_DEBUG) error_log($_procedure . "is_tax() is true");
@@ -450,28 +625,43 @@ function tanvas_term_messages() {
         
         if (!$messages) {
             $required_tiers = tanvas_term_get_required_tiers($term);
-            if ($required_tiers and !tanvas_term_visible($term)) {
-                $messages = tanvas_display_tier_warnings($required_tiers, $user_tiers, 'term');
+            if ($required_tiers){
+                if(!$required_authorities){
+                    $required_authorities = $required_tiers;
+                }
+                if(!tanvas_term_tiers_visibile($term)){
+                    $messages = tanvas_display_tier_warnings($required_tiers, $user_tiers, $taxonomy);
+                }
             }
         }
         
         if (!$messages and $taxonomy == 'product_cat') {
             $required_memberships = tanvas_term_get_required_memberships($term);
-            if ($required_memberships and !tanvas_get_term_memberships_visibility($term)) {
-                $messages = tanvas_display_user_membership_warnings($required_memberships, $user_memberships, 'term');
+            if ($required_memberships){
+                if(!$required_authorities){
+                    $required_authorities = $required_memberships;
+                }
+                if(tanvas_term_memberships_visible($term)){
+                    $messages = tanvas_display_user_membership_warnings($required_memberships, $user_memberships, $taxonomy);
+                }
             }
         }
         
         if (!$messages) {
             $required_caps = tanvas_term_get_required_groups($term);
-            if ($required_caps and !tanvas_term_groups_visible($term)) {
-                $messages = tanvas_display_group_warnings($required_caps, $user_groups, 'term');
+            if ($required_caps){
+                if(!$required_authorities){
+                    $required_authorities = $required_caps;
+                }
+                if(!tanvas_term_groups_visible($term)){
+                    $messages = tanvas_display_group_warnings($required_caps, $user_groups, $taxonomy);
+                }
             }
         }
         if (!$messages) {
              //no warnings so far
             if (TANVAS_DEBUG) error_log($_procedure . "no warnings so far");
-            tanvas_display_unrestricted_warning($user_authority);
+            tanvas_display_unrestricted_warning($required_authorities, $user_authority);
         }
     } 
     else {
@@ -588,6 +778,7 @@ function tanvas_post_warning() {
     elseif ($user_memberships) {
         $user_authority = $user_memberships;
     }
+    $required_authorities = array();
     
     if (is_single()) {
         if (TANVAS_DEBUG) error_log($_procedure . "is_single() is true");
@@ -595,38 +786,55 @@ function tanvas_post_warning() {
         if (is_product()) {
             global $product;
             $_post = $product;
+            $item_type = 'product';
             
             if (!$messages) {
                 $required_tiers = tanvas_post_get_required_tiers($_post);
-                if ($required_tiers and !tanvas_post_tier_visible($_post)) {
-                    $messages = tanvas_display_tier_warnings($required_tiers, $user_tiers, 'product');
+                if ($required_tiers){
+                    if(!$required_authorities) {
+                        $required_authorities = $required_tiers;
+                    }
+                    if(!tanvas_post_tier_visible($_post)) {
+                        $messages = tanvas_display_tier_warnings($required_tiers, $user_tiers, $item_type);
+                    }
                 }
             }
-        } 
-        else {
+        } else {
             global $post;
             $_post = $post;
-        }
-        
-        if (!$messages) {
-            $required_caps = tanvas_post_get_required_caps($_post);
-            if ($required_caps and !tanvas_post_groups_visible($_post)) {
-                $messages = tanvas_display_group_warnings($required_caps, $user_groups, 'product');
-            }
+            $item_type = 'post';
         }
         
         //Membership Integration
         if (!$messages) {
             $required_memberships = tanvas_post_get_required_memberships($_post);
-            if ($required_memberships and !tanvas_post_memberships_visible()) {
-                $messages = tanvas_display_user_membership_warnings($required_memberships, $user_memberships, 'product');
+            if ($required_memberships){
+                if(!$required_authorities){
+                    $required_authorities = $required_memberships;
+                } 
+                if(!tanvas_post_memberships_visible()) {
+                    $messages = tanvas_display_user_membership_warnings($required_memberships, $user_memberships, $item_type);
+                }
             }
         }
+
+        if (!$messages) {
+            $required_caps = tanvas_post_get_required_caps($_post);
+            if ($required_caps){
+                if(!$required_authorities){
+                    $required_authorities = $required_caps;
+                }
+                if(!tanvas_post_groups_visible($_post)) {
+                    $messages = tanvas_display_group_warnings($required_caps, $user_groups, $item_type);
+                }
+            }
+        }
+        
         
         if (!$messages) {
              //no warnings so far
             if (TANVAS_DEBUG) error_log($_procedure . "no warnings so far");
-            tanvas_display_unrestricted_warning($user_authority);
+            tanvas_display_unrestricted_warning($required_authorities, $user_authority);
         }
     } 
     else {
