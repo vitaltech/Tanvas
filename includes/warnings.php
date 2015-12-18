@@ -132,7 +132,7 @@ function tanvas_get_warning_string($warning_type, $message, $instructions, $butt
 }
 
 function tanvas_authorities_contain($authorities, $needle){
-    $_procedure = "AUTHORITIES_CONTAIN: ";
+    $_procedure = "AUTHORITIES_CONTAIN|$needle: ";
     $auth_sting = strtolower(tanvas_get_authority_string($authorities));
     if(TANVAS_DEBUG) error_log($_procedure."$auth_sting");
     if(strstr($auth_sting, strtolower($needle) )){
@@ -309,7 +309,7 @@ function tanvas_display_tier_warnings($required_authorities, $user_authorities, 
                     $action = tanvas_get_unrestricted_action_string($object_type);
                     $required_action = __("apply for %s", TANVAS_DOMAIN);
                     $required_action = sprintf($required_action, tanvas_indefinite_authority( $required_authority, 'account' ));
-                    $instructions = sprintf($instructions, $required_action, $action);
+                    $instructions = sprintf( __("Please %s to %s", TANVAS_DOMAIN), $required_action, $action);
                 }
             }
         }
@@ -570,33 +570,40 @@ function tanvas_get_group_authority($groups = array()) {
  *  Term functions
  */
 
-global $tanvas_restricted_terms;
-$tanvas_restricted_terms = array("solution");
-
-function tanvas_term_restricted($term){
-    global $tanvas_restricted_terms;
-
-    if (property_exists($term, 'name') ){
-        $term_name = $term->name;
-        foreach($tanvas_restricted_terms as $restricted_term){
-            if(strstr(strtolower($restricted_term), strtolower($term_name)) ){
-                return true;
-            }
-        }
+function tanvas_term_restricted($term, $user = null){
+    if (!$user) {
+        $user = wp_get_current_user();
     }
-    return false;
+    
+    $user_id = $user->ID;
+    $term_id = $term->term_id; 
+
+    if(class_exists('Lasercommerce_Plugin')){
+        global $Lasercommerce_Plugin;
+        return !$Lasercommerce_Plugin->visibility->user_can_read_term($user_id, $term_id);
+    } else {
+        return false;
+    }
 }
 
-function tanvas_term_get_required_tiers($term) {
+function tanvas_term_get_required_tiers($term, $user = null) {
     $_procedure = "TERM_REQUIRED_TIERS: ";
     $required_tiers = array();
+
+    if (!$user) {
+        $user = wp_get_current_user();
+    }
+    
+    $user_id = $user->ID;
+    $term_id = $term->term_id; 
     
     //TODO: this
     if (class_exists('Lasercommerce_Plugin')) {
         global $Lasercommerce_Plugin;
         if (isset($Lasercommerce_Plugin)) {
-            if(tanvas_term_restricted($term)){
-                $required_tiers = $Lasercommerce_Plugin->tree->getTiers(array("WN"));
+            $required_tierIDs = $Lasercommerce_Plugin->visibility->get_term_read_tiers($term_id);
+            if($required_tierIDs){
+                $required_tiers = $Lasercommerce_Plugin->tree->getTiers($required_tierIDs);
             }
         }
     }
@@ -606,11 +613,18 @@ function tanvas_term_get_required_tiers($term) {
     return $required_tiers;
 }
 
-function tanvas_term_tiers_visibile($term) {
-    if(!tanvas_is_user_wholesale() and tanvas_term_restricted($term)){
-        return false;
+function tanvas_term_tiers_visibile($term, $user = null){
+    if (!$user) {
+        $user = wp_get_current_user();
     }
-    //TODO: this
+    
+    $user_id = $user->ID;
+    $term_id = $term->term_id; 
+
+    if(class_exists('Lasercommerce_Plugin')){
+        global $Lasercommerce_Plugin;
+        return $Lasercommerce_Plugin->visibility->user_can_read_term($user_id, $term_id);
+    }
     return true;
 }
 
