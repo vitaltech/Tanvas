@@ -30,7 +30,7 @@ function tanvas_get_continue_shopping_button() {
 }
 
 function tanvas_get_wholesale_application_button($name = null) {
-    return tanvas_get_button('/my-account/upgrade' . ($name ? '?name=' . esc_attr($name) : ''), 'Wholesale Application');
+    return tanvas_get_button('/my-account/request-wholesale/' . ($name ? '?name=' . esc_attr($name) : ''), 'Wholesale Application');
 }
 
 function tanvas_get_distributor_application_button($name = null) {
@@ -206,17 +206,36 @@ function tanvas_get_memberships_warning_message($required_authority, $action, $a
     );
 }
 
+function tanvas_get_professional_warning_message($required_authority, $object_type, $old_message, $visible = false){
+    if($visible){
+        return __("The pricing shown below is for retail customers only.", TANVAS_DOMAIN);
+    } else {
+        if(in_array($object_type, array("product_cat"))){
+            $message = __("These products are only available for purchase by %s.", TANVAS_DOMAIN);
+        } elseif(in_array($object_type, array("category", "cat"))){
+            $message = __("This category is only available for %s.", TANVAS_DOMAIN);
+        }elseif(in_array($object_type, array("product"))){
+            $message = __("This product is only available for purchase by %s.", TANVAS_DOMAIN);
+        }elseif(in_array($object_type, array("post", "page"))){
+            $message = __("This $object_type is only available for %s.", TANVAS_DOMAIN);
+        }else{
+            return $old_message;
+        }
+        return sprintf(
+            $message, 
+            sprintf("%s %s", $required_authority, "customers")
+        );
+    }
+}
+
 function tanvas_get_action_string($object_type){
     if(in_array($object_type, array("product_cat"))){
         return __("purchase these products", TANVAS_DOMAIN );
-    }
-    if(in_array($object_type, array("category", "cat"))){
+    }elseif(in_array($object_type, array("category", "cat"))){
         return __("view this category", TANVAS_DOMAIN );
-    }
-    if(in_array($object_type, array("product"))){
+    }elseif(in_array($object_type, array("product"))){
         return __("purchase this product", TANVAS_DOMAIN);
-    }
-    if(in_array($object_type, array("post", "page"))){
+    }elseif(in_array($object_type, array("post", "page"))){
         return __("view this $object_type", TANVAS_DOMAIN);
     }
     return __("view this item", TANVAS_DOMAIN);
@@ -228,6 +247,12 @@ function tanvas_get_unrestricted_action_string($object_type){
     } else {
         return __("view restricted content", TANVAS_DOMAIN);
     }
+}
+
+function tanvas_get_industry_instructions($visible = false){
+    $instructions = __("If you are an industry professional, please %s", TANVAS_DOMAIN);
+    $instructions .= $visible ? __(" as discounts apply.", TANVAS_DOMAIN) : "." ;
+    return $instructions;
 }
 
 // function tanvas_display_star_warinigs($star, $required_authorities, $user_authorities, $object_type, $visible = false){
@@ -268,12 +293,18 @@ function tanvas_display_tier_warnings($required_authorities, $user_authorities, 
                 $login_button = tanvas_get_trade_login_button();
                 $register_button = tanvas_get_wholesale_application_button();
                 $required_authority = "wholesale"; 
-                $instructions = __("Wholesale (trade) customers can %s to %s", TANVAS_DOMAIN);
+                // $instructions = __("Wholesale (trade) customers can %s to %s", TANVAS_DOMAIN);
+                $instructions = tanvas_get_industry_instructions();
+                $message = tanvas_get_professional_warning_message($required_authority, $object_type, $message);
+                $action = "";
             } elseif (tanvas_is_distributor_required($required_authorities) ) {
                 $login_button = tanvas_get_trade_login_button();
                 $register_button = tanvas_get_distributor_application_button();
                 $required_authority = "distributor";
-                $instructions = __("Distributor customers can %s to %s", TANVAS_DOMAIN);
+                // $instructions = __("Distributor customers can %s to %s", TANVAS_DOMAIN);
+                $instructions = tanvas_get_industry_instructions();
+                $message = tanvas_get_professional_warning_message($required_authority, $object_type, $message);
+                $action = "";
             } 
 
             if (!is_user_logged_in()) {
@@ -282,7 +313,11 @@ function tanvas_display_tier_warnings($required_authorities, $user_authorities, 
             }
 
             $required_action = sprintf($required_action, tanvas_indefinite_authority( $required_authority, 'account' ));
-            $instructions = sprintf($instructions, $required_action, $action);
+            if($action){
+                $instructions = sprintf($instructions, $required_action, $action);
+            } else {
+                $instructions = sprintf($instructions, $required_action);
+            }
 
             array_push($buttons, $register_button);
         } else {
@@ -434,7 +469,10 @@ function tanvas_display_unrestricted_warning($required_authorities, $user_author
 
             $display_message = true;
             $required_authority = "wholesale"; 
-            $instructions = __("Wholesale (trade) customers can %s to %s", TANVAS_DOMAIN);
+            // $instructions = __("Wholesale (trade) customers can %s to %s", TANVAS_DOMAIN);
+            $message = tanvas_get_professional_warning_message($required_authority, $object_type, $message, true);
+            $instructions = tanvas_get_industry_instructions(true);
+            $action = "";
 
             $required_action = __("apply for %s", TANVAS_DOMAIN);
             if (!is_user_logged_in()) {
@@ -445,13 +483,17 @@ function tanvas_display_unrestricted_warning($required_authorities, $user_author
         } elseif(!is_user_logged_in()) {
             if (TANVAS_DEBUG) error_log($_procedure . "user is not logged in");
             $display_message = true;
-            $instructions = __("Please %s to %s", TANVAS_DOMAIN);
+            // $instructions = __("Please %s to %s", TANVAS_DOMAIN);
             $required_action = __("log in or apply for %s", TANVAS_DOMAIN);
             array_push($buttons, $login_button);
         } 
         array_push($buttons, $register_button);
         $required_action = sprintf($required_action, tanvas_indefinite_authority( $required_authority, 'account' ));
-        $instructions = sprintf($instructions, $required_action, $action);
+        if($action){
+            $instructions = sprintf($instructions, $required_action, $action);
+        } else {
+            $instructions = sprintf($instructions, $required_action);
+        }
     } else {
         if (TANVAS_DEBUG) error_log($_procedure . "user is wholesale");
         $box_type = 'tick';
@@ -597,11 +639,23 @@ function tanvas_term_get_required_tiers($term, $user = null) {
     $user_id = $user->ID;
     $term_id = $term->term_id; 
     
-    //TODO: this
     if (class_exists('Lasercommerce_Plugin')) {
         global $Lasercommerce_Plugin;
         if (isset($Lasercommerce_Plugin)) {
-            $required_tierIDs = $Lasercommerce_Plugin->visibility->get_term_read_tiers($term_id);
+            $required_tierIDs = array();
+            $this_id = $term_id; 
+            do{
+                if (TANVAS_DEBUG) error_log($_procedure . " -> any requirements for term? : " . $this_id);
+                $term = get_term_by('id', $this_id, 'product_cat');
+                $this_required_tierIDs = $Lasercommerce_Plugin->visibility->get_term_read_tiers($this_id);
+                if($this_required_tierIDs){
+                    if (TANVAS_DEBUG) error_log($_procedure . " --> yes " . serialize($this_required_tierIDs) );
+                    $required_tierIDs = array_unique(array_merge($this_required_tierIDs, $required_tierIDs));
+                } else {
+                    if (TANVAS_DEBUG) error_log($_procedure . " --> no "  );
+                }
+                $this_id = $term->parent;
+            } while($this_id);
             if($required_tierIDs){
                 $required_tiers = $Lasercommerce_Plugin->tree->getTiers($required_tierIDs);
             }
@@ -623,7 +677,13 @@ function tanvas_term_tiers_visibile($term, $user = null){
 
     if(class_exists('Lasercommerce_Plugin')){
         global $Lasercommerce_Plugin;
-        return $Lasercommerce_Plugin->visibility->user_can_read_term($user_id, $term_id);
+        $this_id = $term_id;
+        do {
+            $term = get_term_by('id', $this_id, 'product_cat');
+            $this_visible = $Lasercommerce_Plugin->visibility->user_can_read_term($user_id, $this_id);
+            if(!$this_visible) return false;
+            $this_id = $term->parent;
+        } while ($this_id);
     }
     return true;
 }
