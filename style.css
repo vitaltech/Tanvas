@@ -845,3 +845,11 @@ div.doorway-container {
 div.widget {
 	border-style: None;
 }
+
+/** fixes that patrick pointed out
+*/
+
+div.header div.columns {
+	padding-left:0px;
+	padding-right: 0px;
+}
