@@ -357,8 +357,7 @@ aside#sidebar div.widget h3  {
 	color: #d1aa67;
 }
 
-aside#sidebar div.widget p.buttons,
-aside#sidebar div.widget a.woo-sc-button {
+aside#sidebar div.widget p.buttons {
 	margin-bottom: 0px;
 }
 
@@ -791,14 +790,25 @@ strong.warning {
 	font-weight: bold;
 }
 
+/** 
+ * Woocommerce Tanvas Buttons 
+ */
+
 a.woo-sc-button {
 	margin-bottom: 0px !important;
 }
 
-a.woo-sc-button.tanvas {
-	background-color: #d1aa67 !important;
+/*#main a.woo-sc-button.tanvas {
+	background-color: transparent !important;
+	color: black !important;
+	padding: 0px 0px 0px 0px;
 }
 
+#main a.woo-sc-button.tanvas span.woo-{
+	font-weight: bold !important;
+	text-decoration: underline !important; 
+}
+*/
 /**
  * product info display
  */
