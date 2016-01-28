@@ -4,8 +4,28 @@ body {
     height: auto;
 }
 
+div#login h1 a {
+    margin-bottom: 0px;
+}
+
+form#loginform {
+    margin-top: 0px;
+}
+
 p#billing_phone-p::after {
     content: "By supplying your telephone number we can serve you better!";
     background-color: lightyellow;
     /*padding: 1em;*/
+}
+
+.login #login #nav {
+    margin-top: 0px;
+    position: relative;
+    top: -36px;
+}
+.login #login #nav a {
+    color: black;
+}
+.login #login #backtoblog a {
+    color: white;
 }

@@ -3,16 +3,15 @@
 			<div class="medium-6 columns">	
 				<div class="logo">
 				<?php 
+					$site_url = home_url( '/' );
+					$site_title = get_bloginfo( 'name' );
+					$site_description = get_bloginfo( 'description' );
 					$settings = woo_get_dynamic_values( array( 'logo' => '') );
 					if ( ( '' != $settings['logo'] ) ) {
-					$logo_url = $settings['logo'];
-					if ( is_ssl() ) $logo_url = str_replace( 'http://', 'https://', $logo_url );
-					$site_title = get_bloginfo( 'name' );
-					$site_url = home_url( '/' );
-					$site_description = get_bloginfo( 'description' );
-
-					echo '<a href="' . esc_url( $site_url ) . '" title="' . esc_attr( $site_description ) . '"><img src="' . esc_url( $logo_url ) . '" alt="' . esc_attr( $site_title ) . '" /></a>' . "\n";
-					} // End IF Statement
+						$logo_url = $settings['logo'];
+						if ( is_ssl() ) $logo_url = str_replace( 'http://', 'https://', $logo_url );
+						echo '<a href="' . esc_url( $site_url ) . '" title="' . esc_attr( $site_description ) . '"><img src="' . esc_url( $logo_url ) . '" alt="' . esc_attr( $site_title ) . '" /></a>' . "\n";
+					} 
 				?>				
 				</div>
 			</div>
