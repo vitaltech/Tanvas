@@ -1087,14 +1087,14 @@ function tanvas_wholesale_content_restricted_shortcode($args, $content=""){
     $user_authorities = tanvas_get_user_tiers();
     $object_type = 'page';
     $visible = tanvas_is_user_wholesale();
-    $out = tanvas_display_tier_warnings($required_authorities, $user_authorities, $object_type, $visible=false, $echo = false);
+    $out = tanvas_display_tier_warnings($required_authorities, $user_authorities, $object_type, $visible, false);
     $out .= $content;
     return $out;
 }
 
 function tanvas_tier_restrict_content_shortcode($args, $content){
     $visible = true;
-    if in_array('tiers', array_keys($args)){
+    if (in_array('tiers', array_keys($args))){
         $tierIDs = explode(',', $args['tiers']);
         if (class_exists('Lasercommerce_Plugin')) {
             global $Lasercommerce_Plugin;
