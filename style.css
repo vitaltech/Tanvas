@@ -866,10 +866,10 @@ div.header div.columns {
 
 /* Pao 1-28-16 */
 /* Hide Product Categories on Certain Pages */
-.blog #woocommerce_product_categories-8,
-.search-no-results #woocommerce_product_categories-8,
-.search-results #woocommerce_product_categories-8,
-.single-post #woocommerce_product_categories-8 {
+.blog [id*='woocommerce_product_categories'],
+.search-no-results [id*='woocommerce_product_categories'],
+.search-results [id*='woocommerce_product_categories'],
+.single-post [id*='woocommerce_product_categories'] {
     display: none;
 }
 /* Lessen Breadcrumb Emphasis */
