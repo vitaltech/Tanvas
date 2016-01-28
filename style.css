@@ -863,3 +863,19 @@ div.header div.columns {
 	padding-left:0px;
 	padding-right: 0px;
 }
+
+/* Pao 1-28-16 */
+/* Hide Product Categories on Certain Pages */
+.blog [id*='woocommerce_product_categories'],
+.search-no-results [id*='woocommerce_product_categories'],
+.search-results [id*='woocommerce_product_categories'],
+.single-post [id*='woocommerce_product_categories'] {
+    display: none;
+}
+/* Lessen Breadcrumb Emphasis */
+.breadcrumbs.woo-breadcrumbs, 
+.breadcrumb .breadcrumb-title {
+    font-size: 11px;
+    text-transform: uppercase;
+	font-weight: 400 !important;
+}
