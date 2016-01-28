@@ -872,3 +872,10 @@ div.header div.columns {
 .single-post #woocommerce_product_categories-8 {
     display: none;
 }
+/* Lessen Breadcrumb Emphasis */
+.breadcrumbs.woo-breadcrumbs, 
+.breadcrumb .breadcrumb-title {
+    font-size: 11px;
+    text-transform: uppercase;
+	font-weight: 400 !important;
+}
