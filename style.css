@@ -863,3 +863,12 @@ div.header div.columns {
 	padding-left:0px;
 	padding-right: 0px;
 }
+
+/* Pao 1-28-16 */
+/* Hide Product Categories on Certain Pages */
+.blog #woocommerce_product_categories-8,
+.search-no-results #woocommerce_product_categories-8,
+.search-results #woocommerce_product_categories-8,
+.single-post #woocommerce_product_categories-8 {
+    display: none;
+}
