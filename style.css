@@ -798,17 +798,18 @@ a.woo-sc-button {
 	margin-bottom: 0px !important;
 }
 
-/*#main a.woo-sc-button.tanvas {
+#main a.woo-sc-button.tanvas {
 	background-color: transparent !important;
 	color: black !important;
 	padding: 0px 0px 0px 0px;
+	margin-right: 20px;
 }
 
 #main a.woo-sc-button.tanvas span.woo-{
 	font-weight: bold !important;
 	text-decoration: underline !important; 
 }
-*/
+
 /**
  * product info display
  */

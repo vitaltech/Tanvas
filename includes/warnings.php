@@ -255,6 +255,11 @@ function tanvas_get_industry_instructions($visible = false){
     return $instructions;
 }
 
+function tanvas_get_trade_instructions($visible = false){
+    $instructions = __('To view trade pricing, please %s', TANVAS_DOMAIN);
+    return $instructions;
+}
+
 // function tanvas_display_star_warinigs($star, $required_authorities, $user_authorities, $object_type, $visible = false){
 //     $_procedure = "DISPLAY_STAR_WARN|$star";
 
@@ -294,7 +299,8 @@ function tanvas_display_tier_warnings($required_authorities, $user_authorities, 
                 $register_button = tanvas_get_wholesale_application_button();
                 $required_authority = "wholesale"; 
                 // $instructions = __("Wholesale (trade) customers can %s to %s", TANVAS_DOMAIN);
-                $instructions = tanvas_get_industry_instructions();
+                // $instructions = tanvas_get_industry_instructions($visible);
+                $instructions = tanvas_get_trade_instructions($visible);
                 $message = tanvas_get_professional_warning_message($required_authority, $object_type, $message);
                 $action = "";
             } elseif (tanvas_is_distributor_required($required_authorities) ) {
@@ -302,7 +308,8 @@ function tanvas_display_tier_warnings($required_authorities, $user_authorities, 
                 $register_button = tanvas_get_distributor_application_button();
                 $required_authority = "distributor";
                 // $instructions = __("Distributor customers can %s to %s", TANVAS_DOMAIN);
-                $instructions = tanvas_get_industry_instructions();
+                // $instructions = tanvas_get_industry_instructions($visible);
+                $instructions = tanvas_get_trade_instructions($visible);
                 $message = tanvas_get_professional_warning_message($required_authority, $object_type, $message);
                 $action = "";
             } 
@@ -489,7 +496,8 @@ function tanvas_display_unrestricted_warning($required_authorities, $user_author
             $required_authority = "wholesale"; 
             // $instructions = __("Wholesale (trade) customers can %s to %s", TANVAS_DOMAIN);
             $message = tanvas_get_professional_warning_message($required_authority, $object_type, $message, true);
-            $instructions = tanvas_get_industry_instructions(true);
+            // $instructions = tanvas_get_industry_instructions(true);
+            $instructions = tanvas_get_trade_instructions(true);
             $action = "";
 
             $required_action = __("apply for %s", TANVAS_DOMAIN);
@@ -574,6 +582,52 @@ function tanvas_get_user_tiers($user = null) {
     
     if (TANVAS_DEBUG) error_log($_procedure . "tiers: " . serialize($tiers));
     return $tiers;
+}
+
+function tanvas_get_user_tier_ids($user = null){
+    $tiers = tanvas_get_user_tiers($user);
+    if ( class_exists('Lasercommerce_Plugin') ){
+        global $Lasercommerce_Plugin;
+        if(isset($Lasercommerce_Plugin)){
+            return $Lasercommerce_Plugin->tree->getTierIds($tiers);
+        }
+    }
+    return array();
+}
+
+function tanvas_get_user_visible_tiers($user = null){
+    $_procedure = 'GET_USER_VISIBLE_TIERS: ';
+    
+    $tiers = array();
+    if (!$user) {
+        $user = wp_get_current_user();
+    }
+    
+    $user_id = $user->ID;
+    
+    if (class_exists('Lasercommerce_Plugin')) {
+        global $Lasercommerce_Plugin;
+        if (isset($Lasercommerce_Plugin)) {
+            $tiers = $Lasercommerce_Plugin->tree->getVisibleTiers($user_id);
+        }
+    } 
+    else {
+        if (TANVAS_DEBUG) error_log($_procedure . "LC plugin class DNE");
+    }
+    
+    if (TANVAS_DEBUG) error_log($_procedure . "tiers: " . serialize($tiers));
+    return $tiers;
+}
+
+function tanvas_get_user_visible_tier_ids($user = null){
+    $tiers = tanvas_get_user_visible_tiers($user);
+    if ( class_exists('Lasercommerce_Plugin') ){
+        global $Lasercommerce_Plugin;
+        if(isset($Lasercommerce_Plugin)){
+            return $Lasercommerce_Plugin->tree->getTierIds($tiers);
+        }
+    }    
+    return array();
 }
 
 function tanvas_get_tier_authority($tiers = array()) {
@@ -1078,6 +1132,10 @@ function tanvas_post_warning() {
 }
 
 function tanvas_wholesale_content_restricted_shortcode($args, $content=""){
+    $args = shortcode_atts( array(
+        'object_type' => 'product_cat'
+    ), $args);
+
     if (class_exists('Lasercommerce_Plugin')) {
         global $Lasercommerce_Plugin;
         if (isset($Lasercommerce_Plugin)) {
@@ -1085,7 +1143,7 @@ function tanvas_wholesale_content_restricted_shortcode($args, $content=""){
         }
     }
     $user_authorities = tanvas_get_user_tiers();
-    $object_type = 'page';
+    $object_type = $args['object_type'];
     $visible = tanvas_is_user_wholesale();
     $out = tanvas_display_tier_warnings($required_authorities, $user_authorities, $object_type, $visible, false);
     $out .= $content;
@@ -1093,18 +1151,47 @@ function tanvas_wholesale_content_restricted_shortcode($args, $content=""){
 }
 
 function tanvas_tier_restrict_content_shortcode($args, $content){
-    $visible = true;
-    if (in_array('tiers', array_keys($args))){
-        $tierIDs = explode(',', $args['tiers']);
+    $args = shortcode_atts( array(
+        'tiers' => '',
+        'hide_tiers' => '',
+    ), $args);
+
+    // $out = '';
+
+    $user_tier_ids = tanvas_get_user_visible_tier_ids();
+    // $out .= "user_tiers: ".serialize($user_tier_ids)."<br/>";
+    $message_visible = true;
+    if (in_array('tiers', array_keys($args)) and $args['tiers']){
+        $message_visible = false;
+        $required_tier_ids = explode(',', $args['tiers']);
+        // $out .= "required: " . $args['tiers']."<br/>";
         if (class_exists('Lasercommerce_Plugin')) {
             global $Lasercommerce_Plugin;
             if (isset($Lasercommerce_Plugin)) {
-                $required_authorities = array($Lasercommerce_Plugin->tree->getWholesaleTier() );
+                // $message_visible = false;
+                // $required_tier_ids = array($Lasercommerce_Plugin->tree->getWholesaleTier() );
+                $message_visible = $Lasercommerce_Plugin->visibility->tier_ids_satisfy_requirement($user_tier_ids, $required_tier_ids);
+                // $out .= "visible: " . ($message_visible) ."<br/>";
             }
         }
-
+    } elseif (in_array('hide_tiers', array_keys($args)) and $args['hide_tiers']) {
+        $required_tier_ids = explode(',', $args['hide_tiers']);
+        // $out .= "hide_tiers: " . $args['hide_tiers']."<br/>";
+        if(class_exists('Lasercommerce_Plugin')) {
+            global $Lasercommerce_Plugin;
+            if(isset($Lasercommerce_Plugin)){
+                $message_visible = ! $Lasercommerce_Plugin->visibility->tier_ids_satisfy_requirement($user_tier_ids, $required_tier_ids);
+                // $out .= "visible: " . ($message_visible) . "<br/>";
+            }
+        }
     }
-    return serialize($args);
+    if( $message_visible){
+        return do_shortcode($content);
+        // return $out . do_shortcode($content);
+    } else{
+        return '';
+        // return $out;
+    }
 
 }
 
