@@ -879,3 +879,32 @@ div.header div.columns {
     text-transform: uppercase;
 	font-weight: 400 !important;
 }
+
+/** modify custom product-info table style to suit data sheet pdfs */
+table.product-info th {
+	background-color: black !important;
+	color: #d1aa67;
+	text-transform: uppercase;
+	font-size: 120%;
+	text-align: center;
+	border-bottom-style: solid !important;
+	border-bottom-color: #d1aa67 !important;
+	border-bottom-width: thick!important; 
+}
+
+table.product-info th h2 {
+	padding-bottom: 0px !important;
+	margin-bottom: 0px !important;
+}
+
+table.product-info tr {
+	background-color: #ECDDBD !important;
+}
+
+table.product-info tr td{
+	border-style: None !important;
+}
+
+table.product-info tr td img {
+	background-color: transparent !important; 
+}
