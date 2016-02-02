@@ -255,6 +255,11 @@ function tanvas_get_industry_instructions($visible = false){
     return $instructions;
 }
 
+function tanvas_get_trade_instructions($visible = false){
+    $instructions = __('To view trade pricing, please %s', TANVAS_DOMAIN);
+    return $instructions;
+}
+
 // function tanvas_display_star_warinigs($star, $required_authorities, $user_authorities, $object_type, $visible = false){
 //     $_procedure = "DISPLAY_STAR_WARN|$star";
 
@@ -294,7 +299,8 @@ function tanvas_display_tier_warnings($required_authorities, $user_authorities, 
                 $register_button = tanvas_get_wholesale_application_button();
                 $required_authority = "wholesale"; 
                 // $instructions = __("Wholesale (trade) customers can %s to %s", TANVAS_DOMAIN);
-                $instructions = tanvas_get_industry_instructions();
+                // $instructions = tanvas_get_industry_instructions($visible);
+                $instructions = tanvas_get_trade_instructions($visible);
                 $message = tanvas_get_professional_warning_message($required_authority, $object_type, $message);
                 $action = "";
             } elseif (tanvas_is_distributor_required($required_authorities) ) {
@@ -302,7 +308,8 @@ function tanvas_display_tier_warnings($required_authorities, $user_authorities, 
                 $register_button = tanvas_get_distributor_application_button();
                 $required_authority = "distributor";
                 // $instructions = __("Distributor customers can %s to %s", TANVAS_DOMAIN);
-                $instructions = tanvas_get_industry_instructions();
+                // $instructions = tanvas_get_industry_instructions($visible);
+                $instructions = tanvas_get_trade_instructions($visible);
                 $message = tanvas_get_professional_warning_message($required_authority, $object_type, $message);
                 $action = "";
             } 
@@ -489,7 +496,8 @@ function tanvas_display_unrestricted_warning($required_authorities, $user_author
             $required_authority = "wholesale"; 
             // $instructions = __("Wholesale (trade) customers can %s to %s", TANVAS_DOMAIN);
             $message = tanvas_get_professional_warning_message($required_authority, $object_type, $message, true);
-            $instructions = tanvas_get_industry_instructions(true);
+            // $instructions = tanvas_get_industry_instructions(true);
+            $instructions = tanvas_get_trade_instructions(true);
             $action = "";
 
             $required_action = __("apply for %s", TANVAS_DOMAIN);
