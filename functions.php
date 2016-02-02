@@ -121,7 +121,7 @@ function tanvas_widgets_init() {
 	register_sidebar( array (
 		'name' 			=> 'Home Doorway Sidebar',
 		'id'			=> 'tanvas_home_doorway_sidebar',
-		'before_widget' => '<div class="widget">',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'	=> '</div>',
 		'before_title'	=> '<h2>',
 		'after_title'	=> '</h2>'
