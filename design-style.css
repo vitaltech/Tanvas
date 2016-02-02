@@ -515,7 +515,7 @@ a.bag {
 	padding-left: 25px;
 }*/
 
-a.shop {
+/*a.shop {
 	margin-left: auto;
 	display: block;
 	text-align: center;
@@ -523,19 +523,18 @@ a.shop {
 	font: normal 31px/1.5em Arial, sans-serif !important;
 	background-color: #940000;
 	max-width: 284px;
-	/*margin-top: 25px;*/
 	margin-top: 6px;
 	transition-duration: 0.6s;
 	-moz-transition-duration: 0.6s;
 	-webkit-transition-duration: 0.6s;
 	-o-transition-duration: 0.6s;
-}
+}*/
 
-a.shop:hover {
+/*a.shop:hover {
 	text-decoration: none;
 	background-color: #BE0101;
 }
-
+*/
 /*socil icons*/
 ul.social-icons {
 	margin-left: 8px;

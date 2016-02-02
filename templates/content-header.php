@@ -31,7 +31,19 @@
 						</ul>
 					</li-->
 				</ul>
-				<a href="<?php echo esc_url( $site_url );?>shop/" class="shop">SHOP ONLINE</a>
+				<?php 
+					$retail_url = esc_url( home_url( '/shop/retail/' ) );
+					$trade_url = esc_url( home_url( '/shop/trade/' ) );
+					$shop_url = esc_url( home_url( '/shop/' ) );
+					if(tanvas_is_user_wholesale()){ ?>
+						<a href="<?php echo $shop_url; ?>" class="shop">TRADE STORE</a>
+					<?php } else { ?>
+						<div id="split-shop-container">
+							<a href="<?php echo $retail_url ; ?>" class="shop split-shop">RETAIL<br/>STORE</a>
+							<a href="<?php echo $trade_url; ?>" class="shop split-shop">TRADE<br/>STORE</a>
+						</div>
+					<?php }
+				?>
 			</div>
 		</div>
 	</div>
