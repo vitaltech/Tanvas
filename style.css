@@ -976,3 +976,11 @@ div[id*='widget_sp_image'] img.attachment-medium{
 	height: auto !important;
 	max-width: 100%; 
 }
+
+/*Hide stupid paypal button on cart */
+div.wc-proceed-to-checkout a#myContainer {
+	display:none;
+}
+div.wc-proceed-to-checkout b{
+	display:none;
+}

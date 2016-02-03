@@ -178,6 +178,9 @@ function tanvas_is_user_distributor($user = null){
 // }
 
 function tanvas_indefinite_authority($authority, $authority_type){
+    if(!$authority){
+        return tanvas_indefinite_article($authority_type);
+    }
     return tanvas_indefinite_article(sprintf("%s %s", $authority, $authority_type));
 }
 
