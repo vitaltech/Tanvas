@@ -916,7 +916,7 @@ a.shop {
 	margin-left: auto;
 	display: block;
 	text-align: center;
-	color: #fff !important;
+	color: black !important;
 	font: normal 31px/1.5em Arial, sans-serif !important;
 	background-color: #d1aa67;
 	border-radius: 5px;
@@ -939,7 +939,7 @@ a.shop:hover {
 }
 
 div#split-shop-container {
-	max-width: 300px;
+	max-width: 400px;
 	clear:both;
 	float:right;
 	margin: auto;
@@ -949,7 +949,7 @@ div#split-shop-container a.split-shop {
 	display: inline-block;
 	text-align: center;
 	font-size: 20px !important;
-	max-width: 140px;
+	max-width: 190px;
 	padding: 5px 20px;
 	transition-duration: 0.6s;
 	-moz-transition-duration: 0.6s;
@@ -967,6 +967,7 @@ div#split-shop-container a.split-shop {
 	a.shop {
 		float: none;
 		margin: auto;
+		margin-top: 5px;
 	}
 }
 

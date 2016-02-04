@@ -39,8 +39,8 @@
 						<a href="<?php echo $shop_url; ?>" class="shop">TRADE STORE</a>
 					<?php } else { ?>
 						<div id="split-shop-container">
-							<a href="<?php echo $retail_url ; ?>" class="shop split-shop">RETAIL<br/>STORE</a>
-							<a href="<?php echo $trade_url; ?>" class="shop split-shop">TRADE<br/>STORE</a>
+							<a href="<?php echo $trade_url; ?>" class="shop split-shop">TRADE STORE</a>
+							<a href="<?php echo $retail_url ; ?>" class="shop split-shop">RETAIL STORE</a>
 						</div>
 					<?php }
 				?>
