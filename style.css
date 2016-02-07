@@ -587,11 +587,13 @@ div.social-icons img {
 
 /* Product Price Display mods */
 
+/* Overwritten
 span.price span.amount {
 	margin-left: 5px;
 	margin-right: 5px;
 	font-weight: bold;
 }
+ */
 
 span.price small.woocommerce-price-suffix {
 	font-size: 66%;
@@ -684,20 +686,17 @@ li.product a h3 small{
 	color: black;
 	line-height: normal
 }
-li.product a div.price_tier_table {
+/* Overwritten */
+/* li.product a div.price_tier_table {
 	display: table;
 	text-align: center;
 	max-width: 100%;
 	margin: auto;
-	/*background-color: whitesmoke;*/
 	font-size: 75%;
-}
+} */
 li.product a div.price_tier_table div.price_tier_row {
 	display: table-row;
-	/*width: 100%;*/
-	/*width: atuo;*/
-	width: min
-	max-width: 100%
+	max-width: 100%;
 	vertical-align: middle;
 }
 li.product a div.price_tier_table div.price_tier_row .price_tier_cell {
@@ -880,6 +879,29 @@ div.header div.columns {
     text-transform: uppercase;
 	font-weight: 400 !important;
 }
+/* Pao 2-3-16 */
+/* Make SKU / Tags / Categories Smaller */
+.product_meta {font-size: 12px;}
+/* Get 'out of stock' warning to look better, not take up vertical space */
+.stock.out-of-stock { margin-bottom: 0 !important; }
+/* Up-sells and Cross-sells display clean up */
+span.price span.amount {
+	font-weight: bold;
+}
+span.price {
+    font-size: 90%;
+    display: block;
+    margin-right: 15px;
+}
+li.product a div.price_tier_table {
+    max-width: 100%;
+    margin: auto;
+    margin-top: 10px;
+    font-size: 90%;
+}
+/* Pagination on Archives */
+.fl {float: right;}
+.fr {float: left;}
 
 /** modify custom product-info table style to suit data sheet pdfs */
 table.product-info th {
@@ -908,4 +930,71 @@ table.product-info tr td{
 
 table.product-info tr td img {
 	background-color: transparent !important; 
+}
+
+/* modify display of trade and retail store buttons */
+
+a.shop {
+	margin-left: auto;
+	display: block;
+	text-align: center;
+	color: #fff !important;
+	font: normal 31px/1.5em Arial, sans-serif !important;
+	background-color: #d1aa67;
+	border-radius: 5px;
+	max-width: 284px;
+	/*margin-top: 25px;*/
+	margin-top: 6px;
+	margin-right: 10px;
+	padding: 5px 20px;
+	line-height: 120% !important; 
+	transition-duration: 0.6s;
+	-moz-transition-duration: 0.6s;
+	-webkit-transition-duration: 0.6s;
+	-o-transition-duration: 0.6s;
+	float: right;
+}
+
+a.shop:hover {
+	text-decoration: none;
+	background-color: #A5854F;
+}
+
+div#split-shop-container {
+	max-width: 300px;
+	clear:both;
+	float:right;
+	margin: auto;
+}
+
+div#split-shop-container a.split-shop {
+	display: inline-block;
+	text-align: center;
+	font-size: 20px !important;
+	max-width: 140px;
+	padding: 5px 20px;
+	transition-duration: 0.6s;
+	-moz-transition-duration: 0.6s;
+	-webkit-transition-duration: 0.6s;
+	-o-transition-duration: 0.6s;
+}
+
+@media only screen and (max-width: 720px) {
+	div#split-shop-container{
+		float: none;
+		display: block;
+		margin: auto;
+		text-align: center;
+	}
+	a.shop {
+		float: none;
+		margin: auto;
+	}
+}
+
+/* change image widget display */
+div[id*='widget_sp_image'] img.attachment-medium{
+	width: auto !important;
+	height: auto !important;
+	max-width: 100%; 
 }

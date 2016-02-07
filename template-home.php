@@ -139,7 +139,6 @@ $page_template = woo_get_page_template();
 			<?php // get_sidebar(); ?>
 
 		</div><!-- /#main-sidebar-container -->
-
 		<?php get_sidebar( 'alt' ); ?>
 
     </div><!-- /#content -->
