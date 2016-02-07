@@ -373,10 +373,10 @@ a.view-all {
 }
 
 img.recent-posts-img {
-	-moz-border-radius: 50%;
+	/* -moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
 	border-radius: 50%; /* future proofing */
-	-khtml-border-radius: 50%; /* for old Konqueror browsers */
+	/*-khtml-border-radius: 50%;  for old Konqueror browsers */ 
 	margin-bottom: 10px;
 }
 

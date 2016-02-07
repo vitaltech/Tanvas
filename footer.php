@@ -99,13 +99,20 @@
 			transitionStyle:"fade"
 		});
 		
-		$(".nav-entries span.nav-prev.fl").html("Previous");
-		$(".nav-entries span.nav-next.fr").html("Next");
+		$(".nav-entries span.nav-prev.fl").html("Next");
+		$(".nav-entries span.nav-next.fr").html("Previous");
 		
 		$("form.woocommerce-shipping-calculator p a").after("<span class='office-hours'>pickup from jandakot<br/>office hours: 8:00AM - 5:00PM</span>");
 	});
 	</script>
-	
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 </body>
 
 </html>

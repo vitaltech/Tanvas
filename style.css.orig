@@ -696,6 +696,12 @@ li.product a h3 small{
 } */
 li.product a div.price_tier_table div.price_tier_row {
 	display: table-row;
+<<<<<<< HEAD
+=======
+	/*width: 100%;*/
+	/*width: atuo;*/
+	width: min;
+>>>>>>> master
 	max-width: 100%;
 	vertical-align: middle;
 }
