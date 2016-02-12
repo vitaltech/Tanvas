@@ -135,7 +135,7 @@ function tanvas_authorities_contain($authorities, $needle){
     $_procedure = "AUTHORITIES_CONTAIN|$needle: ";
     $auth_sting = strtolower(tanvas_get_authority_string($authorities));
     if(TANVAS_DEBUG) error_log($_procedure."$auth_sting");
-    if(strstr($auth_sting, strtolower($needle) )){
+    if(strpos($auth_sting, strtolower($needle) ) !== false){
         return true;
     }
     return false;
