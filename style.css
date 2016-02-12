@@ -707,6 +707,7 @@ li.product a div.price_tier_table div.price_tier_row .price_tier_cell {
 li.product a div.price_tier_table div.price_tier_row .price_tier_cell.price_html {
 	width: 50%;
 	text-align: center;
+	font-size: 80%;
 }
 li.product a div.price_tier_table div.price_tier_row .price_tier_cell.tier_id {
 	width: 50%;
@@ -892,12 +893,16 @@ span.price {
     font-size: 90%;
     display: block;
     margin-right: 15px;
+    line-height: normal;
 }
 li.product a div.price_tier_table {
     max-width: 100%;
     margin: auto;
     margin-top: 10px;
     font-size: 90%;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #EEEEEE;
 }
 /* Pagination on Archives */
 .fl {float: right;}
