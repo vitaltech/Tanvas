@@ -1003,3 +1003,8 @@ div[id*='widget_sp_image'] img.attachment-medium{
 	height: auto !important;
 	max-width: 100%; 
 }
+
+/* Highlight tanvas warning keywords */
+span.tanvas-warning-highlight {
+	font-weight: bold;
+}
