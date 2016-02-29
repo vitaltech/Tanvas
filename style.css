@@ -1016,3 +1016,9 @@ div.term-description table th
 	padding-left: 5px;
 	padding-right: 5px;
 }
+
+/* Lineup Buy Now Button - Pao 2/29/16 
+ * 
+ * 1. Application Kits
+ */
+.term-application-kits ul.products a h3 {min-height: 100px;}
