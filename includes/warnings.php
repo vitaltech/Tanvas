@@ -43,6 +43,10 @@ function tanvas_get_membership_application_button() {
     return tanvas_get_button('#', 'Membership Application');
 }
 
+function tanvas_highlight_warning_keyword($keyword){
+    return "<span class='tanvas-warning-highlight'>$keyword</span>" ;
+}
+
 function tanvas_get_warning_buttons($authorized = null) {
     $help_button = tanvas_get_help_button();
     $buttons = array($help_button);
@@ -180,7 +184,7 @@ function tanvas_is_user_distributor($user = null){
 
 function tanvas_indefinite_authority($authority, $authority_type){
     $indef_article = tanvas_indefinite_article(sprintf("%s %s", $authority, $authority_type));
-    return preg_replace("/(a|an) ([\w\s]*)/", "$1 <span class='tanvas-warning-highlight'>$2</span>", $indef_article);
+    return preg_replace("/(a|an) ([\w\s]*)/", "$1 ".tanvas_highlight_warning_keyword("$2"), $indef_article);
 }
 
 function tanvas_get_tier_warning_message($authority, $authority_type = 'customer'){
@@ -210,7 +214,7 @@ function tanvas_get_memberships_warning_message($required_authority, $action, $a
 
 function tanvas_get_professional_warning_message($required_authority, $object_type, $old_message, $visible = false){
     if($visible){
-        return __("The pricing shown below is for <span class='tanvas-warning-highlight'>retail customers</span> only.", TANVAS_DOMAIN);
+        return __("The pricing shown below is for ".tanvas_highlight_warning_keyword("retail customers")." only.", TANVAS_DOMAIN);
     } else {
         if(in_array($object_type, array("product_cat"))){
             $message = __("These products are only available for purchase by %s.", TANVAS_DOMAIN);
@@ -225,7 +229,7 @@ function tanvas_get_professional_warning_message($required_authority, $object_ty
         }
         return sprintf(
             $message, 
-            sprintf("<span class='tanvas-warning-highlight'>%s %s</span>", $required_authority, "customers")
+            sprintf( tanvas_highlight_warning_keyword("%s %s"), $required_authority, "customers")
         );
     }
 }
@@ -258,7 +262,7 @@ function tanvas_get_industry_instructions($visible = false){
 }
 
 function tanvas_get_trade_instructions($visible = false){
-    $instructions = __('To view <span class="tanvas-warning-highlight">trade pricing</span>, please %s', TANVAS_DOMAIN);
+    $instructions = __('To view '.tanvas_highlight_warning_keyword("trade pricing").', please %s', TANVAS_DOMAIN);
     return $instructions;
 }
 

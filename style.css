@@ -1008,3 +1008,11 @@ div[id*='widget_sp_image'] img.attachment-medium{
 span.tanvas-warning-highlight {
 	font-weight: bold;
 }
+
+/* Add padding to dynamic pricing rule table for better readability */
+div.term-description table td,
+div.term-description table th
+{
+	padding-left: 5px;
+	padding-right: 5px;
+}
