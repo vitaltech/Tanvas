@@ -437,6 +437,19 @@ function register_my_menu() {
 }
 
 /**
+ * Change In Stock / Out of Stock Text
+ */
+add_filter( 'woocommerce_get_availability', 'wcs_custom_get_availability', 1, 2);
+function wcs_custom_get_availability( $availability, $_product ) {
+    // Change Out of Stock Text
+    if ( ! $_product->is_in_stock() ) {
+		$availability['availability'] = __('Coming Soon', 'woocommerce');
+    }
+    return $availability;
+}
+
+
+/**
  * Woocommerce cart prices notice
  */
 function tanvas_output_cart_price_notice(){
