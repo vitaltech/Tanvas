@@ -30,9 +30,11 @@
 								echo " | <a rel='nofollow' href='$admin_url'>Admin</a>";
 							}
 							echo " | <a rel='nofollow' href='$logout_url'>Log Out</a>";
-
 						} else {
-							$login_url = wp_login_url( $account_url );
+							
+							$location= $_SERVER["REQUEST_URI"];
+							$login_url = wp_login_url( str_replace($account_url,$location,$account_url ));
+							
 							// $login_url = $account_url;
 							$help_url = get_site_url(0,"my-account/help");
 							$request_url = wp_registration_url(); 
